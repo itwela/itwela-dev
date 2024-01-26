@@ -1,7 +1,7 @@
 // navbar.tsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import resume from './assets/up-resume-itwela.pdf'
+import resume from './assets/2024_Itwela_JPM.pdf'
 const Navbar = () => {
   return (
     <nav className='w-[100vw] flex place-content-center md:bottom-10 bg-[#ffcc00]'>
