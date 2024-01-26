@@ -175,7 +175,7 @@ const projectData = [
                     it was a very ambitious goal. 
                     <br /> 
                     <br />
-                    <h2 className="research text-[2rem] font-black">Research Phase<br /></h2>
+                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
                     Here you will find an article I wrote on alot of my reserch, findings and development of this trading system. 
                     <br />
                     If you just want the <strong>key take aways</strong>, here they are: 
@@ -208,7 +208,7 @@ const projectData = [
       description: (
         <div>
             <p className=''>
-                <h2 className="initial-interest text-[2rem] font-black">Initial Interest <br /></h2>
+                <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest </span>in connecting apis in my dashboard
                 was the ease of being able to add a feature I wanted into this dashboard. I have leasurely betted
                 on basketball games and really had an idea of what if I could use ai to help me choose the best 
@@ -222,7 +222,7 @@ const projectData = [
                 I want to display.
                 <br /> 
                 <br />
-                <h2 className="research text-[2rem] font-black">Research Phase<br /></h2>
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
                 Here you will find an article I wrote on a case study of how I implimented an API into my dashboard. 
                 <br />
                 If you just want the <strong>key take aways</strong>, here they are: 
@@ -253,7 +253,7 @@ const projectData = [
       description: (
         <div>
             <p className=''>
-                <h2 className="initial-interest text-[2rem] font-black">Initial Interest <br /></h2>
+                <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest </span>in this project was a friend of mine saying
                 he needed some help with his family's website. I thought this would be a great opportunity to
                 build my experience in web design and development so I took the gig.
@@ -276,7 +276,7 @@ const projectData = [
                 <br />
                 You will find more in depth research below:
                 <br />          
-                <h2 className="research text-[2rem] font-black">Research Phase<br /></h2>
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
             </p> 
         </div>
       ),
@@ -295,7 +295,7 @@ const projectData = [
       description: (
         <div>
             <p className=''>
-               <h2 className="initial-interest text-[2rem] font-black">Initial Interest <br /></h2>
+               <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest</span> in this project was my dad. He
                 said he needed a tool to help him enter a lot of data into a speadsheet for his insurance. He also
                 said if there was a way to use ai to help him fill in some of the price columns, that would be a
@@ -322,7 +322,7 @@ const projectData = [
                 <br />
                 You will find more in depth research below:
                 <br />  
-                <h2 className="research text-[2rem] font-black">Research Phase<br /></h2>
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
             </p> 
         </div>
       ),       
