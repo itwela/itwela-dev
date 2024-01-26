@@ -13,7 +13,7 @@ function Homepage() {
         <>
         <div id="root">
            <main className="main-wrapper">
-                <section className="main-section w-[100vw] flex place-content-center">
+                <section className="main-section w-[100vw] flex place-content-center mb-[5em]">
                    <div className="extra-space w-[61.8vw] relative pt-20 pb-[10em]">
                     <div className="title-wrapper flex justify-between pb-5  w-[61.8vw] top-0">
                         <div className="title-container">
