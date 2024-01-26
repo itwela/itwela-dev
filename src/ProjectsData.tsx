@@ -175,7 +175,7 @@ const projectData = [
                     it was a very ambitious goal. 
                     <br /> 
                     <br />
-                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> <br /></h2>
+                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
                     Here you will find an article I wrote on alot of my reserch, findings and development of this trading system. 
                     <br />
                     If you just want the <strong>key take aways</strong>, here they are: 
