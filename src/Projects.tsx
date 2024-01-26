@@ -33,7 +33,7 @@ const Projects = () => {
             <div className="h-[50px] md:h-[100px] bg-cover bg-center w-[100%] pb-2" style={{backgroundImage: `url(${selectedProject.gif})`}}> </div>
             <h3 className='text-2xl'><br /> Title: <strong> {selectedProject.title} </strong> <br /></h3>
             <h3 className='text-md'><em>{selectedProject.subtitle}</em>
-             - <a className="plink h-[4em] mb-10" href={selectedProject.link}> DEMO </a> 
+             - <a className="plink h-[4em] mb-10" href={selectedProject.link}> {selectedProject.link} </a> 
             <br /> <br />
             </h3>
           </div>

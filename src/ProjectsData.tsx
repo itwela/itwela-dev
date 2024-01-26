@@ -198,7 +198,7 @@ const projectData = [
             <SfxNotionArticle/>
         </div>
       ),   
-      link: 'https://example.com/algorithm-development',
+      link: '',
     },
     {
       gif: basketballapigif,
@@ -244,7 +244,7 @@ const projectData = [
             <BasketballArticle/>
         </div>
       ),  
-      link: 'https://example.com/data-dashboard',
+      link: '',
     },
     {
       gif: bitezgif,
