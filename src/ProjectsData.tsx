@@ -175,7 +175,7 @@ const projectData = [
                     it was a very ambitious goal. 
                     <br /> 
                     <br />
-                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
+                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> <br /></h2>
                     Here you will find an article I wrote on alot of my reserch, findings and development of this trading system. 
                     <br />
                     If you just want the <strong>key take aways</strong>, here they are: 
@@ -223,7 +223,7 @@ const projectData = [
                 <br /> 
                 <br />
                 <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
-                Here you will find an article I wrote on a case study of how I implimented an API into my dashboard. 
+\                Here you will find an article I wrote on a case study of how I implimented an API into my dashboard. 
                 <br />
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
@@ -235,6 +235,7 @@ const projectData = [
                 </ul>
                 <br />
                 You will find more in depth research below:
+                <br />          
             </p> 
         </div>
       ),
@@ -264,6 +265,7 @@ const projectData = [
                 deploying and adding custom domains so I was confident and excited to do the job.   
                 <br />
                 <br /> 
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
                 <br />
@@ -276,7 +278,6 @@ const projectData = [
                 <br />
                 You will find more in depth research below:
                 <br />          
-                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
             </p> 
         </div>
       ),
@@ -310,6 +311,7 @@ const projectData = [
                 gaps in my knowledge however in gpt-3.5 and in dataframes.                
                 <br />
                 <br />
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
                 <br />
@@ -322,7 +324,6 @@ const projectData = [
                 <br />
                 You will find more in depth research below:
                 <br />  
-                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
             </p> 
         </div>
       ),       
