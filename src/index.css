@@ -161,10 +161,10 @@ html.dark {
   transition: transform 0.3s ease; /* Add transition for smooth rotation */
 }
 
-/* .yaboi:hover {
+.yaboi:hover {
   cursor: pointer;
-  transform: rotate(1deg);
-} */
+  transform: rotate(350deg) scaleX(-1);
+}
 
 .custom-list {
   list-style-type: none; /* Remove default bullet points */

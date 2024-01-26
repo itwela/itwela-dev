@@ -181,11 +181,10 @@ const projectData = [
                     If you just want the <strong>key take aways</strong>, here they are: 
                     <br />
                     <br />
-                    <ul className="custom-list">
-                        <li>Takeaway 1</li>
-                        <li>Takeaway 1</li>
-                        <li>Takeaway 1</li>
-                        <li>Takeaway 1</li>
+                    <ul className="custom-list font-black">
+                        <li>Learned Tradingview's scripting language called Pinescript.</li>
+                        <li>Transfered years of data into a working automated strategy.</li>
+                        <li>This project made me very comfortable with manipulating arrays.</li>
                     </ul>
                     <br />
                     You will find more in depth research below:
@@ -229,11 +228,10 @@ const projectData = [
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
                 <br />
-                <ul className="custom-list">
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
+                <ul className="custom-list font-black">
+                    <li>Learned how to interact with API's.</li>
+                    <li>Manipulated data after calling the API's.</li>
+                    <li>Displayed the data in a clear and readable way.</li>
                 </ul>
                 <br />
                 You will find more in depth research below:
@@ -269,11 +267,11 @@ const projectData = [
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
                 <br />
-                <ul className="custom-list">
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
+                <ul className="custom-list font-black">
+                    <li>Created a website using react for a business.</li>
+                    <li>Learned and implimented the Software Develpment Cycle in the Process.</li>
+                    <li>Implimented Figma and wireframes into the design process.</li>
+                    <li>Went above and beyond to meet the needs of the client.</li>
                 </ul>
                 <br />
                 You will find more in depth research below:
@@ -315,11 +313,11 @@ const projectData = [
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
                 <br />
-                <ul className="custom-list">
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
-                    <li>Takeaway 1</li>
+                <ul className="custom-list font-black">
+                    <li>Leearned the basics of creating and editing dataframes.</li>
+                    <li>Deployed a python application to the cloud.</li>
+                    <li>Generated custom responses from ai through a creative use of variables.</li>
+                    <li>Created a product to help someone in my family's life easier.</li>
                 </ul>
                 <br />
                 You will find more in depth research below:
