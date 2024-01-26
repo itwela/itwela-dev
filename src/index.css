@@ -88,17 +88,21 @@ html.dark {
 
 .notion-itwela-sfx {
   padding-top: 2em;
+  margin-bottom: 4em;
   max-width: 100%;
 }
 .notion-itwela-bball {
   padding-top: 2em; 
+  margin-bottom: 4em;
 }
 .notion-itwela-bitez {
   transform: translateY(-1em);
+  margin-bottom: 4em;
 }
 
 .notion-itwela-simpl {
-
+  transform: translateY(-1em);
+  margin-bottom: 10em;
 }
 
 .blog-middle {
@@ -107,7 +111,9 @@ html.dark {
 }
 
 @media screen and (max-width: 500px) {
-
+  .notion-itwela-bball .notion-itwela-bitez, .notion-itwela-sfx, .notion-itwela-simpl {
+    padding-bottom: 8em !important;
+  }
 }
 
 .notion, .notion pre {
