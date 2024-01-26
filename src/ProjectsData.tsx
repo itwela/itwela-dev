@@ -286,7 +286,7 @@ const projectData = [
             <BitezofLoveArticle/>
         </div>
       ), 
-      link: 'https://www.bitezoflove.com/',
+      link: '-' + 'https://www.bitezoflove.com/',
     },
     {
       gif: simplclaimgif,
@@ -332,7 +332,7 @@ const projectData = [
             <SimplClaimArticle />
         </div>
       ), 
-      link: 'https://simplclaim.streamlit.app',
+      link: '-' + 'https://simplclaim.streamlit.app',
     },
     // Add more projects as needed
   ];
