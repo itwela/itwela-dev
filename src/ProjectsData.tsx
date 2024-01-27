@@ -210,8 +210,8 @@ const projectData = [
             <p className=''>
                 <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest </span>in connecting apis in my dashboard
-                was the ease of being able to add a feature I wanted into this dashboard. I have leasurely betted
-                on basketball games and really had an idea of what if I could use ai to help me choose the best 
+                was the ease of being able to add a feature I wanted into the project that way. I have leasurely betted
+                on basketball games and one day had an idea that what if I could use ai to help me choose the best 
                 picks for the night. In pursuing that idea I learned about apis and have come to really like them.
                 <br />
                 <br />
@@ -271,7 +271,7 @@ const projectData = [
                 <br />
                 <ul className="custom-list font-black">
                     <li>Created a website using react for a business.</li>
-                    <li>Learned and implimented the Software Develpment Cycle in the Process.</li>
+                    <li>Learned and implimented the Software Development Life Cycle in the process.</li>
                     <li>Implimented Figma and wireframes into the design process.</li>
                     <li>Went above and beyond to meet the needs of the client.</li>
                 </ul>
@@ -298,15 +298,15 @@ const projectData = [
             <p className=''>
                <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest</span> in this project was my dad. He
-                said he needed a tool to help him enter a lot of data into a speadsheet for his insurance. He also
+                said he needed a tool to help him enter a lot of data into a spreadsheet for his insurance. He also
                 said if there was a way to use ai to help him fill in some of the price columns, that would be a
-                lifesaver because for some of the items he didnt know how to estimate a price for them. I felt like
-                this would be a great project for me and I wanted to get alot more familiar with dataframes so this
+                lifesaver because for some of the items he didn't know how to estimate a price for them. I felt like
+                this would be a great project for me and I wanted to get a lot more familiar with dataframes so this
                 was great.   
                 <br />
                 <br />
                 <span className="font-black">Going into this project</span>, I had more experience manipulating ai responses
-                than I did with an excel sheet or data frames ironically. I made a small project before where I was generating responses
+                than I did with an excel sheet or dataframes ironically. I made a small project before where I was generating responses
                 from ChatGPT based on some inputs so I felt like I could build on that knowledge in this project. I was excited to bridge the
                 gaps in my knowledge however in gpt-3.5 and in dataframes.                
                 <br />
@@ -316,7 +316,7 @@ const projectData = [
                 <br />
                 <br />
                 <ul className="custom-list font-black">
-                    <li>Leearned the basics of creating and editing dataframes.</li>
+                    <li>Learned the basics of creating and editing dataframes.</li>
                     <li>Deployed a python application to the cloud.</li>
                     <li>Generated custom responses from ai through a creative use of variables.</li>
                     <li>Created a product to help someone in my family's life easier.</li>
