@@ -27,7 +27,7 @@ function Homepage() {
                     </div>
                     <div className="intro-container-2 h-[50vh]">
                         <p className="story-1-p">
-                            My name is Itwela Ibomu (ee - tway - la ) ( ee - bow - moo ). I am a <span className='font-black'> software engineer </span>currently based in Atlanta, GA. 
+                            My name is Itwela Ibomu. I am a <span className='font-black'> software engineer </span>currently based in Atlanta, GA. 
                             I'm deeply immersed in the world of code, 
                             with a focus in <a className='spec-link font-black' href="https://react.dev/" target='blank'>React</a>,  
                             <a className='spec-link font-black' href="https://www.python.org/" target='blank'> Python</a>, and <a className='spec-link font-black' href="https://www.java.com/en/" target='blank'>Java</a>. 
