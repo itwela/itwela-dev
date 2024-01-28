@@ -6,8 +6,33 @@ import { ReactComponent as TypescriptLogo } from './assets/typescript.svg';
 import { ReactComponent as ScssLogo } from './assets/scss.svg';
 import me from './assets/me-picture.jpg'
 import styles from './App.module.scss';
+import { useRef } from 'react';
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 function Homepage() {
+
+    // stager - state 1
+    const fadeSpeedOne = useRef(null);
+    useGSAP(() => {
+        gsap.from(fadeSpeedOne.current, {
+            y: -100, // Starting position (above the screen)
+            opacity: 0, // Starting opacity (completely transparent)
+            duration: 1, // Duration of the animation
+            ease: "sine.out", // Easing function for smoother animation
+        })
+    })
+
+    // stagger - stage 2
+    const fadeSpeedTwo = useRef(null);
+    useGSAP(() => {
+        gsap.from(fadeSpeedTwo.current, {
+            y: 100, // Starting position (above the screen)
+            opacity: 0, // Starting opacity (completely transparent)
+            duration: 1.618, // Duration of the animation
+            ease: "sine.out", // Easing function for smoother animation
+        })
+    })
 
     return (
         <>
@@ -15,7 +40,7 @@ function Homepage() {
            <main className="main-wrapper">
                 <section className="main-section w-[100vw] flex place-content-center mb-[5em]">
                    <div className="extra-space w-[61.8vw] relative pt-20 pb-[10em]">
-                    <div className="title-wrapper flex justify-between pb-5  w-[61.8vw] top-0">
+                    <div ref={fadeSpeedOne} className="title-wrapper flex justify-between pb-5  w-[61.8vw] top-0">
                         <div className="title-container">
                             <h1 className="hi">Hello,</h1>
                             <h1 className="hi">I'm Itwela.</h1>
@@ -25,7 +50,7 @@ function Homepage() {
                                 <img className='yaboi rounded-[20em] w-[81.8px] left-[80%] top-[6.18%] md:left-[100%] absolute scale-x-[-1] ' src={me} alt="itwela ibomu" />
                         </div>
                     </div>
-                    <div className="intro-container-2 h-[50vh]">
+                    <div ref={fadeSpeedTwo} className="intro-container-2 h-[50vh]">
                         <p className="story-1-p">
                             My name is Itwela Ibomu. I am a <span className='font-black'> software engineer </span>currently based in Atlanta, GA. 
                             I'm deeply immersed in the world of code, 

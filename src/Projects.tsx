@@ -1,14 +1,41 @@
 import React, {useState} from 'react';
 import projectData from './ProjectsData';
+import Homeicon from './home-icon';
+import { useRef } from 'react';
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
+
 
 // Define your functional component
 const Projects = () => {
-    const [selectedProject, setSelectedProject] = useState(projectData[0]);
+  const [selectedProject, setSelectedProject] = useState(projectData[0]);
+
+    const fadeLeftOne = useRef(null);
+    const fadeLeftTwo = useRef(null);
+    useGSAP(() => {
+        gsap.from(fadeLeftOne.current, {
+            x: -100, // Starting position (above the screen)
+            opacity: 0, // Starting opacity (completely transparent)
+            duration: 1, // Duration of the animation
+            ease: "sine.out", // Easing function for smoother animation
+        })
+    })
+    useGSAP(() => {
+        gsap.from(fadeLeftTwo.current, {
+            x: -100, // Starting position (above the screen)
+            opacity: 0, // Starting opacity (completely transparent)
+            duration: 1, // Duration of the animation
+            ease: "sine.out", // Easing function for smoother animation
+        })
+    })
 
   return (
+    <>
+
     <section className='main-section w-[100vw] grid place-items-center'>
-        <div className="extra-space w-[61.8vw] pt-10">
-            <div className="title-container flex flex-col place-content-between w-[61.8vw]">
+        <div className="extra-space w-[61.8vw] pt-10 relative">
+          <Homeicon />
+            <div ref={fadeLeftOne} className="title-container flex flex-col place-content-between w-[61.8vw]">
                 <div className='project-buttons flex place-self-end pr-2 pb-2'>
                     {projectData.map((project, index) => (
                     <button
@@ -26,7 +53,7 @@ const Projects = () => {
                     <br />
                 </div>
             </div>
-            <div className='project-container flex flex-col'>
+            <div ref={fadeLeftTwo} className='project-container flex flex-col'>
           {/* Project buttons for toggling */}
           {/* Display selected project details */}
           <div className='project-details'>
@@ -48,6 +75,7 @@ const Projects = () => {
           {selectedProject.blog}
         </div>
     </section>
+    </>
   );
 };
 
