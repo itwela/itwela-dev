@@ -40,14 +40,14 @@ function Homepage() {
            <main className="main-wrapper">
                 <section className="main-section w-[100vw] flex place-content-center mb-[5em]">
                    <div className="extra-space w-[61.8vw] relative pt-20 pb-[10em]">
-                    <div ref={fadeSpeedOne} className="title-wrapper flex justify-between pb-5  w-[61.8vw] top-0">
+                    <div ref={fadeSpeedOne} className="title-wrapper flex justify-between pb-5 h-[13em] w-[61.8vw] gap-3 top-0 place-items-start">
                         <div className="title-container">
                             <h1 className="hi">Hello,</h1>
                             <h1 className="hi">I'm Itwela.</h1>
                             <p className="story"><em>(ee - tway - la)</em><br /> <br /></p>
                         </div>
                             <div className="intro-container-1">
-                                <img className='yaboi rounded-[20em] w-[81.8px] left-[80%] top-[6.18%] md:left-[100%] absolute scale-x-[-1] ' src={me} alt="itwela ibomu" />
+                                <img className='yaboi rounded-[20em] w-[81.8px] left-[80%] md:top-[6.18%] md:left-[100%] top-[-2] ' src={me} alt="itwela ibomu" />
                         </div>
                     </div>
                     <div ref={fadeSpeedTwo} className="intro-container-2 h-[50vh]">
