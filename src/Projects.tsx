@@ -12,6 +12,7 @@ const Projects = () => {
 
     const fadeLeftOne = useRef(null);
     const fadeLeftTwo = useRef(null);
+    const fadeLeftThree = useRef(null);
     useGSAP(() => {
         gsap.from(fadeLeftOne.current, {
             x: -100, // Starting position (above the screen)
@@ -28,6 +29,14 @@ const Projects = () => {
             ease: "sine.out", // Easing function for smoother animation
         })
     })
+    useGSAP(() => {
+      gsap.from(fadeLeftThree.current, {
+          x: -100, // Starting position (above the screen)
+          opacity: 0, // Starting opacity (completely transparent)
+          duration: 3, // Duration of the animation
+          ease: "sine.out", // Easing function for smoother animation
+      })
+  })
 
   return (
     <>
@@ -36,7 +45,7 @@ const Projects = () => {
         <div className="extra-space w-[61.8vw] pt-10 relative">
           <Homeicon />
             <div ref={fadeLeftOne} className="title-container flex flex-col place-content-between w-[61.8vw]">
-                <div className='project-buttons flex place-self-end pr-2 pb-2'>
+                <div ref={fadeLeftThree} className='project-buttons flex place-self-end pr-2 pb-2'>
                     {projectData.map((project, index) => (
                     <button
                         key={index}
