@@ -24,9 +24,6 @@ const Contact = () => {
   
   return (
     <>
-    <div><NavLink to="/">              
-        <img src={homeicon} alt="" className='absolute z-[100] top-60 left-40' />
-   </NavLink></div>
     <section ref={fadeLeft} className='main-section w-[100vw] h-[100vh] grid place-content-center'>
         <div className="extra-space w-[61.8vw] relative">
             <h1>Contact</h1>
