@@ -1,7 +1,7 @@
 // navbar.tsx
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import resume from './assets/Itwela_12824.pdf'
+import resume from './assets/Itwela_2224.pdf'
 const Navbar = () => {
   return (
     <>
