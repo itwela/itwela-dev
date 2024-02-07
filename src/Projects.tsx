@@ -4,39 +4,43 @@ import Homeicon from './home-icon';
 import { useRef } from 'react';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import SplitText from 'gsap-trial/SplitText';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
+// register 
 
 // Define your functional component
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(projectData[0]);
 
-    const fadeLeftOne = useRef(null);
-    const fadeLeftTwo = useRef(null);
-    const fadeLeftThree = useRef(null);
+
     useGSAP(() => {
-        gsap.from(fadeLeftOne.current, {
-            x: -100, // Starting position (above the screen)
-            opacity: 0, // Starting opacity (completely transparent)
-            duration: 1, // Duration of the animation
-            ease: "sine.out", // Easing function for smoother animation
+
+        const t1 = gsap.timeline()
+
+        t1.from(["#homeicon", "#projectid", "#casestudyid", "#bgimgid", "#articletitleid", "#articlesubid", "#articlelinkid"], {
+          xPercent: "-100",
+          duration: 1.3,
+          delay: 0.3,
+          stagger: 0.2,
+          opacity: 0,
+          ease: "back",
+        }).from(["#blog-1", "#blog-2"], {
+          opacity: 0,
+          yPercent: "100",
+          duration: 1.618,
+          delay: 0.3,
+          ease: "circ",
+        }).from("#projectbuttonsid", {
+          opacity: 0,
+          xPercent: "100",
+          duration: 0.3,
+          delay: 0.3,
+          ease: "circ",
         })
-    })
-    useGSAP(() => {
-        gsap.from(fadeLeftTwo.current, {
-            x: -100, // Starting position (above the screen)
-            opacity: 0, // Starting opacity (completely transparent)
-            duration: 1, // Duration of the animation
-            ease: "sine.out", // Easing function for smoother animation
-        })
-    })
-    useGSAP(() => {
-      gsap.from(fadeLeftThree.current, {
-          x: -100, // Starting position (above the screen)
-          opacity: 0, // Starting opacity (completely transparent)
-          duration: 3, // Duration of the animation
-          ease: "sine.out", // Easing function for smoother animation
-      })
-  })
+        
+    }, [])
 
   return (
     <>
@@ -44,8 +48,8 @@ const Projects = () => {
     <section className='main-section w-[100vw] grid place-items-center'>
         <div className="extra-space w-[61.8vw] pt-10 relative">
           <Homeicon />
-            <div ref={fadeLeftOne} className="title-container flex flex-col place-content-between w-[61.8vw]">
-                <div ref={fadeLeftThree} className='project-buttons flex place-self-end pr-2 pb-2'>
+            <div className="title-container flex flex-col place-content-between w-[61.8vw]">
+                <div id='projectbuttonsid' className='project-buttons flex place-self-end pr-2 pb-2'>
                     {projectData.map((project, index) => (
                     <button
                         key={index}
@@ -56,31 +60,31 @@ const Projects = () => {
                     </button>
                     ))}
                 </div>
-                <div className="title-text">
-                    <h1>Projects</h1>
-                    <h2><em>& case studies.</em></h2>
+                <div className="title-text no-sb">
+                    <h1 id='projectid'>Projects</h1>
+                    <h2 id='casestudyid'><em>& case studies.</em></h2>
                     <br />
                 </div>
             </div>
-            <div ref={fadeLeftTwo} className='project-container flex flex-col'>
+            <div className='project-container no-sb flex flex-col'>
           {/* Project buttons for toggling */}
           {/* Display selected project details */}
           <div className='project-details'>
-            <div className="h-[50px] md:h-[100px] bg-cover bg-center w-[100%] pb-2" style={{backgroundImage: `url(${selectedProject.gif})`}}> </div>
-            <h3 className='text-2xl'><br /> Title: <strong> {selectedProject.title} </strong> <br /></h3>
-            <h3 className='text-md'><em>{selectedProject.subtitle}</em>
-             <a className="plink h-[4em] mb-10" href={selectedProject.link}> {selectedProject.link} </a> 
+            <div id='bgimgid' className="h-[50px] md:h-[100px] bg-cover bg-center w-[100%] pb-2" style={{backgroundImage: `url(${selectedProject.gif})`}}> </div>
+            <h3 id='articletitleid' className='text-2xl'><br /> Title: <strong> {selectedProject.title} </strong> <br /></h3>
+            <h3 id='articlesubid' className='text-md'><em>{selectedProject.subtitle}</em>
+             <a id='articlelinkid' className="plink h-[4em] mb-10" href={selectedProject.link}> {selectedProject.link} </a> 
             <br /> <br />
             </h3>
           </div>
         </div>
         </div>
-        <div className="blog-start w-[61.8vw]">
-          <p className=''>{selectedProject.description}
+        <div id='blog-1' className="blog-start w-[61.8vw]">
+          <p className='project-desc'>{selectedProject.description}
               <br />
           </p>
         </div>
-        <div className="blog-middle w-[61.8vw] flex place-content-center relative text-left">
+        <div id='blog-2' className="blog-middle w-[61.8vw] flex place-content-center relative text-left">
           {selectedProject.blog}
         </div>
     </section>

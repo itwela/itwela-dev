@@ -5,7 +5,7 @@ const Homeicon = () => {
   return (
     <>
     <div><NavLink to="/">              
-            <img src={homeicon} alt="" className='absolute z-[100] hidden md:block md:scale-[0.8] md:top-12 md:left-0' />
+            <img id='homeicon' src={homeicon} alt="" className='absolute z-[100] hidden md:block md:scale-[0.8] md:top-12 md:left-0' />
    </NavLink></div>
     </>
   );
