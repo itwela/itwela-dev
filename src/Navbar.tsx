@@ -58,6 +58,9 @@ const Navbar = () => {
       gsap.to(["#menu-cont", "#menu-button"], {
         stagger: 0.3,
         ease: "back",
+      }),
+
+      gsap.to("#menu-cont", {
         backdropFilter: "blur(10px)",
         height: "100vh"
       })
@@ -72,7 +75,15 @@ const Navbar = () => {
         opacity: 0,
         display: "none",
       }),
-      gsap.to(["#menu-cont", "#menu-button"],{
+
+      gsap.to(["#menu-button"],{
+        stagger: 0.1,
+        ease: "back",
+        position: "absolute",
+        top: "10",
+        }),
+
+      gsap.to("#menu-cont",{
         stagger: 0.1,
         ease: "back",
         position: "absolute",
