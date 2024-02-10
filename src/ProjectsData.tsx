@@ -153,9 +153,62 @@ const SfxNotionArticle = () => {
   };
 
 const projectData = [
+    // {
+    //   gif: stockgif,
+    //   number: '1',
+    //   title: 'MyAssignmentHelp Website',
+    //   subtitle: 'new project update coming soon...',
+    //   description: (
+    //     <>
+    //         <div>
+    //             <p className=''>
+    //                 <div className='flex justify-between place-items-center'>
+    //                 <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black">Initial Interest <br /></h2>
+    //                 </div>
+    //                 <div className='opacity-0'>
+    //                     <span className="font-black">What sparked my interest </span>in the concept of creating an automated trading algorithm is my experiences and successes manually trading. I have been trading on and off since high school and have had some very high moments in that time.
+    //                     After my biggest trade, I started feeling like there has to be a way to automate the process just due to the sheer amount of time I had to be in front of the chart just for the right moment to press the buy button...
+    //                     <br />
+    //                     <br />
+    //                     <span className="font-black">Going into this project</span>, the only coding I had preformed up to that point was
+    //                     developing a small game in Unity using C#. I had a basic concept of variables and
+    //                     some experience writing functions. I wanted to learn what was neccesary to automate my process. Looking back on it,
+    //                     it was a very ambitious goal. 
+    //                 </div>
+    //                 <br /> 
+    //                 <br />
+                    
+    //                 <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
+                    
+    //                 <div className='opacity-0'>
+    //                     Here you will find an article I wrote on alot of my reserch, findings and development of this trading system. 
+    //                     <br />
+    //                     If you just want the <strong>key take aways</strong>, here they are: 
+    //                     <br />
+    //                     <br />
+    //                     <ul className="custom-list font-black">
+    //                         <li>Learned Tradingview's scripting language called Pinescript.</li>
+    //                         <li>Transfered years of data into a working automated strategy.</li>
+    //                         <li>This project made me very comfortable with manipulating arrays.</li>
+    //                     </ul>
+    //                     <br />
+    //                     You will find more in depth research below:
+    //                 </div>
+    //                 <span className="font-black"></span>
+    //             </p> 
+    //         </div>
+    //     </>
+    //   ),  
+    //   blog: (
+    //     <div>
+    //         {/* <SfxNotionArticle/> */}
+    //     </div>
+    //   ),   
+    //   link: '',
+    // },
     {
       gif: stockgif,
-      number: '1',
+      number: '2',
       title: 'The SFX Algo',
       subtitle: 'A trading algorithim that buys and sells stocks for you automatically.',
       description: (
@@ -202,7 +255,7 @@ const projectData = [
     },
     {
       gif: basketballapigif,
-      number: '2',
+      number: '3',
       title: 'Basketball Dashboard',
       subtitle: 'a case study on API connections to display basketball data.',
       description: (
@@ -248,7 +301,7 @@ const projectData = [
     },
     {
       gif: bitezgif,
-      number: '3',
+      number: '4',
       title: 'Bitez of Love',
       subtitle: 'A total revamp of a businesses website using react.',
       description: (
@@ -290,7 +343,7 @@ const projectData = [
     },
     {
       gif: simplclaimgif,
-      number: '4',
+      number: '5',
       title: 'SimplClaim',
       subtitle: 'A web app that speeds up the data entry process with the help of AI.',
       description: (

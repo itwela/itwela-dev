@@ -12,6 +12,7 @@ function App() {
   return (
     <Router>
         <DarkMode />
+        <Navbar />
         {/* Wrap your components with the BrowserRouter */}
         <Routes>
             <Route path="/" element={<Homepage />} />
@@ -19,7 +20,6 @@ function App() {
             <Route path="Resume" element={<Resume />} />
             <Route path="Contact" element={<Contact />} />
         </Routes>
-        <Navbar />
     </Router>
   );
 }

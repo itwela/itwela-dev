@@ -46,8 +46,7 @@ const Projects = () => {
     <>
 
     <section className='main-section w-[100vw] grid place-items-center'>
-        <div className="extra-space w-[61.8vw] pt-10 relative">
-          <Homeicon />
+        <div className="extra-space w-[61.8vw] pt-20 relative">
             <div className="title-container flex flex-col place-content-between w-[61.8vw]">
                 <div id='projectbuttonsid' className='project-buttons flex place-self-end pr-2 pb-2'>
                     {projectData.map((project, index) => (

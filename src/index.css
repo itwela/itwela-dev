@@ -62,32 +62,12 @@ button:focus-visible {
   outline: 2px auto -webkit-focus-ring-color;
 }
 
-.dark {
-  background-color: #1a1a1a; /* Dark background color */
-  color: #ffffff; /* Light text color in dark mode */
-}
-
-.dark a {
-  color: #ffffff; /* Light link color in dark mode */
-}
-
-.dark a:hover {
-  color: #535bf2;
-}
-
-.dark button:hover {
-  border-color: #aaaaaa; /* Light border color in dark mode */
-}
-
 html {
   overflow-x: hidden;
   background-color: #fbf5f3;
   transition: background-color 0.5s; /* Smooth transition effect */
 }
 
-html.dark {
-  background-color: #1a1a1a; /* Dark background color in dark mode */
-}
 
 @media screen and (max-width: 500px) {
   .notion-itwela-sfx, .notion-itwela-bball, .notion-itwela-bitez, .notion-itwela-simpl  {
@@ -109,12 +89,10 @@ html.dark {
   transform: translateY(-1em);
   margin-bottom: 4em;
 }
-
 .notion-itwela-simpl {
   transform: translateY(-1em);
   margin-bottom: 10em;
 }
-
 .blog-middle {
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -145,17 +123,12 @@ html.dark {
   height: fit-content !important;
 }
 
-
-
 .notion-itwela-sfx,.notion-itwela-bball  {
   transform: translateY(-4em);
 }
 
-
-
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
+::-webkit-scrollbar {
+    display: none;
 }
 
 ::-webkit-scrollbar-thumb{
@@ -170,7 +143,6 @@ html.dark {
 .main-section{
   overflow: hidden;
 }
-
 
 .yaboi {
   transition: transform 0.3s ease; /* Add transition for smooth rotation */
