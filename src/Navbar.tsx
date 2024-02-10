@@ -55,7 +55,7 @@ const Navbar = () => {
         opacity: 1
       }),
 
-      gsap.to(["#menu-cont", "#menu-button"], {
+      gsap.to("#menu-button", {
         stagger: 0.3,
         ease: "back",
       }),
