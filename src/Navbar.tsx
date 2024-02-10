@@ -26,7 +26,7 @@ const Navbar = () => {
 
   useEffect(() => {
     // GSAP animation to set opacity to 0 for each element
-    gsap.set(["#home", "#projects", "#resume", "#contact", "#blog"], {
+    gsap.set(["#home", "#projects", "#resume", "#blog", "#contact"], {
       display: 'none',
     });
   }, []); // Run once on component mount
@@ -60,7 +60,7 @@ const handleMenuClick = () => {
 
   useGSAP(() => {
     if (isCLicked !=false) {
-      gsap.to(["#home", "#projects", "#resume", "#contact", "#blog"], {
+      gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
         stagger: 0.3,
         ease: "back",
         display: "flex",
@@ -84,7 +84,7 @@ const handleMenuClick = () => {
     }
 
     if (isCLicked != true) {
-      gsap.to(["#home", "#projects", "#resume", "#contact", "#blog"], {
+      gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
         xPercent: "-500",
         stagger: 0.1,
         ease: "back",
@@ -116,7 +116,7 @@ const handleMenuClick = () => {
     <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[2] flex place-items-start'>
       {/* <ul onMouseOver={handleIsHoveredEnter} onMouseOut={handleIsHoveredExit} className='nav-bar-container items-center text-[0.7em] bottom-[3%] left-2 fixed z-[10] md:text-[1em] flex gap-4 md:gap-8 p-2 backdrop-blur rounded-[2em] w-[100vw] justify-evenly'> */}
       <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 pl-7 absolute z-[2] '>Menu</div>
-      <ul id="menu-cont" className='nav-bar-container relative items-start p-6 z-[10] md:text-[1em] flex flex-col gap-[3em] md:gap-[3.5em] p-2 rounded-[2em] w-[100vw]'>
+      <ul id="menu-cont" className='nav-bar-container relative items-start p-6 z-[10] md:text-[1em] flex flex-col justify-evenly md:gap-[3.5em] p-2 pb-[2em] md:pb-[5em] rounded-[2em] w-[100vw]'>
         <a id='back' className='back p-3 cursor-pointer' onMouseDown={handleMenuClick} >back</a> 
         <li id='home'><NavLink to="/" onClick={handleMenuClick} className='p-3 text-[3em]'>Home</NavLink></li>
         <li id='projects'><NavLink to="/Projects" onClick={handleMenuClick}  className='p-3 text-[3em]'>Projects</NavLink></li>
