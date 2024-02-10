@@ -23,7 +23,13 @@ const Navbar = () => {
   
   // setting this outside of the useGsap hook to
   // ensure nav links dont show up too early on reaload.
-  gsap.set(["#home", "#projects", "#resume", "#contact",], {display: "none"})
+
+  useEffect(() => {
+    // GSAP animation to set opacity to 0 for each element
+    gsap.set(["#home", "#projects", "#resume", "#contact"], {
+      display: 'none',
+    });
+  }, []); // Run once on component mount
 
   useGSAP(() => {
 
