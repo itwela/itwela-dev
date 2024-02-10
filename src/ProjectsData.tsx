@@ -279,7 +279,7 @@ const SfxNotionArticle = () => {
                 <br /> 
                 <br />
                 <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
-\                Here you will find an article I wrote on a case study of how I implimented an API into my dashboard. 
+\                Here you will find an article I wrote on a case study of how I implemented an API into my dashboard. 
                 <br />
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
@@ -328,8 +328,8 @@ const SfxNotionArticle = () => {
                 <br />
                 <ul className="custom-list font-black">
                     <li>Created a website using react for a business.</li>
-                    <li>Learned and implimented the Software Development Life Cycle in the process.</li>
-                    <li>Implimented Figma and wireframes into the design process.</li>
+                    <li>Learned and implemented the Software Development Life Cycle in the process.</li>
+                    <li>Implemented  Figma and wireframes into the design process.</li>
                     <li>Went above and beyond to meet the needs of the client.</li>
                 </ul>
                 <br />
