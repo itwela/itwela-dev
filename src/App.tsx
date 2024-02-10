@@ -4,6 +4,7 @@ import Homepage from './Homepage';
 import Projects from './Projects';
 import Resume from './Resume';
 import Contact from './Contact';
+import Blog from './blog';
 import Navbar from './Navbar';
 import DarkMode from './darkmode';
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="Projects" element={<Projects />} />
             <Route path="Resume" element={<Resume />} />
             <Route path="Contact" element={<Contact />} />
+            <Route path="Blog" element={<Blog />} />
         </Routes>
     </Router>
   );
