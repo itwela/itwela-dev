@@ -116,13 +116,13 @@ const handleMenuClick = () => {
     <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[2] flex place-items-start'>
       {/* <ul onMouseOver={handleIsHoveredEnter} onMouseOut={handleIsHoveredExit} className='nav-bar-container items-center text-[0.7em] bottom-[3%] left-2 fixed z-[10] md:text-[1em] flex gap-4 md:gap-8 p-2 backdrop-blur rounded-[2em] w-[100vw] justify-evenly'> */}
       <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 pl-7 absolute z-[2] '>Menu</div>
-      <ul id="menu-cont" className='nav-bar-container relative items-start p-6 z-[10] md:text-[1em] flex flex-col justify-evenly md:gap-[3.5em] p-2 pb-[2em] md:pb-[5em] rounded-[2em] w-[100vw]'>
+      <ul id="menu-cont" className='nav-bar-container relative items-start p-6 z-[10] md:text-[1em] flex flex-col justify-around p-2 pb-[2em] md:pb-[5em] rounded-[2em] w-[100vw]'>
         <a id='back' className='back p-3 cursor-pointer' onMouseDown={handleMenuClick} >back</a> 
-        <li id='home'><NavLink to="/" onClick={handleMenuClick} className='p-3 text-[3em]'>Home</NavLink></li>
-        <li id='projects'><NavLink to="/Projects" onClick={handleMenuClick}  className='p-3 text-[3em]'>Projects</NavLink></li>
-        <li id='resume'><a href={resume} download onClick={handleMenuClick}  className='p-3 text-[3em]'>Resume</a></li>
-        <li id='blog'><NavLink to="/blog" onClick={handleMenuClick}  className='p-3 text-[3em]'>Blog</NavLink></li>
-        <li id='contact'><NavLink to="/Contact" onClick={handleMenuClick}  className='p-3 text-[3em]'>Contact</NavLink></li>
+        <li id='home'><NavLink to="/" onClick={handleMenuClick} className='p-3 text-[2.5em] md:text-[3em]'>Home</NavLink></li>
+        <li id='projects'><NavLink to="/Projects" onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Projects</NavLink></li>
+        <li id='resume'><a href={resume} download onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Resume</a></li>
+        <li id='blog'><NavLink to="/blog" onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Blog</NavLink></li>
+        <li id='contact'><NavLink to="/Contact" onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Contact</NavLink></li>
       </ul>
     </nav>
   );
