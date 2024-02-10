@@ -46,8 +46,8 @@ const Projects = () => {
     <>
 
     <section className='main-section w-[100vw] grid place-items-center'>
-        <div className="extra-space w-[61.8vw] pt-20 relative">
-            <div className="title-container flex flex-col place-content-between w-[61.8vw]">
+        <div className="extra-space w-[91.8vw] pt-20 relative">
+            <div className="title-container flex flex-col place-content-between w-[91.8vw]">
                 <div id='projectbuttonsid' className='project-buttons flex place-self-end pr-2 pb-2'>
                     {projectData.map((project, index) => (
                     <button
@@ -78,12 +78,12 @@ const Projects = () => {
           </div>
         </div>
         </div>
-        <div id='blog-1' className="blog-start w-[61.8vw]">
+        <div id='blog-1' className="blog-start w-[91.8vw]">
           <p className='project-desc'>{selectedProject.description}
               <br />
           </p>
         </div>
-        <div id='blog-2' className="blog-middle w-[61.8vw] flex place-content-center relative text-left">
+        <div id='blog-2' className="blog-middle w-[91.8vw] flex place-content-start relative text-left">
           {selectedProject.blog}
         </div>
     </section>

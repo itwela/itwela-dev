@@ -32,7 +32,7 @@ const SfxNotionArticle = () => {
   
 
     return (
-      <div className='notion-itwela-sfx md:w-[61.8vw]'>
+      <div className='notion-itwela-sfx md:w-[91.8vw]'>
         <br />
         {blockMap && (
           <NotionRenderer blockMap={blockMap} fullPage hideHeader />
@@ -67,7 +67,7 @@ const SfxNotionArticle = () => {
   
 
     return (
-      <div className='notion-itwela-bball md:w-[61.8vw] flex place-content-center'>
+      <div className='notion-itwela-bball md:w-[91.8vw] flex place-content-start'>
         <div className=''>
         <br />
         {blockMap && (
@@ -104,7 +104,7 @@ const SfxNotionArticle = () => {
   
 
     return (
-      <div className='notion-itwela-bitez md:w-[61.8vw] flex place-content-center'>
+      <div className='notion-itwela-bitez md:w-[91.8vw] flex place-content-start'>
         <div className=''>
         <br />
         {blockMap && (
@@ -141,7 +141,7 @@ const SfxNotionArticle = () => {
   
 
     return (
-      <div className='notion-itwela-simpl md:w-[61.8vw] flex place-content-center'>
+      <div className='notion-itwela-simpl md:w-[91.8vw] flex place-content-start'>
         <div className=''>
         <br />
         {blockMap && (
@@ -161,7 +161,7 @@ const SfxNotionArticle = () => {
   //     <>
   //         <div>
   //             <p className=''>
-  //                 <div className='flex justify-between place-items-center'>
+  //                 <div className='flex justify-between place-items-start'>
   //                 <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black">Initial Interest <br /></h2>
   //                 </div>
   //                 <div className='opacity-0'>
@@ -217,7 +217,7 @@ const SfxNotionArticle = () => {
         <>
             <div>
                 <p className=''>
-                    <div className='flex justify-between place-items-center'>
+                    <div className='flex justify-between place-items-start'>
                     <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black">Initial Interest <br /></h2>
                     </div>
                     <span className="font-black">What sparked my interest </span>in the concept of creating an automated trading algorithm is my experiences and successes manually trading. I have been trading on and off since high school and have had some very high moments in that time.

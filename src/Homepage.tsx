@@ -60,11 +60,11 @@ function Homepage() {
         <div id="root">
            <main className="main-wrapper">
                 <section className="main-section w-[100vw] flex place-content-center mb-[5em]">
-                   <div className="extra-space w-[61.8vw] relative pt-20 pb-[10em]">
-                    <div className="title-wrapper flex justify-between pb-5 h-[13em] w-[61.8vw] gap-3 top-0 place-items-start">
+                   <div className="extra-space w-[91.8vw] relative pt-20 pb-[5em]">
+                    <div className="title-wrapper flex justify-between pb-5 h-[13em] w-[91.8vw] gap-3 top-0 place-items-start">
                         <div id='hello' className="title-container">
-                            <h1 className="hi">Hello,</h1>
-                            <h1 className="hi">I'm Itwela.</h1>
+                            <h1 className="hi">Hello, I'm Itwela.</h1>
+                            <h1 className="hi"></h1>
                             <p className="story"><em>(ee - tway - la)</em><br /> <br /></p>
                         </div>
                             <div className="intro-container-1">
