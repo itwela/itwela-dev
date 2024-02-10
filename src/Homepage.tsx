@@ -84,7 +84,7 @@ function Homepage() {
 
                         <p className="story-2-p">
                             On this site you will find clear and in-depth
-                            descriptions of <a id='projects' href="/Projects" className='font-black'>projects</a> and case studies
+                            descriptions of <a href="/Projects" className='font-black'>projects</a> and case studies
                             I have worked on that I am passionate about. <br /> <br />   
                         </p>
                         <p className="story-3-p">
