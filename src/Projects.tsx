@@ -89,7 +89,7 @@ const Projects = () => {
         <div id='slideshow' className="sshow w-[91.8vw] flex place-content-start relative text-left translate-y-[-8rem]">
           {selectedProject.slideshow}
         </div>
-        <div id='projectbuttonsid' className='project-buttons flex place-self-end pb-[2em] pr-[4em] '>
+        <div id='projectbuttonsid' className='project-buttons flex place-self-center md:place-self-end pb-[2em] md:pr-[4em] '>
                     {projectData.map((project, index) => (
                     <button
                         key={index}
