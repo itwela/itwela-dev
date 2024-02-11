@@ -260,10 +260,9 @@ const SfxNotionArticle = () => {
                         <br />
                         <br />
                         <ul className="custom-list font-black">
-                            <li>Learned how to manage state efficently with React hooks.</li>
-                            <li>Created multiple gsap animations through out the website, some on load and some on click.</li>
-                            <li>Implimented vector animations to add life through out the webpage.</li>
-                        </ul>
+                          <li>Learned how to manage state efficiently with React hooks.</li>
+                          <li>Created multiple GSAP animations throughout the website, some on load and some on click.</li>
+                          <li>Implemented vector animations to add life throughout the webpage.</li>                        </ul>
                         <br />
                         You will find more in depth research below:
                     </div>
