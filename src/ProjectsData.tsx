@@ -152,6 +152,41 @@ const SfxNotionArticle = () => {
     );
   };
 
+  const MyAssignmentHelpArticle = () => {
+    const [blockMap, setBlockMap] = useState(null);
+  
+    useEffect(() => {
+      const fetchNotionData = async () => {
+        try {
+          const response = await fetch(
+            "https://notion-api.splitbee.io/v1/page/67cf2f6a970a41d0977717bf2fbf777a"
+          );
+          if (!response.ok) {
+            throw new Error("Failed to fetch data from Notion API");
+          }
+          const data = await response.json();
+          setBlockMap(data);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+  
+      fetchNotionData();
+    }, []);
+  
+
+    return (
+      <div className='notion-itwela-simpl md:w-[91.8vw] flex place-content-start'>
+        <div className=''>
+        <br />
+        {blockMap && (
+          <NotionRenderer blockMap={blockMap} hideHeader />
+        )}
+        </div>
+      </div>
+    );
+  };
+
   // {
   //   gif: stockgif,
   //   number: '1',
@@ -200,7 +235,7 @@ const SfxNotionArticle = () => {
   //   ),  
   //   blog: (
   //     <div>
-  //         {/* <SfxNotionArticle/> */}
+  //         {/* <MyAssignmentHelpArticle/> */}
   //     </div>
   //   ),   
   //   link: '',
