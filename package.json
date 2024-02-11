@@ -18,7 +18,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-notion": "^0.10.0",
-    "react-router-dom": "^6.21.3"
+    "react-router-dom": "^6.21.3",
+    "react-slideshow-image": "^4.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.48",

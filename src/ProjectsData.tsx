@@ -2,11 +2,52 @@ import stockgif from './assets/stock-ticker.gif'
 import basketballapigif from './assets/basketball-api.gif'
 import bitezgif from './assets/bitez.gif'
 import simplclaimgif from './assets/simplclaim.gif'
+import mahgif1 from './assets/mah1.gif'
+import mahgif2 from './assets/mah2.gif'
+import mahgif3 from './assets/mah3.gif'
+import { Slide } from 'react-slideshow-image';
 import React, { useState, useEffect } from "react";
+import 'react-slideshow-image/dist/styles.css';
 // import "react-notion/src/styles.css";
 // import "prismjs/themes/prism-tomorrow.css"; // only needed for code highlighting
 import { NotionRenderer } from "react-notion";
 
+const MyAssignmentHelpArticle = () => {
+  const [blockMap, setBlockMap] = useState(null);
+
+  useEffect(() => {
+    const fetchNotionData = async () => {
+      try {
+        const response = await fetch(
+          "https://notion-api.splitbee.io/v1/page/67cf2f6a970a41d0977717bf2fbf777a"
+        );
+        if (!response.ok) {
+          throw new Error("Failed to fetch data from Notion API");
+        }
+        const data = await response.json();
+        setBlockMap(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchNotionData();
+  }, []);
+
+
+  return (
+    <div className='notion-itwela-simpl md:w-[91.8vw] flex place-content-start'>
+      <div className=''>
+      <br />
+      {blockMap && (
+        <NotionRenderer blockMap={blockMap} hideHeader />
+      )}
+      </div>
+    </div>
+  );
+};
+
+// --------------------------
 
 const SfxNotionArticle = () => {
     const [blockMap, setBlockMap] = useState(null);
@@ -152,99 +193,100 @@ const SfxNotionArticle = () => {
     );
   };
 
-  const MyAssignmentHelpArticle = () => {
-    const [blockMap, setBlockMap] = useState(null);
-  
-    useEffect(() => {
-      const fetchNotionData = async () => {
-        try {
-          const response = await fetch(
-            "https://notion-api.splitbee.io/v1/page/67cf2f6a970a41d0977717bf2fbf777a"
-          );
-          if (!response.ok) {
-            throw new Error("Failed to fetch data from Notion API");
-          }
-          const data = await response.json();
-          setBlockMap(data);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      };
-  
-      fetchNotionData();
-    }, []);
-  
+  // ----------------------- 
+  const MahSlideshow = () => {
+
+  const properties = {
+      prevArrow: <button className='translate-x-[1em] text-black bg-[#fbf5f3] p-4 rounded-[3em]'> prev </button>,
+      nextArrow: <button className='translate-x-[-1em] text-black bg-[#fbf5f3] p-4 rounded-[3em]'> next</button>
+  }
+
+    const images = [
+      mahgif1,
+      mahgif2,
+      mahgif3,
+    ];
 
     return (
-      <div className='notion-itwela-simpl md:w-[91.8vw] flex place-content-start'>
-        <div className=''>
-        <br />
-        {blockMap && (
-          <NotionRenderer blockMap={blockMap} hideHeader />
-        )}
-        </div>
-      </div>
+        <Slide  {...properties}>
+            <div className="flex place-items-center place-content-center">
+                <div style={{ backgroundImage: `url(${images[0]})` }} className='w-[91.8vw] h-[30em] bg-cover'>
+                </div>
+            </div>
+            <div className="flex place-items-center place-content-center">
+                <div style={{ backgroundImage: `url(${images[1]})` }} className='w-[91.8vw] h-[30em] bg-cover'>
+                </div>
+            </div>
+            <div className="flex place-items-center place-content-center">
+                <div style={{ backgroundImage: `url(${images[2]})` }} className='w-[91.8vw] h-[30em] bg-cover'>
+                </div>
+            </div>
+        </Slide>
     );
-  };
+};
 
-  // {
-  //   gif: stockgif,
-  //   number: '1',
-  //   title: 'MyAssignmentHelp Website',
-  //   subtitle: 'new project update coming soon...',
-  //   description: (
-  //     <>
-  //         <div>
-  //             <p className=''>
-  //                 <div className='flex justify-between place-items-start'>
-  //                 <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black">Initial Interest <br /></h2>
-  //                 </div>
-  //                 <div className='opacity-0'>
-  //                     <span className="font-black">What sparked my interest </span>in the concept of creating an automated trading algorithm is my experiences and successes manually trading. I have been trading on and off since high school and have had some very high moments in that time.
-  //                     After my biggest trade, I started feeling like there has to be a way to automate the process just due to the sheer amount of time I had to be in front of the chart just for the right moment to press the buy button...
-  //                     <br />
-  //                     <br />
-  //                     <span className="font-black">Going into this project</span>, the only coding I had preformed up to that point was
-  //                     developing a small game in Unity using C#. I had a basic concept of variables and
-  //                     some experience writing functions. I wanted to learn what was neccesary to automate my process. Looking back on it,
-  //                     it was a very ambitious goal. 
-  //                 </div>
-  //                 <br /> 
-  //                 <br />
-                  
-  //                 <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
-                  
-  //                 <div className='opacity-0'>
-  //                     Here you will find an article I wrote on alot of my reserch, findings and development of this trading system. 
-  //                     <br />
-  //                     If you just want the <strong>key take aways</strong>, here they are: 
-  //                     <br />
-  //                     <br />
-  //                     <ul className="custom-list font-black">
-  //                         <li>Learned Tradingview's scripting language called Pinescript.</li>
-  //                         <li>Transfered years of data into a working automated strategy.</li>
-  //                         <li>This project made me very comfortable with manipulating arrays.</li>
-  //                     </ul>
-  //                     <br />
-  //                     You will find more in depth research below:
-  //                 </div>
-  //                 <span className="font-black"></span>
-  //             </p> 
-  //         </div>
-  //     </>
-  //   ),  
-  //   blog: (
-  //     <div>
-  //         {/* <MyAssignmentHelpArticle/> */}
-  //     </div>
-  //   ),   
-  //   link: '',
-  // },
+
+  // SLIDESHOW  -------------------------------
+
 
   const projectData = [
     {
-      gif: stockgif,
+      gif: mahgif1,
       number: '1',
+      title: 'MyAssignmentHelp Web Design',
+      subtitle: 'A case study on how I reinvented an education website through volunteer work.',
+      description: (
+        <>
+            <div>
+                <p className=''>
+                    <div className='flex justify-between place-items-start'>
+                    <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black">Initial Interest <br /></h2>
+                    </div>
+                    <div className=''>
+                        <span className="font-black">What sparked my interest </span> in this project was a certain connection on LinkedIn. They posted they were looking for web development interns so after submitting my resume, I secured an opportunity with their education company. Assigned to recreate their website with Quizlet as a reference, I focused on implementing animations and artistic design elements to elevate the user experience.
+                        <br />
+                        <br />
+                        <span className="font-black">Going into this project</span> I was determined to enhance my web development skills and delve deeper into GSAP (GreenSock Animation Platform), particularly within the React framework. Confident in my ability to create compelling websites, I sought to further refine my expertise in animation techniques for dynamic user experiences. 
+                    </div>
+                    <br /> 
+                    <br />
+                    
+                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
+                    
+                    <div className=''>
+                        Here you will find an article I wrote further expounding on the research it took to complete this project and my findings. 
+                        <br />
+                        If you just want the <strong>key take aways</strong>, here they are: 
+                        <br />
+                        <br />
+                        <ul className="custom-list font-black">
+                            <li>Learned how to manage state efficently with React hooks.</li>
+                            <li>Created multiple gsap animations through out the website, some on load and some on click.</li>
+                            <li>Implimented vector animations to add life through out the webpage.</li>
+                        </ul>
+                        <br />
+                        You will find more in depth research below:
+                    </div>
+                    <span className="font-black"></span>
+                </p> 
+            </div>
+        </>
+      ),  
+      blog: (
+        <div>
+            <MyAssignmentHelpArticle/>
+        </div>
+      ),   
+      link: '',
+      slideshow: (
+        <div className='w-[91.8vw]'>
+           <MahSlideshow/>
+        </div>
+      ) 
+    },
+    {
+      gif: stockgif,
+      number: '2',
       // number: '2',
       title: 'The SFX Algo',
       subtitle: 'A trading algorithim that buys and sells stocks for you automatically.',
@@ -292,7 +334,7 @@ const SfxNotionArticle = () => {
     },
     {
       gif: basketballapigif,
-      number: '2',
+      number: '3',
       // number: '3',
       title: 'Basketball Dashboard',
       subtitle: 'a case study on API connections to display basketball data.',
@@ -339,7 +381,7 @@ const SfxNotionArticle = () => {
     },
     {
       gif: bitezgif,
-      number: '3',
+      number: '4',
       // number: '4',
       title: 'Bitez of Love',
       subtitle: 'A total revamp of a businesses website using react.',
@@ -382,7 +424,7 @@ const SfxNotionArticle = () => {
     },
     {
       gif: simplclaimgif,
-      number: '4',
+      number: '5',
       // number: '5',
       title: 'SimplClaim',
       subtitle: 'A web app that speeds up the data entry process with the help of AI.',

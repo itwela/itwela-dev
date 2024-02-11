@@ -465,6 +465,7 @@ img.notion-page-icon {
 .notion-list > .notion-text {
   margin-left: -1.6em;
   padding-left: 0px;
+  text-align: left !important;
 }
 
 /* .notion-asset-wrapper {

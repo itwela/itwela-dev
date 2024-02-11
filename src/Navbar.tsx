@@ -61,7 +61,10 @@ const handleMenuClick = () => {
   useGSAP(() => {
     if (isCLicked !=false) {
       gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
-        stagger: 0.1,
+        stagger:{
+          amount: 0.5,
+          each: 0.1,
+        },
         ease: "back",
         display: "flex",
         xPercent: "0",
