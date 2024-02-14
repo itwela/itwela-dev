@@ -311,21 +311,29 @@ requestAnimationFrame(raf)
                                 </svg>
 
                                 <div className='w-[91.8vw] flex justify-between pt-2'>
-                                  <h1 id='pronnn' className="text-[2vw] font-second">software engineer</h1>
-                                  <h1 id='pronnn' className="text-[2vw] font-second">(ee - tway - la)</h1>
+                                  <h1 id='pronnn' className="text-[3vw] font-second">software engineer</h1>
+                                  <h1 id='pronnn' className="text-[3vw] font-second">(ee - tway - la)</h1>
                                 </div>
                                 <div className='w-[91.8vw] flex justify-between pt-2'>
-                                  <h1 id='pronnn' className="text-[2vw] font-second">web developer</h1>
+                                  <h1 id='pronnn' className="text-[3vw] font-second">web developer</h1>
                                 </div>
                                 <div className='w-[91.8vw] flex justify-between pt-2'>
-                                  <h1 id='pronnn' className="text-[2vw] font-second">passion for learning</h1>
+                                  <h1 id='pronnn' className="text-[3vw] font-second">passion for learning</h1>
                                 </div>
                                 {/* <p className="pron"><em>(ee - tway - la)</em></p> */}
                             </div>
                       
-                            <div className='absolute flex md:w-[50vw] text-left sm:text-left bottom-[65%] place-content-center sm:bottom-[60%] text-[0.7em] sm:text-[0.4em]'>
+                            <div className='sm:hidden w-[100vw] h-[100vh] absolute z-[1] top-0 flex place-items-center'>
+                              <div className='absolute flex md:w-[50vw] text-left sm:text-left sm:place-content-center sm:bottom-[60%] text-[0.6em] sm:text-[0.4em] place-items-center'>
+                                <p className="intro-story font-second w-[90%]">My name is Itwela Ibomu. I am a <span className="font-black"> software engineer </span>deeply immersed in the world of code, with a focus in <a className="spec-link font-black" href="" target="blank">TypeScript, </a><a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>. Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a>where I post about my professional journey and growth as a developer. </p>
+                              </div>
+                            </div>
+
+                            
+                            <div className='absolute hidden sm:flex flex sm:w-[50vw] text-left sm:text-left place-content-center sm:bottom-[60%] text-[0.7em] sm:text-[0.4em]'>
                               <p className="intro-story font-second w-[90%]">My name is Itwela Ibomu. I am a <span className="font-black"> software engineer </span>deeply immersed in the world of code, with a focus in <a className="spec-link font-black" href="" target="blank">TypeScript, </a><a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>. Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a>where I post about my professional journey and growth as a developer. </p>
                             </div>
+                        
                           
                             <div className='absolute bottom-[60%] right-0 text-[0.4em]'>
                              <p className='font-second'>scroll for more</p>
@@ -337,7 +345,7 @@ requestAnimationFrame(raf)
                           {/* <div id='yellow-ss' className='bg-[#ffcc00] rounded-[1.6em]'></div> */}
                           <div id='yellow-ss' className='hidden sm:flex rounded-[1.6em] flex flex-col gap-2 cursor-pointer relative p-2 flex place-items-end'>
                           <p id='rpid' className='recent p-3 rounded-[0.5em] mix-blend-difference bg-[#fcf7f8]'>recent projects</p>
-                            <video id='' className=' w-[90%] rounded-[1.2em] ' src={leftvid} autoPlay muted loop ></video>
+                            <video id='' className=' w-[90%] rounded-[1.2em] ' src={leftvid} autoPlay muted loop playsInline></video>
                           </div>
                         </div>
 
@@ -345,7 +353,7 @@ requestAnimationFrame(raf)
                         <div ref={mobileTriggerRef} className='h-[100vh] absolute bottom-0 flex w-[100vw] justify-self-end place-items-center place-content-center'>
                            <div id='yellow-ss' className='sm:hidden w-[90vw] rounded-[1.6em] flex flex-col gap-2 cursor-pointer relative p-2 flex place-items-end'>
                           <p id='rpid' className=' p-3 rounded-[0.5em] mix-blend-difference bg-[#fcf7f8]'>recent projects</p>
-                            <video id='' className=' w-[100%] rounded-[1.2em] ' src={leftvid} autoPlay muted loop ></video>
+                            <video id='' className=' w-[100%] rounded-[1.2em] ' src={leftvid} autoPlay muted loop playsInline ></video>
                           </div>
                         </div>
 

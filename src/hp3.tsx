@@ -167,14 +167,14 @@ const HomepageSecThree = () => {
                         <div style={{ backgroundImage: `url(${leftbg})` }} onMouseEnter={handlePjIsHoveredEnter} onMouseLeave={handlePjIsHoveredExit} id='imagepj1' className='w-[99%] sm:w-[49%] bg-cover relative h-[100%] justify-center items-center flex'>
                             <div id='blurpj1' className='w-[100%] absolute h-[100%] '></div>
                             <div id='vidpj1' className='opacity-0 flex place-items-center cursor-pointer w-[80%] absolute h-[70%]'>
-                              <video id='vidpj1' className='opacity-0 w-[100%] h-[100%]' src={leftvid} autoPlay muted loop ></video>
+                              <video id='vidpj1' className='opacity-0 w-[100%] h-[100%]' src={leftvid} autoPlay muted loop playsInline></video>
                         </div>
                         </div>
                         
                         <div style={{ backgroundImage: `url(${leftbg})` }} onMouseEnter={handlePjTwoIsHoveredEnter} onMouseLeave={handlePjTwoIsHoveredExit} id='imagepj2' className='w-[99%] sm:w-[49%] bg-cover relative h-[100%] justify-center place-items-center place-content-center justify-items-center justify-content-center flex'>
                             <div id='blurpj2' className='w-[100%] absolute h-[100%] '></div>
                             <div id='vidpj2' className=' flex place-items-center cursor-pointer w-[80%] absolute h-[70%]'>
-                              <video id='' className=' w-[100%] h-[100%] ' src={leftvid} autoPlay muted loop ></video>
+                              <video id='' className=' w-[100%] h-[100%] ' src={leftvid} autoPlay muted loop playsInline></video>
                             </div>
                         </div>
                       </div>

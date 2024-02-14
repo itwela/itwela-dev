@@ -174,7 +174,7 @@ listItems.forEach(item => {
 
   return (
     <>
-    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-2 text-[0.6em] md:text-[1em] flex place-items-center bg-[#FCF7F8]  justify-between'>
+    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-2 text-[0.4em] md:text-[1em] flex place-items-center bg-[#FCF7F8]  justify-between'>
       {/* <ul onMouseOver={handleIsHoveredEnter} onMouseOut={handleIsHoveredExit} className='nav-bar-container items-center text-[0.7em] bottom-[3%] left-2 fixed z-[10] md:text-[1em] flex gap-4 md:gap-8 p-2 backdrop-blur rounded-[2em] w-[100vw] justify-evenly'> */}
       <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
 
