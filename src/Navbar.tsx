@@ -117,10 +117,6 @@ useGSAP (() => {
       backgroundColor: '#fcf7f8'
     })
     
-    gsap.set(["#navul > li", '#menu-button'], {
-      color: '#000'
-    })
-
     gsap.to("#navul > li", {
       x: '0',
       stagger: 0.2,

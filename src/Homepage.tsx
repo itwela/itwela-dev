@@ -174,6 +174,9 @@ requestAnimationFrame(raf)
         gsap.set('#ss', {
           top: '10em'
         })
+
+
+
         t1.to(("#ss"), {
           y: '90dvh',
           x: 0,
@@ -323,9 +326,9 @@ requestAnimationFrame(raf)
                                 {/* <p className="pron"><em>(ee - tway - la)</em></p> */}
                             </div>
                       
-                            <div className='sm:hidden w-[100vw] h-[100vh] absolute z-[1] top-0 flex place-items-center'>
-                              <div className='absolute flex md:w-[50vw] text-left sm:text-left sm:place-content-center sm:bottom-[60%] text-[0.6em] sm:text-[0.4em] place-items-center'>
-                                <p className="intro-story font-second w-[90%]">My name is Itwela Ibomu. I am a <span className="font-black"> software engineer </span>deeply immersed in the world of code, with a focus in <a className="spec-link font-black" href="" target="blank">TypeScript, </a><a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>. Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a>where I post about my professional journey and growth as a developer. </p>
+                            <div className='sm:hidden w-[91.8vw] h-[100vh] absolute z-[1] top-0 flex place-items-center'>
+                              <div className='flex w-[100%] text-left text-[0.6em] place-items-center'>
+                                <p className="intro-story font-second">My name is Itwela Ibomu. I am a <span className="font-black"> software engineer </span>deeply immersed in the world of code, with a focus in <a className="spec-link font-black" href="" target="blank">TypeScript, </a><a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>. Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a>where I post about my professional journey and growth as a developer. </p>
                               </div>
                             </div>
 

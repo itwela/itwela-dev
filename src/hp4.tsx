@@ -26,7 +26,7 @@ const HomepageSecFour = () => {
     <>
                 <section className='fourth-section w-[100vw] flex place-content-center bg-[#fcf7f8]'>
                     <div className="extra-space w-[91.8vw] relative font-second">
-                      <div id='fourth-bottom' className="intro-container-2 h-[100vh] flex flex-col place-content-center ">
+                      <div id='fourth-bottom' className="intro-container-2 h-[100vh] flex flex-col place-items-center place-content-center ">
                         <p className="story-4-p">
                         Outside of programming and school, I enjoy 
                         producing music, green tea, trading and reading (memoirs, self-help, and manga are some of favorites).   
