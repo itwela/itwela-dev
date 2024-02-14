@@ -234,13 +234,13 @@ const SfxNotionArticle = () => {
       gif: mahgif1,
       number: '1',
       title: 'MyAssignmentHelp Web Design',
-      subtitle: 'A case study on how I reinvented an education website through volunteer work.',
+      subtitle: 'Reinvention of an educational website through volunteer work.',
       description: (
         <>
             <div>
                 <p className=''>
                     <div className='flex justify-between place-items-start'>
-                    <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black">Initial Interest <br /></h2>
+                    <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black font-main">Initial Interest <br /></h2>
                     </div>
                     <div className=''>
                         <span className="font-black">What sparked my interest </span> in this project was a certain connection on LinkedIn. They posted they were looking for web development interns so after submitting my resume, I secured an opportunity with their education company. Assigned to recreate their website with Quizlet as a reference, I focused on implementing animations and artistic design elements to elevate the user experience.
@@ -251,7 +251,7 @@ const SfxNotionArticle = () => {
                     <br /> 
                     <br />
                     
-                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
+                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black font-main">Research Phase<br /> </h2>
                     
                     <div className=''>
                         Here you will find an article I wrote further expounding on the research it took to complete this project and my findings. 
@@ -294,7 +294,7 @@ const SfxNotionArticle = () => {
             <div>
                 <p className=''>
                     <div className='flex justify-between place-items-start'>
-                    <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black">Initial Interest <br /></h2>
+                    <h2 className="initial-interest text-[1.5rem] pb-3 md:pb-0 md:text-[2rem] font-black font-main">Initial Interest <br /></h2>
                     </div>
                     <span className="font-black">What sparked my interest </span>in the concept of creating an automated trading algorithm is my experiences and successes manually trading. I have been trading on and off since high school and have had some very high moments in that time.
                     After my biggest trade, I started feeling like there has to be a way to automate the process just due to the sheer amount of time I had to be in front of the chart just for the right moment to press the buy button...
@@ -306,7 +306,7 @@ const SfxNotionArticle = () => {
                     it was a very ambitious goal. 
                     <br /> 
                     <br />
-                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
+                    <h2 className="research text-[1.5rem] md:text-[2rem] font-black font-main">Research Phase<br /> </h2>
                     Here you will find an article I wrote on alot of my reserch, findings and development of this trading system. 
                     <br />
                     If you just want the <strong>key take aways</strong>, here they are: 
@@ -340,7 +340,7 @@ const SfxNotionArticle = () => {
       description: (
         <div>
             <p className=''>
-                <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
+                <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black font-main">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest </span>in connecting apis in my dashboard
                 was the ease of being able to add a feature I wanted into the project that way. I have leasurely betted
                 on basketball games and one day had an idea that what if I could use ai to help me choose the best 
@@ -354,7 +354,7 @@ const SfxNotionArticle = () => {
                 I want to display.
                 <br /> 
                 <br />
-                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black font-main">Research Phase<br /></h2>
 \                Here you will find an article I wrote on a case study of how I implemented an API into my dashboard. 
                 <br />
                 If you just want the <strong>key take aways</strong>, here they are: 
@@ -387,7 +387,7 @@ const SfxNotionArticle = () => {
       description: (
         <div>
             <p className=''>
-                <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
+                <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black font-main">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest </span>in this project was a friend of mine saying
                 he needed some help with his family's website. I thought this would be a great opportunity to
                 build my experience in web design and development so I took the gig.
@@ -398,7 +398,7 @@ const SfxNotionArticle = () => {
                 deploying and adding custom domains so I was confident and excited to do the job.   
                 <br />
                 <br /> 
-                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /> </h2>
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black font-main">Research Phase<br /> </h2>
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
                 <br />
@@ -430,7 +430,7 @@ const SfxNotionArticle = () => {
       description: (
         <div>
             <p className=''>
-               <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black">Initial Interest <br /></h2>
+               <h2 className="initial-interest text-[1.5rem] md:text-[2rem] font-black font-main">Initial Interest <br /></h2>
                 <span className="font-black">What sparked my interest</span> in this project was my dad. He
                 said he needed a tool to help him enter a lot of data into a spreadsheet for his insurance. He also
                 said if there was a way to use ai to help him fill in some of the price columns, that would be a
@@ -445,7 +445,7 @@ const SfxNotionArticle = () => {
                 gaps in my knowledge however in gpt-3.5 and in dataframes.                
                 <br />
                 <br />
-                <h2 className="research text-[1.5rem] md:text-[2rem] font-black">Research Phase<br /></h2>
+                <h2 className="research text-[1.5rem] md:text-[2rem] font-black font-main">Research Phase<br /></h2>
                 If you just want the <strong>key take aways</strong>, here they are: 
                 <br />
                 <br />

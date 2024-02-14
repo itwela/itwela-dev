@@ -10,6 +10,7 @@ module.exports = {
         'second': ['second'],
         'third': ['third'],
         'fourth': ['fourth'],
+        'fifth': ['fifth'],
       },
     },
   },

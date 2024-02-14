@@ -7,21 +7,27 @@ import Contact from './Contact';
 import Blog from './blog';
 import Navbar from './Navbar';
 import DarkMode from './darkmode';
+import Lenis from '@studio-freight/lenis'
+import ScrollToTop from './scrolltotop';
 
 
 function App() {
+
+
+
   return (
     <Router>
-        <DarkMode />
-        <Navbar />
-        {/* Wrap your components with the BrowserRouter */}
-        <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="Projects" element={<Projects />} />
-            <Route path="Resume" element={<Resume />} />
-            <Route path="Contact" element={<Contact />} />
-            <Route path="Blog" element={<Blog />} />
-        </Routes>
+      <ScrollToTop>
+          <Navbar />
+          {/* Wrap your components with the BrowserRouter */}
+          <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="Projects" element={<Projects />} />
+              <Route path="Resume" element={<Resume />} />
+              <Route path="Contact" element={<Contact />} />
+              <Route path="Blog" element={<Blog />} />
+          </Routes>
+        </ScrollToTop>
     </Router>
   );
 }

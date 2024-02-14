@@ -7,7 +7,7 @@ import { useGSAP } from '@gsap/react';
 const Navbar = () => {
   
   const [isHovered, setIsHovered] = useState(false);
-  const [isCLicked, setIsCLicked] = useState(false);
+  const [isCLicked, setIsCLicked] = useState(true);
   const navContainer = useRef<HTMLDivElement>(null);
 
   //  hover animation menu -----------------
@@ -24,14 +24,7 @@ const Navbar = () => {
   // setting this outside of the useGsap hook to
   // ensure nav links dont show up too early on reaload.
 
-  useEffect(() => {
-    // GSAP animation to set opacity to 0 for each element
-    gsap.set(["#home", "#projects", "#resume", "#blog", "#contact"], {
-      display: 'none',
-    });
-  }, []); // Run once on component mount
 
-  // useGSAP(() => {
 
 
   //   if (isHovered == true) {
@@ -58,76 +51,160 @@ const handleMenuClick = () => {
     setIsCLicked(!isCLicked);
   }
 
-  useGSAP(() => {
-    if (isCLicked !=false) {
-      gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
-        stagger:{
-          amount: 0.5,
-          each: 0.1,
-        },
-        ease: "back",
-        display: "flex",
-        xPercent: "0",
-        opacity: 1
-      }),
+  //   if (isCLicked !=false) {
+  //     gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
+  //       stagger:{
+  //         amount: 0.5,
+  //         each: 0.1,
+  //       },
+  //       ease: "back",
+  //       display: "flex",
+  //       xPercent: "0",
+  //       opacity: 1
+  //     }),
 
-      gsap.to("#menu-button", {
-        stagger: 0.1,
-        ease: "back",
-        position: "absolute",
-        top: "10",
-      }),
+  //     gsap.to("#menu-button", {
+  //       stagger: 0.1,
+  //       ease: "back",
+  //       // position: "absolute",
+  //       // top: "10",
+  //     }),
 
-      gsap.to("#menu-cont", {
-        backdropFilter: "blur(10px)",
-        height: "100vh",
-        xPercent: '0'
-      })
+  //     gsap.to("#menu-cont", {
+  //       backdropFilter: "blur(10px)",
+  //       height: "100vh",
+  //       xPercent: '0'
+  //     })
 
-    }
+  //   }
 
-    if (isCLicked != true) {
-      gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
-        xPercent: "-500",
-        stagger: 0.1,
-        ease: "back",
-        opacity: 0,
-        display: "none",
-      }),
+  //   if (isCLicked != true) {
+  //     gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
+  //       xPercent: "-500",
+  //       stagger: 0.1,
+  //       ease: "back",
+  //       opacity: 0,
+  //       display: "none",
+  //     }),
 
-      gsap.to(["#menu-button"],{
-        stagger: 0.1,
-        ease: "back",
-        position: "absolute",
-        top: "10",
-        }),
+  //     gsap.to(["#menu-button"],{
+  //       stagger: 0.1,
+  //       ease: "back",
+  //       // position: "absolute",
+  //       // top: "10",
+  //       }),
 
-      gsap.to("#menu-cont",{
-        stagger: 0.1,
-        ease: "back",
-        position: "absolute",
-        duration: 2,
-        top: "10",
-        xPercent: '-100',
-        backdropFilter: null,
-        })
-    }
-  }, {dependencies: [isCLicked, setIsCLicked], scope: navContainer})
+  //     gsap.to("#menu-cont",{
+  //       stagger: 0.1,
+  //       ease: "back",
+  //       position: "absolute",
+  //       duration: 2,
+  //       top: "10",
+  //       xPercent: '-100',
+  //       backdropFilter: null,
+  //       })
+  //   }
+  // }, {dependencies: [isCLicked, setIsCLicked], scope: navContainer})
 //  -------------------------------------------
 
+useGSAP (() => {
+  
+    gsap.set("#navul > li", {
+      x: '-500em'
+    })
+
+    gsap.set("#menu-wrapper", {
+      backgroundColor: '#fcf7f8'
+    })
+    
+    gsap.set(["#navul > li", '#menu-button'], {
+      color: '#000'
+    })
+
+    gsap.to("#navul > li", {
+      x: '0',
+      stagger: 0.2,
+      ease: 'expo.out'
+    })
+
+}, [])
+
+const t2 = gsap.timeline()
+
+
+  if (isCLicked != false) {
+    t2.to("#navul > li", {
+      x: '0',
+      stagger: 0.2,
+      ease: 'expo.out'
+    })
+  }
+  
+  if (isCLicked != true) {
+    t2.to("#navul > li", {
+      x: '-500em',
+      stagger: 0.2,
+      ease: 'expo.in'
+    })
+  }
+
+
+// Select all li elements
+const listItems = document.querySelectorAll('li');
+
+// Add event listeners to each li element
+listItems.forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    // On mouseenter, reduce opacity of all other li elements
+    listItems.forEach(otherItem => {
+      if (otherItem !== item) {
+        gsap.to(otherItem, { opacity: 0.5, ease: 'circ' });
+      }
+    });
+  });
+
+  // Reset opacity on mouseleave
+  item.addEventListener('mouseleave', () => {
+    listItems.forEach(otherItem => {
+      gsap.to(otherItem, { opacity: 1 });
+    });
+  });
+});
+
+
   return (
-    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] absolute z-[2] flex place-items-start'>
+    <>
+    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-2 text-[0.6em] md:text-[1em] flex place-items-center bg-[#FCF7F8]  justify-between'>
       {/* <ul onMouseOver={handleIsHoveredEnter} onMouseOut={handleIsHoveredExit} className='nav-bar-container items-center text-[0.7em] bottom-[3%] left-2 fixed z-[10] md:text-[1em] flex gap-4 md:gap-8 p-2 backdrop-blur rounded-[2em] w-[100vw] justify-evenly'> */}
-      <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 pl-7 absolute z-[2] '>Menu</div>
-      <ul id="menu-cont" className='nav-bar-container relative items-start p-6 z-[10] md:text-[1em] flex flex-col justify-around p-2 pb-[2em] md:pb-[5em] rounded-[2em] w-[100vw]'>
-        <a id='back' className='back p-3 cursor-pointer' onMouseDown={handleMenuClick} >back</a> 
-        <li id='home'><NavLink to="/" onClick={handleMenuClick} className='p-3 text-[2.5em] md:text-[3em]'>Home</NavLink></li>
-        <li id='projects'><NavLink to="/Projects" onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Projects</NavLink></li>
-        <li id='resume'><a href={resume} download onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Resume</a></li>
-        <li id='blog'><NavLink to="/blog" onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Blog</NavLink></li>
-        <li id='contact'><NavLink to="/Contact" onClick={handleMenuClick}  className='p-3 text-[2.5em] md:text-[3em]'>Contact</NavLink></li>
+      <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
+
+      <ul id='navul' className='flex gap-2 p-3'>
+        <li id=''><NavLink to="/" className='p-3'>Home</NavLink></li>
+        <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li>
+        <li id=''><a href={resume} download className='p-3 '>Resume</a></li>
+        <li id=''><NavLink to="/blog" className='p-3 '>Blog</NavLink></li>
+        <li id=''><NavLink to="/Contact" className='p-3'>Contact</NavLink></li>
+
       </ul>
+
     </nav>
+
+    <nav id='menu-wrapper' className='w-[100vw] text-hidden font-main h-[8vh] z-[2] p-2 text-[0.6em] md:text-[1em] flex place-items-center bg-[#FCF7F8]  justify-between'>
+      {/* <ul onMouseOver={handleIsHoveredEnter} onMouseOut={handleIsHoveredExit} className='nav-bar-container items-center text-[0.7em] bottom-[3%] left-2 fixed z-[10] md:text-[1em] flex gap-4 md:gap-8 p-2 backdrop-blur rounded-[2em] w-[100vw] justify-evenly'> */}
+      {/* <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div> */}
+
+      {/* <ul id='navul' className='flex gap-2 p-3'>
+        <li id=''><NavLink to="/" className='p-3'>Home</NavLink></li>
+        <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li>
+        <li id=''><a href={resume} download className='p-3 '>Resume</a></li>
+        <li id=''><NavLink to="/blog" className='p-3 '>Blog</NavLink></li>
+        <li id=''><NavLink to="/Contact" className='p-3'>Contact</NavLink></li>
+
+      </ul> */}
+
+    </nav>
+
+    </>
   );
 };
 
