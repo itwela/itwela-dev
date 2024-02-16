@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import resume from './assets/Itwela_2224.pdf';
+import resume from './assets/Itwela_21024.pdf';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
