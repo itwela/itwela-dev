@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import resume from './assets/Itwela_21024.pdf';
 import gsap from 'gsap';
@@ -25,86 +25,12 @@ const Navbar = () => {
   // ensure nav links dont show up too early on reaload.
 
 
-
-
-  //   if (isHovered == true) {
-  //     gsap.to(["#home", "#projects", "#resume", "#contact",], {
-  //       stagger: 0.3,
-  //       ease: "elastic.in",
-  //       display: "flex"
-  //     })
-  //   }
-
-  //   if (isHovered == false) {
-  //     gsap.to(["#home", "#projects", "#resume", "#contact",], {
-  //       stagger: 0.1,
-  //       ease: "elastic.out",
-  //       display: "none"
-  //     })
-  //   }
-  // }, {dependencies: [isHovered, setIsHovered], scope: navContainer})
-// --------------------------------
-
 // click menu animation -----------------------
   
 const handleMenuClick = () => {
     setIsCLicked(!isCLicked);
   }
 
-  //   if (isCLicked !=false) {
-  //     gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
-  //       stagger:{
-  //         amount: 0.5,
-  //         each: 0.1,
-  //       },
-  //       ease: "back",
-  //       display: "flex",
-  //       xPercent: "0",
-  //       opacity: 1
-  //     }),
-
-  //     gsap.to("#menu-button", {
-  //       stagger: 0.1,
-  //       ease: "back",
-  //       // position: "absolute",
-  //       // top: "10",
-  //     }),
-
-  //     gsap.to("#menu-cont", {
-  //       backdropFilter: "blur(10px)",
-  //       height: "100vh",
-  //       xPercent: '0'
-  //     })
-
-  //   }
-
-  //   if (isCLicked != true) {
-  //     gsap.to(["#home", "#projects", "#resume", "#blog", "#contact"], {
-  //       xPercent: "-500",
-  //       stagger: 0.1,
-  //       ease: "back",
-  //       opacity: 0,
-  //       display: "none",
-  //     }),
-
-  //     gsap.to(["#menu-button"],{
-  //       stagger: 0.1,
-  //       ease: "back",
-  //       // position: "absolute",
-  //       // top: "10",
-  //       }),
-
-  //     gsap.to("#menu-cont",{
-  //       stagger: 0.1,
-  //       ease: "back",
-  //       position: "absolute",
-  //       duration: 2,
-  //       top: "10",
-  //       xPercent: '-100',
-  //       backdropFilter: null,
-  //       })
-  //   }
-  // }, {dependencies: [isCLicked, setIsCLicked], scope: navContainer})
 //  -------------------------------------------
 
 useGSAP (() => {
