@@ -178,7 +178,7 @@ const HomepageSecThree = () => {
                             </div>
                         </div>
                       </div>
-
+{/* 
                       <div className='pjnameCont w-[100%] h-[10vh] hidden sm:flex justify-between'>
                             <div className="pname1 flex flex-col w-[49%] place-items-start text-left">
                                     {projectData.length > 0 && (
@@ -204,7 +204,7 @@ const HomepageSecThree = () => {
                                     </p>
                                 )}    
                             </div>
-                      </div>
+                      </div> */}
 
 
                       <div className="see-all w-[100%] pt-3">

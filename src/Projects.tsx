@@ -8,14 +8,13 @@ import SplitText from 'gsap-trial/SplitText';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CSSRulePlugin from 'gsap/CSSRulePlugin';
 
-
-// register 
+ // register 
 gsap.registerPlugin(ScrollTrigger);
 
 
 // Define your functional component
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(projectData[0]);
+  // const [selectedProject, setSelectedProject] = useState(projectData[0]);
 
 
     useGSAP(() => {
@@ -78,7 +77,8 @@ const Projects = () => {
           <div ref={triggerRef}></div>
 
             <div className="title-container flex flex-col place-content-between w-[91.8vw]">
-                <div id='projectbuttonsid' className='project-buttons font-second flex place-self-end pr-2 pb-2'>
+                
+                {/* <div id='projectbuttonsid' className='project-buttons font-second flex place-self-end pr-2 pb-2'>
                     {projectData.map((project, index) => (
                     <button
                         key={index}
@@ -88,7 +88,8 @@ const Projects = () => {
                         {project.number}
                     </button>
                     ))}
-                </div>
+                </div> */}
+
                 <div className="title-text no-sb">
                     <h1 id='projectid' className='font-main'>Projects</h1>
                     <h2 id='casestudyid' className='font-second'><em>& case studies.</em></h2>
@@ -98,28 +99,37 @@ const Projects = () => {
             <div className='project-container no-sb flex flex-col'>
           {/* Project buttons for toggling */}
           {/* Display selected project details */}
-          <div className='project-details font-second'>
+
+
+          {/* <div className='project-details font-second'>
             <div id='bgimgid' className="h-[50px] md:h-[100px] bg-cover bg-center w-[100%] pb-2" style={{backgroundImage: `url(${selectedProject.gif})`}}> </div>
             <h3 id='articletitleid' className='text-2xl'><br /> Title: <span className='font-main'><strong> {selectedProject.title} </strong></span> <br /></h3>
             <h3 id='articlesubid' className='text-md'><em>{selectedProject.subtitle}</em>
              <a id='articlelinkid' className="plink h-[4em] mb-10" href={selectedProject.link}> {selectedProject.link} </a> 
             <br /> <br />
             </h3>
-          </div>
+          </div> */}
+
+
         </div>
         </div>
-        <div id='blog-1' className="blog-start w-[91.8vw] font-second">
+
+        {/* <div id='blog-1' className="blog-start w-[91.8vw] font-second">
           <p className='project-desc'>{selectedProject.description}
               <br />
           </p>
-        </div>
-        <div id='blog-2' className="blog-middle w-[91.8vw] flex place-content-start relative text-left font-second">
+        </div> */}
+        
+        {/* <div id='blog-2' className="blog-middle w-[91.8vw] flex place-content-start relative text-left font-second">
           {selectedProject.blog}
-        </div>
-        <div id='slideshow' className="sshow w-[91.8vw] flex place-content-start relative text-left translate-y-[-8rem]">
+        </div> */}
+
+        {/* <div id='slideshow' className="sshow w-[91.8vw] flex place-content-start relative text-left translate-y-[-8rem]">
           {selectedProject.slideshow}
-        </div>
-        <div id='projectbuttonsid' className='project-buttons font-second flex place-self-center md:place-self-end pb-[2em] md:pr-[4em] '>
+        </div> */}
+
+
+        {/* <div id='projectbuttonsid' className='project-buttons font-second flex place-self-center md:place-self-end pb-[2em] md:pr-[4em] '>
                     {projectData.map((project, index) => (
                     <button
                         key={index}
@@ -129,7 +139,9 @@ const Projects = () => {
                         {project.number}
                     </button>
                     ))}
-        </div>
+        </div> */}
+
+
     </section>
     </>
   );

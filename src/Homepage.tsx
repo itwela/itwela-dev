@@ -367,7 +367,7 @@ requestAnimationFrame(raf)
 
               </div> 
 
-                <HomepageSecThree/>
+                {/* <HomepageSecThree/> */}
 
                <HomepageSecFour/>
            </main> 

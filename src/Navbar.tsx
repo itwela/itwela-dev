@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
-import resume from './assets/Itwela_21024.pdf';
+import resume from './assets/Itwela_3-1-34.pdf';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
@@ -102,7 +102,7 @@ listItems.forEach(item => {
 
       <ul id='navul' className='flex gap-2 p-3'>
         <li id=''><NavLink to="/" className='p-3'>Home</NavLink></li>
-        <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li>
+        {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
         <li id=''><a href={resume} download className='p-3 '>Resume</a></li>
         <li id=''><NavLink to="/blog" className='p-3 '>Blog</NavLink></li>
         <li id=''><NavLink to="/Contact" className='p-3'>Contact</NavLink></li>
