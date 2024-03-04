@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import projectData from './ProjectsData';
+// import projectData from './ProjectsData';
 import Homeicon from './home-icon';
 import { useRef } from 'react';
 import gsap from 'gsap'

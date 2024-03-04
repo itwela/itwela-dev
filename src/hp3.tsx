@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import projectData from './ProjectsData';
+// import projectData from './ProjectsData';
 import { useGSAP } from '@gsap/react'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from 'gsap'
