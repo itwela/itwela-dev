@@ -25,6 +25,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-notion": "^0.10.0",
+    "react-player": "^2.15.1",
     "react-router-dom": "^6.21.3",
     "react-slideshow-image": "^4.3.0",
     "split-type": "^0.3.4",

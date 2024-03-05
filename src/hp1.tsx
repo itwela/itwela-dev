@@ -1,4 +1,5 @@
 import leftvid from './assets/p3vid.mp4'
+import ReactPlayer from 'react-player/lazy'
 
 export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobileTriggerRef }: any) {
     return (
@@ -44,9 +45,10 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                         
                         <div ref={circleRef} id='ss' className='ss absolute z-[1]'>
                           {/* <div id='yellow-ss' className='bg-[#ffcc00] rounded-[1.6em]'></div> */}
-                          <div id='yellow-ss' className='hidden scale-[50%] md:scale-[30%] translate-x-[50%] translate-y-[-20%] sm:flex rounded-[1.6em] flex flex-col gap-2 cursor-pointer relative p-2 flex place-items-end'>
+                          <div id='yellow-ss' className='hidden scale-[50%] translate-x-[45%] translate-y-[-20%] sm:flex rounded-[1.6em] flex flex-col gap-2 cursor-pointer relative p-2 flex place-items-end'>
                             <p id='rpid' className='recent p-3 rounded-[0.5em] scale-[50%] mix-blend-difference bg-[#fcf7f8]'>recent projects</p>
-                            <video id='' className=' w-[90%] rounded-[1.2em] ' src={leftvid} autoPlay muted loop playsInline></video>
+                            {/* <video id='' className=' w-[90%] rounded-[1.2em] ' src={leftvid} autoPlay muted loop playsInline></video> */}
+                            <ReactPlayer playing loop muted url={leftvid} />
                           </div>
                         </div>
 

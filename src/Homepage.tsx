@@ -19,7 +19,8 @@ import HomepageSecOne from './hp1';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(Flip);
 
-const offsetXAmount = window.innerWidth / 6;
+const offsetXAmountX = window.innerWidth / 6;
+const offsetXAmountY = window.innerHeight / 6;
 
 
 const moveCircle = (e: MouseEvent) => {
@@ -30,21 +31,24 @@ const moveCircle = (e: MouseEvent) => {
     const firstCircle = circle[0];
     const left = firstCircle.offsetLeft;
     const top = firstCircle.offsetTop;
-    const disX = e.pageX - offsetXAmount;
+    const disX = e.pageX - offsetXAmountX;
     const vidwidth = left + window.scrollX;
     const distance = Math.sqrt(disX ** 2 + vidwidth ** 2);
 
     // Check if the pageX is within the window outer width
-    if (e.pageX < window.outerWidth) {
+    if (e.pageX < window.outerWidth || e.pageY < window.innerHeight) {
       const cwidth = circle[0].offsetWidth;
+      const cheight = circle[0].offsetHeight;
 
       gsap.to(circle, {
-        x: -cwidth / 1.18 + e.pageX / 1.618,
+        x: -cwidth / 1 + e.pageX / 1.618,
+        y: -cheight / 2.18 + e.pageY / 1.618,
         ease: 'sine.out'
       });
 
       gsap.to(recent, {
-        x: -offsetXAmount / 16.18 + (-e.pageX + cwidth) / 18.618,
+        x: -offsetXAmountX / 16.18 + (-e.pageX + cwidth) / 18.618,
+        y: offsetXAmountY / 16.18 + (e.pageY - cheight) / 18.618,
         ease: 'sine.out'
       });
     }
