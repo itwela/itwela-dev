@@ -53,12 +53,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                         </div>
 
 {/* mobile stuff */}
-                        <div ref={mobileTriggerRef} className='h-[100vh] absolute bottom-0 flex w-[100vw] justify-self-end place-items-center place-content-center'>
-                           <div id='yellow-ss' className='sm:hidden w-[90vw] rounded-[1.6em] flex flex-col gap-2 cursor-pointer relative p-2 flex place-items-end'>
-                          <p id='rpid' className=' p-3 rounded-[0.5em] mix-blend-difference bg-[#fcf7f8]'>recent projects</p>
-                            <video id='' className=' w-[100%] rounded-[1.2em] ' src={leftvid} autoPlay muted loop playsInline ></video>
-                          </div>
-                        </div>
+                 
 
                     </div>
                  
