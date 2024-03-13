@@ -8,11 +8,13 @@ interface Project {
     description: string;
     imageUrl: string;
     projectLink: string;
+    date: string;
 }
 
 const projects: Project[] = [
     {
         id: 1,
+        date: '2024',
         name: "JobKompass",
         description: "A web app that helps users gain key insights into their job search journey.",
         imageUrl: "https://example.com/project1.jpg",
