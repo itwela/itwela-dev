@@ -96,11 +96,10 @@ listItems.forEach(item => {
 
   return (
     <>
-    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-2 text-[0.4em] md:text-[1em] flex place-items-center bg-[#FCF7F8]  justify-between'>
-      {/* <ul onMouseOver={handleIsHoveredEnter} onMouseOut={handleIsHoveredExit} className='nav-bar-container items-center text-[0.7em] bottom-[3%] left-2 fixed z-[10] md:text-[1em] flex gap-4 md:gap-8 p-2 backdrop-blur rounded-[2em] w-[100vw] justify-evenly'> */}
+    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-4 sm:p-8 text-[#1e1f21] font-second flex place-items-center bg-[#FCF7F8]  justify-between'>
       <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
 
-      <ul id='navul' className='flex gap-2 p-3'>
+      <ul id='navul' className='hidden sm:flex flex gap-2 p-3'>
         <li id=''><NavLink to="/" className='p-3'>Home</NavLink></li>
         {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
         <li id=''><a href={resume} download className='p-3 '>Resume</a></li>
@@ -111,20 +110,6 @@ listItems.forEach(item => {
 
     </nav>
 
-    <nav id='menu-wrapper' className='w-[100vw] text-hidden font-main h-[8vh] z-[2] p-2 text-[0.6em] md:text-[1em] flex place-items-center bg-[#FCF7F8]  justify-between'>
-      {/* <ul onMouseOver={handleIsHoveredEnter} onMouseOut={handleIsHoveredExit} className='nav-bar-container items-center text-[0.7em] bottom-[3%] left-2 fixed z-[10] md:text-[1em] flex gap-4 md:gap-8 p-2 backdrop-blur rounded-[2em] w-[100vw] justify-evenly'> */}
-      {/* <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div> */}
-
-      {/* <ul id='navul' className='flex gap-2 p-3'>
-        <li id=''><NavLink to="/" className='p-3'>Home</NavLink></li>
-        <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li>
-        <li id=''><a href={resume} download className='p-3 '>Resume</a></li>
-        <li id=''><NavLink to="/blog" className='p-3 '>Blog</NavLink></li>
-        <li id=''><NavLink to="/Contact" className='p-3'>Contact</NavLink></li>
-
-      </ul> */}
-
-    </nav>
 
     </>
   );
