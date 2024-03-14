@@ -59,12 +59,12 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                   <div className='w-full h-max'>
 
                                     <div className='w-full flex justify-between'>
-                                      <p id='pron1' className=" font-second">software engineer</p>
+                                      <p id='pron1' className=" font-second">full-stack developer</p>
                                       <p id='pron2' className=" font-second">(ee - tway - la)</p>
                                     </div>
                                     <span className='flex flex-col '>
                                       <div className='flex justify-between'>
-                                        <p id='pron3' className="font-second">web developer</p>
+                                        <p id='pron3' className="font-second">software engineer</p>
                                       </div>
                                       <div className=' flex justify-between'>
                                         <p id='pron4' className="font-second">passion for learning</p>

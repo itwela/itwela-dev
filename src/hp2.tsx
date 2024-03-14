@@ -53,7 +53,7 @@ export default function HompageSecTwo() {
                 {projects.map((project, index) => (
                     <div key={index} className='flex flex-col w-full h-max gap-5'>
                         <div id='theHoversImg'  onMouseEnter={(e) => handleHoverEnter(e)}  style={{ backgroundImage: `url(${project.imageUrl})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} className='w-full h-[60vh] p-6 sm:p-8  relative flex flex-col justify-between bg-center'>
-                            <span className='flex justify-between w-full h-max pointer-events-none py-[1.5em] md:py-0'>
+                            <span className='flex justify-between w-full h-max pointer-events-none py-[1.5em] md:py-0 place-items-center'>
                                 <span id='pStatus' className='select-none font-main bg-[#1e1f21] text-[#fcf7f8] px-3 py-1 h-max w-max rounded-full'>
                                     {project.status}
                                 </span>
@@ -88,7 +88,7 @@ export default function HompageSecTwo() {
                     {projects.map((project, index) => (
                         <div key={index}  className='flex flex-col w-full  gap-5'>
                                 <div style={{ backgroundImage: `url(${project.imageUrl})` }} className='w-full h-[30vh] p-4 sm:p-8 relative flex flex-col justify-between bg-cover bg-center'>
-                                    <span className='flex justify-between w-full h-max'>
+                                    <span className='flex justify-between w-full h-max place-items-center'>
                                         <span id='pStatus' className='select-none font-main bg-[#1e1f21] text-[#fcf7f8] px-3 py-1 h-max w-max rounded-full'>
                                             {project.status}
                                         </span>
