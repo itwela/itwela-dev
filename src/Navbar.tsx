@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import resume from './assets/Itwela_3_4_24.pdf';
 import gsap from 'gsap';
@@ -10,7 +10,7 @@ const Navbar = () => {
   
   const [isHovered, setIsHovered] = useState(false);
   const [isCLicked, setIsCLicked] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const navContainer = useRef<HTMLDivElement>(null);
 
   //  hover animation menu -----------------
@@ -40,9 +40,9 @@ const handleMobileMenuClick = () => {
 
 //  -------------------------------------------
 
-useGSAP (() => {
+useLayoutEffect (() => {
 
-  setIsOpen(false);
+    setIsOpen(!isOpen);
   
     gsap.set("#navul > li", {
       x: '-500em'
@@ -85,7 +85,7 @@ useGSAP (() => {
   }
   if (isOpen != true) {
     gsap.set("#mobilenav", {
-      y: '-100%'
+      y: '-1000%'
     })
   }
 
