@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import resume from './assets/Itwela_3_4_24.pdf';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoMdMenu } from "react-icons/io";
 
 
 const Navbar = () => {
@@ -135,12 +135,12 @@ listItems.forEach(item => {
     </nav>
 
     <nav ref={navContainer} id='' className='sm:hidden w-[100vw] fixed relative z-[200] font-main h-[8vh] z-[2] p-2 text-[#1e1f21] font-second flex place-items-center bg-[#FCF7F8]  justify-between'>
-      <div id='menu-button' onClick={handleMobileMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
+      <div id='menu-button' onClick={handleMobileMenuClick} className='cursor-pointer p-2 z-[2] '><IoMdMenu size={25}/></div>
 
       <span id='mobilenav' className='fixed top-0 w-[100vw] h-[100dvh] bg-[#FCF7F8] z-10 flex place-items-center place-content-start '>
         <ul id='' className='flex flex-col gap-8 font-main'>
           <span className='p-3'  onClick={handleMobileMenuClick}>
-            <IoMdClose size={50} id='close-menu' className='cursor-pointer absolute top-[5%] right-[5%] p-2 z-[3] '/>
+            <IoMdClose size={45} id='close-menu' className='cursor-pointer absolute top-[5%] right-[5%] p-2 z-[3] '/>
           </span>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/" className=''>Home</NavLink></li>
           {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
