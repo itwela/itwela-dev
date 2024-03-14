@@ -10,7 +10,7 @@ const Navbar = () => {
   
   const [isHovered, setIsHovered] = useState(false);
   const [isCLicked, setIsCLicked] = useState(true);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const navContainer = useRef<HTMLDivElement>(null);
 
   //  hover animation menu -----------------
@@ -42,7 +42,11 @@ const handleMobileMenuClick = () => {
 
 useLayoutEffect (() => {
 
-    setIsOpen(!isOpen);
+    setIsOpen(false);
+
+    gsap.set("#mobilenav", {
+      y: '-1000%'
+    })
   
     gsap.set("#navul > li", {
       x: '-500em'
