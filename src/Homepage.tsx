@@ -77,7 +77,7 @@ function Homepage() {
     return (
         <>
           <div id="root">
-            <main className="main-wrapper text-[#1e1f21]/80 w-[100vw]   ">  
+            <main className="main-wrapper text-[#1e1f21]/80 w-[100vw] min-h-[100svh]   ">  
                 <HomepageSecOne refs={[triggerRef, availwRef, circleRef, mobileTriggerRef ]}/>
 
             </main> 
