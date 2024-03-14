@@ -22,62 +22,18 @@ import {
   intersectionMockInstance,
 } from 'react-intersection-observer/test-utils'
 import Lenis from '@studio-freight/lenis';
+import ItFooter from './footer';
 
 // register
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(Flip);
 
 const offsetXAmountX = window.innerWidth / 6;
 const offsetXAmountY = window.innerHeight / 6;
 
 
-const moveCircle = (e: MouseEvent) => {
-  const circle = document.getElementsByClassName('ss') as HTMLCollectionOf<HTMLElement>;
-  const recent = document.getElementsByClassName('recent') as HTMLCollectionOf<HTMLElement>;
-
-  if (circle.length > 0) {
-    const firstCircle = circle[0];
-    const left = firstCircle.offsetLeft;
-    const top = firstCircle.offsetTop;
-    const disX = e.pageX - offsetXAmountX;
-    const vidwidth = left + window.scrollX;
-    const distance = Math.sqrt(disX ** 2 + vidwidth ** 2);
-
-    // Check if the pageX is within the window outer width
-    if (e.pageX < window.outerWidth || e.pageY < window.innerHeight) {
-      const cwidth = circle[0].offsetWidth;
-      const cheight = circle[0].offsetHeight;
-
-      gsap.to(circle, {
-        x: -cwidth / 1 + e.pageX / 1.618,
-        // y: -cheight / 2.18 + e.pageY / 1.618,
-        ease: 'sine.out'
-      });
-
-      gsap.to(recent, {
-        x: -offsetXAmountX / 16.18 + (-e.pageX + cwidth) / 18.618,
-        // y: offsetXAmountY / 16.18 + (e.pageY - cheight) / 18.618,
-        ease: 'sine.out'
-      });
-    }
-  }
-};
-
 
 
 function Homepage() {
 
-
-  // const lenis = new Lenis()
-
-
-  // lenis.on('scroll', ScrollTrigger.update)
-
-  // gsap.ticker.add((time)=>{
-  //   lenis.raf(time * 800)
-  // })
-
-  // gsap.ticker.lagSmoothing(100)
 
 
   // onload gsap   
@@ -103,150 +59,27 @@ function Homepage() {
             stagger: 0.3
         })
 
-        gsap.set('#hi-im', {
-          display: 'none'
-        })
+
         
 
     }, [])
 
     // -------------------
 
-  // Add event listener for mousemove when component mounts
-  useEffect(() => {
-      // Add event listener for mousemove
-      document.addEventListener('mousemove', moveCircle);
 
-      // Clean up event listener when component unmounts
-      return () => {
-          document.removeEventListener('mousemove', moveCircle);
-      };
-  }, []);
      
   const triggerRef = useRef(null);
   const mobileTriggerRef = useRef(null);
   const availwRef = useRef(null);
   const circleRef = useRef<HTMLDivElement>(null);
    
-  let mm = gsap.matchMedia();
-   
-  mm.add("(min-width: 640px)", () => {
-      
-    useGSAP(() => {
-        
-      const trigger = triggerRef.current;
-      const circle = document.getElementById('ss') as HTMLDivElement;
-
-      const targetElement = document.querySelector<HTMLDivElement>('#coordinate-container'); // Get the coordinate container element
-      const targetTop = targetElement?.getBoundingClientRect()?.top || 0; // Get the top position of the coordinate container
-
-
-      const t1 = gsap.timeline({
-        scrollTrigger: {
-            trigger: trigger,
-            start: "30% center",
-            end: "61.8% center",
-            scrub: true,
-            // markers: true,
-            ontouchstart: () => {
-              gsap.set('#yellow-ss', {
-                borderRadius: '0.5em',
-                width: '30vw',
-                height: '10em'
-              })
-            }
-        },
-        defaults: {
-          duration: 2,
-            ease: 'power1.in',
-        },
-      });
-
-      gsap.set('#ss', {
-        top: '10em'
-      })
-
-    })
-
-  })
-
-  mm.add("(min-width: 800px)", () => {
-      useGSAP(() => {
-        
-      const trigger = triggerRef.current;
-      const circle = document.getElementById('ss') as HTMLDivElement;
-
-      const targetElement = document.querySelector<HTMLDivElement>('#coordinate-container'); // Get the coordinate container element
-      const targetTop = targetElement?.getBoundingClientRect()?.top || 0; // Get the top position of the coordinate container
-
-
-      const t1 = gsap.timeline({
-        scrollTrigger: {
-            trigger: trigger,
-            start: "30% center",
-            end: "61.8% center",
-            scrub: true,
-            // markers: true,
-            ontouchstart: () => {
-              gsap.set('#yellow-ss', {
-                borderRadius: '0.5em',
-                width: '30vw',
-                height: '10em'
-              })
-            }
-        },
-        defaults: {
-          duration: 2,
-            ease: 'power1.in',
-        },
-      });
-
-      gsap.set('#ss', {
-        top: '10em'
-      })
-
-    })
-  })
-
-  // mobile
-
-    mm.add("(max-width: 639px)", () => {
-      useGSAP(() => {
-        
-      const mobileTrigger = mobileTriggerRef.current;
-
-      const targetElement = document.querySelector<HTMLDivElement>('#coordinate-container'); // Get the coordinate container element
-
-
-      const t1mobile = gsap.timeline({
-        scrollTrigger: {
-            trigger: mobileTrigger,
-            start: "-10% center",
-            end: "41.8% center",
-            scrub: true,
-            // markers: true,
-        },
-        defaults: {
-          duration: 2,
-            ease: 'power1.in',
-        },
-      });
-
-    
-
-    })
-  })
-
 
     return (
         <>
           <div id="root">
-            <main className="main-wrapper w-[100vw] overflow-hidden">
-                
+            <main className="main-wrapper text-[#1e1f21]/80 w-[100vw]   ">  
                 <HomepageSecOne refs={[triggerRef, availwRef, circleRef, mobileTriggerRef ]}/>
 
-
-                <HomepageSecFour/>
             </main> 
           </div>
         </>

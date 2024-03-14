@@ -4,6 +4,8 @@ import ReactPlayer from 'react-player/lazy'
 import gsap from 'gsap';
 import { useRef } from 'react';
 import HompageSecTwo from './hp2';
+import HomepageSecFour from './hp4';
+import ItFooter from './footer';
 
 export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobileTriggerRef }: any) {
   
@@ -20,9 +22,8 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
       scrollTrigger: {
           trigger: trigger,
           start: "0% center",
-          end: "100% center",
+          end: "10% center",
           scrub: true,
-          // markers: true,
       },
       defaults: {
         duration: 2,
@@ -31,7 +32,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
     });
 
     t1.to('#overlap', {
-      yPercent: -100, 
+       y: '-7%'
     })
 
   })
@@ -40,9 +41,9 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
   return (
         <>
         <div ref={triggerRef}>
-                  <section id='ccol' className="first-section flex place-content-center w-[100vw] p-4 sm:p-8 h-[100vh] bg-[#fcf7f8]">
+                  <section id='ccol' className="pt-[10vh] sm:pt-[0vh] h-max first-section flex flex-col justify-between w-[100vw] p-4 sm:p-8 bg-[#fcf7f8]">
                     <div ref={availwRef} id='new-vp' className=" extra-space  flex flex-col  place-content-center relative ">
-                        <div className="title-wrapper flex flex-col gap-8  ">
+                        <div className="title-wrapper  flex flex-col gap-8  ">
                             
                             
                             {/* itwela and swe container */}
@@ -75,17 +76,43 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                 </div>
                                 
                             </div>
-                                            
-                            <div id='aboutslide'  ref={triggReferSec} className='flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-[30vh] justify-between py-9  font-second '>
-                                <div className='flex flex-col  gap-5 text-left sm:text-left place-content-center '>
+
+                            {/* desktop */}
+                            <div id='aboutslide'  ref={triggReferSec} className='hidden sm:flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-max justify-between py-9  font-second '>
+                                <div className='flex flex-col  gap-5 text-left sm:text-left place-content-start w-full h-max'>
                                   <div className='flex justify-between'>
                                   <p className=''>About Me</p>
                                   <p className='font-second hidden sm:flex '>scroll</p>
                                   </div>
                                   <h2 className='font-second font-bold text-5xl text-[#1e1f21]'>Hi,</h2>
-                                  <div id='overlap' className='z-1 bg-[#fcf7f8] flex flex-col gap-8'>
+                                  <div id='overlap' className='z-1 h-max bg-[#fcf7f8] flex flex-col gap-8'>
                                       <div className='mb-[6.18em] flex flex-col gap-8'>
-                                        <div className='w-ful h-[1px] bg-[#1e1f21]/80'></div>
+                                        <div className='w-full h-[1px] bg-[#1e1f21]/80'></div>
+                                        <p className="intro-story ">
+                                        My name is Itwela Ibomu.
+                                        I am a <span className="font-black"> full-stack developer </span>deeply immersed in the world of code,
+                                        with a focus in frontend tools like <a className="spec-link font-black" href="" target="blank">TypeScript, </a> <a href="https://reactjs.org/" target="blank" className="spec-link font-black">React</a>, and <a className="spec-link font-black" href="https://nextjs.org/" target="blank">Next.js</a>,
+                                        backend frameworks like <a className="spec-link font-black" href="https://nodejs.org/en/" target="blank">Node</a>, <a className="spec-link font-black" href="https://www.postgresql.org/" target="blank">PostgreSQL</a>, and programming languages such as <a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>.
+                                        <br />
+                                        <br />
+                                        <p>Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a>where I post about my professional journey and growth as a developer. </p></p>
+                                      </div>
+                                      <HompageSecTwo />
+                                  </div>
+                                </div>
+                            </div>
+
+                            {/* mobile */}
+                            <div   className='sm:hidden flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-max justify-between py-9  font-second '>
+                                <div className='flex flex-col  gap-5 text-left sm:text-left place-content-start w-full h-max'>
+                                  <div className='flex justify-between'>
+                                  <p className=''>About Me</p>
+                                  <p className='font-second hidden sm:flex '>scroll</p>
+                                  </div>
+                                  <h2 className='font-second font-bold text-5xl text-[#1e1f21]'>Hi,</h2>
+                                  <div  className='z-1 h-max bg-[#fcf7f8] flex flex-col gap-8'>
+                                      <div className='mb-[6.18em] flex flex-col gap-8'>
+                                        <div className='w-full h-[1px] bg-[#1e1f21]/80'></div>
                                         <p className="intro-story ">
                                         My name is Itwela Ibomu.
                                         I am a <span className="font-black"> full-stack developer </span>deeply immersed in the world of code,
@@ -102,18 +129,17 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
 
                         </div>
                         
-                        <div ref={circleRef} id='ss' className='ss absolute z-[1] h-[0.2em] '>
-                          {/* <div id='yellow-ss' className='hidden scale-[50%] z-[1] translate-x-[120%] translate-y-[-9em] sm:flex rounded-[1.6em] flex flex-col gap-2 cursor-pointer relative p-2 flex place-items-end'>
-                            <p id='rpid' className='recent p-3 rounded-[0.5em] scale-[50%] mix-blend-difference bg-[#fcf7f8]'>recent projects</p>
-                            <ReactPlayer playing loop muted url={leftvid} />
-                          </div> */}
-                        </div>
-
-{/* mobile stuff */}
-                 
-
                     </div>
-                 
+
+
+
+                    <div className='w-full h-[1px] bg-[#1e1f21]/40 mb-8'></div>
+
+                      
+                    <HomepageSecFour />
+
+                    <ItFooter/>
+
                   </section>    
         </div>
         </>

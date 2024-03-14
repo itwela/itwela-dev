@@ -3,11 +3,14 @@ import { NavLink } from 'react-router-dom';
 import resume from './assets/Itwela_3_4_24.pdf';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { IoMdClose } from "react-icons/io";
+
 
 const Navbar = () => {
   
   const [isHovered, setIsHovered] = useState(false);
   const [isCLicked, setIsCLicked] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const navContainer = useRef<HTMLDivElement>(null);
 
   //  hover animation menu -----------------
@@ -31,9 +34,15 @@ const handleMenuClick = () => {
     setIsCLicked(!isCLicked);
   }
 
+const handleMobileMenuClick = () => {
+  setIsOpen(!isOpen);
+}
+
 //  -------------------------------------------
 
 useGSAP (() => {
+
+  setIsOpen(false);
   
     gsap.set("#navul > li", {
       x: '-500em'
@@ -51,8 +60,7 @@ useGSAP (() => {
 
 }, [])
 
-const t2 = gsap.timeline()
-
+  const t2 = gsap.timeline()
 
   if (isCLicked != false) {
     t2.to("#navul > li", {
@@ -61,7 +69,6 @@ const t2 = gsap.timeline()
       ease: 'expo.out'
     })
   }
-  
   if (isCLicked != true) {
     t2.to("#navul > li", {
       x: '-500em',
@@ -70,6 +77,17 @@ const t2 = gsap.timeline()
     })
   }
 
+  // mobile animations
+  if (isOpen != false) {
+    gsap.set("#mobilenav", {
+      y: '0%'
+    })
+  }
+  if (isOpen != true) {
+    gsap.set("#mobilenav", {
+      y: '-100%'
+    })
+  }
 
 // Select all li elements
 const listItems = document.querySelectorAll('li');
@@ -80,7 +98,7 @@ listItems.forEach(item => {
     // On mouseenter, reduce opacity of all other li elements
     listItems.forEach(otherItem => {
       if (otherItem !== item) {
-        gsap.to(otherItem, { opacity: 0.5, ease: 'circ' });
+        gsap.to(otherItem, { opacity: 0.7, ease: 'bounce.Out', duration: 0.5 });
       }
     });
   });
@@ -96,20 +114,35 @@ listItems.forEach(item => {
 
   return (
     <>
-    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-4 sm:p-8 text-[#1e1f21] font-second flex place-items-center bg-[#FCF7F8]  justify-between'>
+    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-4 sm:p-8 text-[#1e1f21] font-second hidden sm:flex place-items-center bg-[#FCF7F8]  justify-between'>
       <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
 
       <ul id='navul' className='hidden sm:flex flex gap-2 p-3'>
-        <li id=''><NavLink to="/" className='p-3'>Home</NavLink></li>
+        <li id=''><NavLink to="/" className='p-3 '>Home</NavLink></li>
         {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
         <li id=''><a href={resume} download className='p-3 '>Resume</a></li>
         <li id=''><NavLink to="/blog" className='p-3 '>Blog</NavLink></li>
-        <li id=''><NavLink to="/Contact" className='p-3'>Contact</NavLink></li>
+        <li id=''><NavLink to="/Contact" className='p-3 '>Contact</NavLink></li>
 
       </ul>
 
     </nav>
 
+    <nav ref={navContainer} id='' className='sm:hidden w-[100vw] fixed relative z-[200] font-main h-[8vh] z-[2] p-2 text-[#1e1f21] font-second flex place-items-center bg-[#FCF7F8]  justify-between'>
+      <div id='menu-button' onClick={handleMobileMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
+
+      <span id='mobilenav' className='fixed bottom-0 w-[100vw] h-[100vh] bg-[#FCF7F8] z-10 flex place-items-center place-content-start '>
+        <IoMdClose size={50} id='close-menu' onClick={handleMobileMenuClick} className='cursor-pointer absolute top-5 right-[5%] p-2 z-[3] '/>
+        <ul id='' className='flex flex-col gap-8 font-main'>
+          <li onClick={handleMobileMenuClick} id=''><NavLink to="/" className=''>Home</NavLink></li>
+          {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
+          <li onClick={handleMobileMenuClick} id=''><a href={resume} download className=''>Resume</a></li>
+          <li onClick={handleMobileMenuClick} id=''><NavLink to="/blog" className=''>Blog</NavLink></li>
+          <li onClick={handleMobileMenuClick} id=''><NavLink to="/Contact" className=''>Contact</NavLink></li>
+        </ul>
+      </span>
+
+    </nav>
 
     </>
   );

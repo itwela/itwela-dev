@@ -13,10 +13,6 @@ const HomepageSecFour = () => {
   
   useGSAP(() => {
 
-    // const splitText = new SplitText('.intro-container-2 p', { type: "words" }); // Split each paragraph into lines
-    // const words = splitText.words;
-
-      const t1 = gsap.timeline()
 
   }, [])
 
@@ -24,7 +20,7 @@ const HomepageSecFour = () => {
   
   return (
     <>
-                <section className='fourth-section p-4 w-[100vw] h-[100vh] flex place-content-center bg-[#fcf7f8]'>
+                <section className='fourth-section p-4 sm:p-8 w-full z-1 min-h-[50vh] flex place-content-center place-items-center '>
                       <div id='fourth-bottom' className="intro-container-2  flex flex-col place-items-center place-content-center ">
                         <p className="story-4-p">
                         Outside of programming and school, I enjoy 
