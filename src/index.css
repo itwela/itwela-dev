@@ -17,7 +17,9 @@
   src: url("./assets/fonts/inter/InterVariable.ttf")
 } 
 
-
+.no-scroll {
+  overflow: hidden;
+}
 
 a {
   font-weight: 500;
