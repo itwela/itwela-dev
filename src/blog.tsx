@@ -30,7 +30,7 @@ const Blog = () => {
   
   return (
     <>
-    <section className='main-section w-[100vw] h-[100vh] grid place-content-center bg-[#fcf7f8] '>
+    <section className='main-section w-[100vw] h-[100dvh] grid place-content-center bg-[#fcf7f8] '>
         <div className="extra-space w-[61.8vw] relative">
             <h1 id='blog1' className='font-main'>Blog</h1>
             <br />
