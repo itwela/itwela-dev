@@ -136,10 +136,10 @@ listItems.forEach(item => {
       <div id='menu-button' onClick={handleMobileMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
 
       <span id='mobilenav' className='fixed bottom-0 w-[100vw] h-[100vh] bg-[#FCF7F8] z-10 flex place-items-center place-content-start '>
-        <span className='p-3'  onClick={handleMobileMenuClick}>
-          <IoMdClose size={50} id='close-menu' className='cursor-pointer absolute top-[5%] right-[5%] p-2 z-[3] '/>
-        </span>
         <ul id='' className='flex flex-col gap-8 font-main'>
+          <span className='p-3'  onClick={handleMobileMenuClick}>
+            <IoMdClose size={50} id='close-menu' className='cursor-pointer absolute top-[5%] right-[5%] p-2 z-[3] '/>
+          </span>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/" className=''>Home</NavLink></li>
           {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
           <li onClick={handleMobileMenuClick} id=''><a href={resume} download className=''>Resume</a></li>
