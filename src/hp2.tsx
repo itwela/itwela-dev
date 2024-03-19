@@ -22,13 +22,13 @@ export default function HompageSecTwo() {
    const resetPosition = () => {
     gsap.to('#theHovers', {opacity: 0, y: 10})
     gsap.to('#theHovers', {opacity: 0, y: 10})
-    gsap.to('#theHoversImg', {backgroundSize: '130%'})
+    gsap.to('#theHoversImg', {backgroundSize: '120%'})
    }
 
    const hoverAnimation = () => {
     gsap.to('#theHovers', {opacity: 1, y: 0})
     gsap.to('#theHovers', {opacity: 1, y: 0})
-    gsap.to('#theHoversImg', {backgroundSize: '125%'})
+    gsap.to('#theHoversImg', {backgroundSize: '115%'})
    }
 
    const exitHoverAnimation = () => {
