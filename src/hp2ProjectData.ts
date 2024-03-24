@@ -40,7 +40,7 @@ const projects: Project[] = [
         description: "A Jp Morgan library I worked on to help traders easily analyze vast amounts of data.", 
         imageUrl: img2,
         projectLink: "https://github.com/itwela/jpmorganchase.github.io",
-        status: '',
+        status: 'Completed',
         toolsUsed: ['Python ', 'React ', 'TypeScript ', 'Object-Oriented-Programming ']
     },
     // Add more projects as needed
