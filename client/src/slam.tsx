@@ -26,6 +26,7 @@ const handleSubmit = async (event: any) => {
   console.log(theProblem)
   try {
       const response = await fetch('https://itwela-dev-backend.vercel.app/api/openai/slam', {
+      // const response = await fetch('/api/openai/slam', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -41,7 +42,7 @@ const handleSubmit = async (event: any) => {
   
       const data = await response.json();
       const { text } = data;
-      console.log(text)
+      // console.log(text)
       
       setAnswerData(text); // Set the formatted text in your state variable
 
@@ -52,8 +53,8 @@ const handleSubmit = async (event: any) => {
 
   } catch (error) {
       toast("Error",{
-        // description: `There was an error processing your request: ${error}.`,
-        description: `Coming Soon!`,
+        description: `There was an error processing your request: ${error}.`,
+        // description: `Coming Soon!`,
         id: "slamerror",
       })
     }

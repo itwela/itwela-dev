@@ -1,7 +1,9 @@
+// Import necessary modules
 const express = require('express');
 const cors = require('cors');
 const OpenAI = require('openai');
 
+// Create an instance of Express app
 const app = express();
 
 // Enable CORS
@@ -13,13 +15,14 @@ app.use('/', (req, res) => {
 });
 
 // Define your route
+app.use(express.json()); // Parse JSON bodies
 app.post('/api/openai/slam', async (req, res) => {
   try {
     const openai = new OpenAI({
       apiKey: process.env.OPEN_AI_K
     });
 
-    const requestBody = await req.json();
+    const requestBody = req.body; // Access request body directly
     console.log(requestBody);
 
     const problemInst = `
