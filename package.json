@@ -20,6 +20,7 @@
     "@types/three": "^0.161.2",
     "classnames": "^2.5.1",
     "cors-anywhere": "^0.4.4",
+    "express": "^4.19.1",
     "gsap": "^3.12.5",
     "gsap-trial": "^3.12.5",
     "openai": "^4.29.2",

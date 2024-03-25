@@ -23,7 +23,7 @@ const Slam = () => {
 const handleSubmit = async (event: any) => {
         
   const theProblem = problemText // Assuming your textarea has the name 'input'
-
+  console.log(theProblem)
   try {
       const response = await fetch('/api/openai/slam', {
           method: 'POST',
@@ -35,9 +35,9 @@ const handleSubmit = async (event: any) => {
           })
       });
   
-      if (!response.ok) {
-          throw new Error('Failed to fetch data');
-      }
+      // if (!response.ok) {
+      //     throw new Error('Failed to fetch data');
+      // }
   
       const data = await response.json();
       const { text } = data;
@@ -52,7 +52,7 @@ const handleSubmit = async (event: any) => {
 
   } catch (error) {
       toast("Error",{
-        description: "There was an error processing your request. Please try again later.",
+        description: `There was an error processing your request: ${error}.`,
         id: "slamerror",
       })
     }

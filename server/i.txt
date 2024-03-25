@@ -30,10 +30,7 @@ export async function POST(request: any) {
     const theResponse = completion.choices[0].message.content;
         // const theResponse = 'hi';
 
-    return Response.json({ text: `${theResponse}` })
-    // If none of the conditions are met, return an empty response
-    return Response.json({ text: '' });
-    
+    return Response.json({ text: `${theResponse}` })    
 }
 
 
