@@ -1,0 +1,41 @@
+import { NextRequest } from "next/server";
+import  OpenAI  from "openai";
+import { problemInst } from "../../../prompts";
+
+
+export async function POST(request: any) {
+    
+    const openai = new OpenAI({
+        apiKey: process.env.OPEN_AI_K,
+    });
+    const requestBody = await request.json();
+    console.log(requestBody)
+
+    const thePrompt = `
+
+    Hi, here is the problem you are trying to solve (remember I need it in the S.L.A.M. format): 
+    
+    ${requestBody.input}
+    
+    `
+
+    const completion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+            { role: "system", content: `${problemInst}` },
+            { role: "user", content: `${thePrompt}` },
+    ],
+    })
+
+    const theResponse = completion.choices[0].message.content;
+        // const theResponse = 'hi';
+
+    return Response.json({ text: `${theResponse}` })
+    // If none of the conditions are met, return an empty response
+    return Response.json({ text: '' });
+    
+}
+
+
+
+

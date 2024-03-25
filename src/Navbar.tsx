@@ -123,13 +123,14 @@ listItems.forEach(item => {
 
   return (
     <>
-    <nav ref={navContainer} id='menu-wrapper' className='w-[100vw] fixed z-[200] font-main h-[8vh] z-[2] p-4 sm:p-8 text-[#1e1f21] font-second hidden sm:flex place-items-center bg-[#FCF7F8]  justify-between'>
+    <nav ref={navContainer} id='menu-wrapper' className='hidden sm:flex w-[100vw] fixed relative z-[200] font-main h-[8vh] z-[2] p-2 text-[#1e1f21] font-second flex place-items-center bg-[#FCF7F8]  justify-between'>
       <div id='menu-button' onMouseDown={handleMenuClick} className='cursor-pointer p-2 z-[2] '>Menu</div>
 
       <ul id='navul' className='hidden sm:flex flex gap-2 p-3'>
         <li id=''><NavLink to="/" className='p-5 '>Home</NavLink></li>
         {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
         <li id=''><a href={resume} download className='p-5 '>Resume</a></li>
+        <li id=''><NavLink to="/slam" className='p-5 '>Slam</NavLink></li>
         <li id=''><NavLink to="/blog" className='p-5 '>Blog</NavLink></li>
         <li id=''><NavLink to="/Contact" className='p-5'>Contact</NavLink></li>
 
@@ -148,6 +149,7 @@ listItems.forEach(item => {
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/" className='py-7'>Home</NavLink></li>
           {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
           <li onClick={handleMobileMenuClick} id=''><a href={resume} download className='py-7'>Resume</a></li>
+          <li onClick={handleMobileMenuClick} id=''><NavLink to="/slam" className='py-7'>Slam</NavLink></li>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/blog" className='py-7'>Blog</NavLink></li>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/Contact" className='py-7'>Contact</NavLink></li>
         </ul>

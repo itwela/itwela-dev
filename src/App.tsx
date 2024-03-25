@@ -9,6 +9,8 @@ import Navbar from './Navbar';
 import DarkMode from './darkmode';
 import Lenis from '@studio-freight/lenis'
 import ScrollToTop from './scrolltotop';
+import Slam from './slam';
+import { Toaster, toast } from 'sonner';
 
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
 
   return (
     <Router>
+      <Toaster position="bottom-left" toastOptions={{ duration: 3000 }} />
       <ScrollToTop>
           <Navbar />
           {/* Wrap your components with the BrowserRouter */}
@@ -25,6 +28,7 @@ function App() {
               <Route path="Projects" element={<Projects />} />
               <Route path="Resume" element={<Resume />} />
               <Route path="Contact" element={<Contact />} />
+              <Route path="Slam" element={<Slam />} />
               <Route path="Blog" element={<Blog />} />
           </Routes>
         </ScrollToTop>
