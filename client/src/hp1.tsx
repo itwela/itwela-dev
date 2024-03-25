@@ -6,12 +6,23 @@ import { useRef } from 'react';
 import HompageSecTwo from './hp2';
 import HomepageSecFour from './hp4';
 import ItFooter from './footer';
+import React from 'react';
+import TextTransition, { presets } from 'react-text-transition';
 
 export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobileTriggerRef }: any) {
   
   
   const triggReferSec = useRef(null);
    
+  const TEXTS = ['full-stack-developer', 'software engineer', 'passion for learning'];
+  const [index, setIndex] = React.useState(0);
+  React.useEffect(() => {
+    const intervalId = setInterval(
+      () => setIndex((index) => index + 1),
+      2618, // every 2 seconds
+    );
+    return () => clearTimeout(intervalId);
+  }, []);
       
   useGSAP(() => {
       
@@ -59,17 +70,10 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                   <div className='w-full h-max'>
 
                                     <div className='w-full flex justify-between'>
-                                      <p id='pron1' className=" font-second">full-stack developer</p>
+                                      <p id='pron1' className=" font-second"><TextTransition className="" springConfig={presets.wobbly}>{TEXTS[index % TEXTS.length]}</TextTransition>.</p>
                                       <p id='pron2' className=" font-second">(ee - tway - la)</p>
                                     </div>
-                                    <span className='flex flex-col '>
-                                      <div className='flex justify-between'>
-                                        <p id='pron3' className="font-second">software engineer</p>
-                                      </div>
-                                      <div className=' flex justify-between'>
-                                        <p id='pron4' className="font-second">passion for learning</p>
-                                      </div>
-                                    </span>
+                                   
 
                                   </div>
 
@@ -95,7 +99,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                         backend frameworks like <a className="spec-link font-black" href="https://nodejs.org/en/" target="blank">Node</a>, <a className="spec-link font-black" href="https://www.postgresql.org/" target="blank">PostgreSQL</a>, and programming languages such as <a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>.
                                         <br />
                                         <br />
-                                        <p>Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a>where I post about my professional journey and growth as a developer. </p></p>
+                                        <p>Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a> and <a className="spec-link font-black" href="https://twitter.com/itwelai" target="blank">Twitter</a> where I post about my professional journey and growth as a developer. </p></p>
                                       </div>
                                       <HompageSecTwo />
                                   </div>
@@ -120,7 +124,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                         backend frameworks like <a className="spec-link font-black" href="https://nodejs.org/en/" target="blank">Node</a>, <a className="spec-link font-black" href="https://www.postgresql.org/" target="blank">PostgreSQL</a>, and programming languages such as <a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>.
                                         <br />
                                         <br />
-                                        <p>Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a>where I post about my professional journey and growth as a developer. </p></p>
+                                        <p>Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a> and <a className="spec-link font-black" href="https://twitter.com/itwelai" target="blank">Twitter</a> where I post about my professional journey and growth as a developer. </p></p>
                                       </div>
                                       <HompageSecTwo />
                                   </div>

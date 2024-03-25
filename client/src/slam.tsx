@@ -121,14 +121,16 @@ const formatResponse = () => {
               <h1 id='slam1' className='font-main text-5xl'>S.L.A.M</h1>
               <div className=''>
                 <h2 id='slam2' className='py-2 font-second'>An tool based on an acronym for learning how to solve technical interview questions!</h2>
-                  <h3 id='slam6'>S - Structures</h3>
-                  <h3 id='slam7'>L - Lexicon</h3>
-                  <h3 id='slam8'>A - Algorithim</h3>
-                  <h3 id='slam9'>M - Math</h3>
-                <h2 id='slam3' className='py-2 font-second text-slate-600'>Instead of trying to memorize all the answers to each problem; <br />
-                as engineers I belive we are hired come up with ways to solve problems we may not be familiar with.  <br />
-                I belive if i can identify these four qualities in any given problem, I can better solve it.
+                <h2 id='slam3' className=' font-second text-slate-600'>Instead of trying to memorize every answer to each problem; <br />
+                as engineers I belive we are hired to come up with ways to solve problems we may not be familiar with.  <br />
+                I belive if I can identify these four qualities in any given problem, I can better solve it.
                 </h2>
+                  <div className='py-2'>
+                    <h3 id='slam6'>S - Structures</h3>
+                    <h3 id='slam7'>L - Lexicon</h3>
+                    <h3 id='slam8'>A - Algorithim</h3>
+                    <h3 id='slam9'>M - Math</h3>
+                  </div>
               </div>
             </div>
 

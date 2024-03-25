@@ -23,6 +23,8 @@ import {
 } from 'react-intersection-observer/test-utils'
 import Lenis from '@studio-freight/lenis';
 import ItFooter from './footer';
+import TextTransition, { presets } from 'react-text-transition';
+import React from 'react';
 
 // register
 
@@ -72,7 +74,7 @@ function Homepage() {
   const mobileTriggerRef = useRef(null);
   const availwRef = useRef(null);
   const circleRef = useRef<HTMLDivElement>(null);
-   
+
 
     return (
         <>
