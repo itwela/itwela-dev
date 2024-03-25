@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { toast } from "sonner";
+import ItFooter from './footer';
 
 
 
@@ -161,6 +162,7 @@ const formatResponse = () => {
             </div>
 
         </div>
+    <ItFooter />
     </section>
     </>
     

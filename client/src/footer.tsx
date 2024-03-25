@@ -23,6 +23,7 @@ export default function ItFooter() {
                         <ul>
                             <li><a href={resume} download className=''>Resume</a></li>
                             <li><NavLink to="/blog" className=''>Blog</NavLink></li> 
+                            <li><NavLink to="/slam" className=''>Slam</NavLink></li> 
                             <li><NavLink to="/Contact" className=''>Contact</NavLink></li>
                         </ul>
                     </span>
@@ -32,6 +33,7 @@ export default function ItFooter() {
                         <p>Socials</p>
                         <ul>
                             <li><a className="spec-link " href="https://www.linkedin.com/in/itwela/" target="blank">LinkedIn</a></li>
+                            <li><a className="spec-link" href="https://twitter.com/itwelai" target="blank">Twitter</a></li>
                             <li><a className='' href="https://github.com/itwela-ibomu" target="_blank">Github</a></li>
                         </ul>
                     </span>

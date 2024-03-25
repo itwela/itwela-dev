@@ -5,6 +5,7 @@ import homeicon from './assets/home.png'
 import { useRef } from 'react';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import ItFooter from './footer';
 
 
 
@@ -30,13 +31,14 @@ const Contact = () => {
   
   return (
     <>
-    <section className='main-section w-[100vw] h-[100dvh] grid place-content-center bg-[#fcf7f8] '>
-        <div className="extra-space w-[61.8vw] relative">
-            <h1 id='contact1' className='font-main'>Contact</h1>
+    <section className='main-section px-5 py-3 w-[100vw] min-h-[100vh] grid  bg-[#fcf7f8] '>
+    <div className="extra-space flex flex-col place-content-start w-full h-[100dvh] relative">
+            <h1 id='contact1' className='font-main text-5xl'>Contact</h1>
             <br />
             <h2 id='contact2' className='font-second'><strong>Email:</strong> <a href="mailto:iibomu@wgu.edu">iibomu@wgu.edu</a></h2> 
             <h2 id='contact3' className='font-second'><strong>Linkedin:</strong> <a href="linkedin.com/in/itwela/">linkedin.com/in/itwela/</a></h2>
         </div>
+        <ItFooter />
     </section>
     </>
     
