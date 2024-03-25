@@ -1,6 +1,5 @@
 // Import necessary modules
 const express = require('express')
-const { problemInst } = require('./prompts')
 const OpenAI = require('openai')
 
 // Create an instance of Express app
