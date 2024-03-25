@@ -35,7 +35,7 @@ const HomepageSecFour = () => {
                       
                       <div id='fourth-bottom' className="intro-container-2 justify-evenly min-h-[50vh] w-full  flex flex-col place-items-center place-content-center ">
                         
-                      <div className='w-full h-[50vh] flex flex-col gap-5 place-content-center place-items-start w-full'>
+                      <div className='w-full  h-[50vh] flex flex-col gap-5 place-content-center place-items-start w-full'>
                             <h2 className='text-6xl flex  gap-3 flex-wrap  place-items-center'>Check out <NavLink to="/slam"><span className='font-bold text-black'>S.L.A.M.</span></NavLink></h2>
                             <div className='w-full'> 
                               <div className=' flex flex-col place-content-center'>

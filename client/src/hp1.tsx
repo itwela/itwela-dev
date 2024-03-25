@@ -137,7 +137,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
 
 
 
-                      <div className='w-full h-[1px] bg-[#1e1f21]/40 '></div>
+                      {/* <div className='w-full h-[1px] bg-[#1e1f21]/40 '></div> */}
                         
                         
 
