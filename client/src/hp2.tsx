@@ -73,7 +73,7 @@ export default function HompageSecTwo() {
                         <div className='flex flex-col gap-2 w-full'>
                             <h3 className=''>{project.description}</h3>
                             <h3 className='text-[#1e1f21] font-main'><a href={project.projectLink}>{project.name}</a></h3>
-                            <div className='w-full h-[1px] bg-[#1e1f21]/40 mb-8'></div>
+                            <div className='w-full h-[1px] bg-[#1e1f21]/40'></div>
                         </div> 
                     </div>
                 ))}
@@ -107,6 +107,7 @@ export default function HompageSecTwo() {
                                     <h3 className=''>{project.description}</h3>
                                     <h3 className='text-[#1e1f21] font-main'><a href={project.projectLink}>{project.name}</a></h3>
                                 </div> 
+                                <div className='w-full h-[1px] bg-[#1e1f21]/40'></div>
                         </div>
                     ))}
                 </div>

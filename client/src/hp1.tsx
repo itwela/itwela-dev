@@ -78,7 +78,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                             </div>
 
                             {/* desktop */}
-                            <div id='aboutslide'  ref={triggReferSec} className='hidden sm:flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-max justify-between py-9  font-second '>
+                            <div id='aboutslide'  ref={triggReferSec} className='hidden sm:flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-full justify-between  font-second '>
                                 <div className='flex flex-col  gap-5 text-left sm:text-left place-content-start w-full h-max'>
                                   <div className='flex justify-between'>
                                   <p className=''>About Me</p>
@@ -103,7 +103,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                             </div>
 
                             {/* mobile */}
-                            <div   className='sm:hidden flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-max justify-between py-9  font-second '>
+                            <div   className='sm:hidden flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-max justify-between   font-second '>
                                 <div className='flex flex-col  gap-5 text-left sm:text-left place-content-start w-full h-max'>
                                   <div className='flex justify-between'>
                                   <p className=''>About Me</p>
@@ -133,7 +133,11 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
 
 
 
-                    <div className='w-full h-[1px] bg-[#1e1f21]/40 mb-8'></div>
+                      <div className='w-full h-[1px] bg-[#1e1f21]/40 '></div>
+                        
+                        
+
+
 
                       
                     <HomepageSecFour />

@@ -11,6 +11,26 @@ import { toast } from "sonner";
 
 // Define your functional component
 const Slam = () => {
+
+  useGSAP(() => {
+
+    // const splitText = new SplitText('.intro-container-2 p', { type: "words" }); // Split each paragraph into lines
+    // const words = splitText.words;
+
+      const t1 = gsap.timeline()
+      t1.from([
+        "#slam1", "#slam2", "#slam3", 
+        "#slam4", "#slam5", "#slam6", "#slam7",
+      "#slam8", "#slam9"], {
+        opacity: 0,
+        yPercent: "-100",
+        duration: 1.1,
+        delay: 0.3,
+        ease: "back",
+      })
+  }, [])
+
+
   const [problemText, setProblemText] = useState('')
   const [answerData, setAnswerData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -101,18 +121,18 @@ const formatResponse = () => {
               <h1 id='slam1' className='font-main text-5xl'>S.L.A.M</h1>
               <div className=''>
                 <h2 id='slam2' className='py-2 font-second'>An tool based on an acronym for learning how to solve technical interview questions!</h2>
-                <h3>S - Structures</h3>
-              <h3>L - Lexicon</h3>
-              <h3>A - Algorithim</h3>
-              <h3>M - Math</h3>
-                <h2 id='slam2' className='py-2 font-second text-slate-600'>Instead of trying to memorize all the answers to each problem; <br />
+                  <h3 id='slam6'>S - Structures</h3>
+                  <h3 id='slam7'>L - Lexicon</h3>
+                  <h3 id='slam8'>A - Algorithim</h3>
+                  <h3 id='slam9'>M - Math</h3>
+                <h2 id='slam3' className='py-2 font-second text-slate-600'>Instead of trying to memorize all the answers to each problem; <br />
                 as engineers I belive we are hired come up with ways to solve problems we may not be familiar with.  <br />
                 I belive if i can identify these four qualities in any given problem, I can better solve it.
                 </h2>
               </div>
             </div>
 
-            <div className='w-full min-h-screen flex flex-col gap-3'>
+            <div id='slam4' className='w-full min-h-screen flex flex-col gap-3'>
 {/* question */}
                 <div className='w-full h-max flex flex-col gap-3'>
                   <div className='flex w-full place-items-center justify-between'>
@@ -127,7 +147,7 @@ const formatResponse = () => {
                   <textarea onChange={handleInputChange} className='no-scroll outline-none w-full min-h-[200px] bg-white rounded-lg p-3'></textarea>
                 </div>
 {/* answer */}
-              <div className='p-3 w-full min-h-[600px] flex flex-col gap-3 bg-white rounded-lg'>
+              <div id='slam5' className='p-3 w-full min-h-[600px] flex flex-col gap-3 bg-white rounded-lg'>
                 {isLoading === true && (
                   <p className='animate-pulse'>Your response is loading...</p>
                 )}

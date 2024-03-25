@@ -43,6 +43,7 @@ export default function ItFooter() {
                             <li>React</li>
                             <li>TypeScript</li>
                             <li>Gsap</li>
+                            <li>Node.Js</li>
                             <li>Vercel</li>
                         </ul>
                     </span>
