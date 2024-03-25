@@ -21,6 +21,7 @@ export default function ItFooter() {
                     <span>
                         <p>Pages</p>
                         <ul>
+                            <li><NavLink to="/" className=''>Home</NavLink></li> 
                             <li><a href={resume} download className=''>Resume</a></li>
                             <li><NavLink to="/blog" className=''>Blog</NavLink></li> 
                             <li><NavLink to="/slam" className=''>Slam</NavLink></li> 
