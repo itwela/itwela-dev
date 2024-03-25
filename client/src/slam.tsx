@@ -138,7 +138,7 @@ const formatResponse = () => {
                   <div className='flex w-full place-items-center justify-between'>
                     <h1 className='font-bold'>Insert your question:</h1>
                     {isLoading === true && (
-                        <button onClick={handleSubmit} className='animate-pulse font-bold text-[#fcf7f8] bg-black rounded-lg px-2 py-2'>Loading...</button>
+                        <button onClick={handleSubmit} className='animate-pulse font-bold text-[#fcf7f8] bg-[#1e1f21]/80 rounded-lg px-2 py-2'>Loading...</button>
                     )}
                     {isLoading === false && (  
                         <button onClick={handleSubmit} className='font-bold text-[#fcf7f8] bg-black rounded-lg px-2 py-2'>Submit</button>
