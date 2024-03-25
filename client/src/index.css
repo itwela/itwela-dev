@@ -17,8 +17,8 @@
   src: url("./assets/fonts/inter/InterVariable.ttf")
 } 
 
-.no-scroll {
-  overflow: hidden;
+.no-scroll::-webkit-scrollbar {
+  width: 0;
 }
 
 a {
@@ -32,6 +32,8 @@ a:hover {
 .no-sb::-webkit-scrollbar{
   display: none;
 }
+
+
 
 
 
