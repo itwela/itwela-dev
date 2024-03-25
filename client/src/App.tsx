@@ -29,7 +29,7 @@ function App() {
               <Route path="Resume" element={<Resume />} />
               <Route path="Contact" element={<Contact />} />
               <Route path="Slam" element={<Slam />} />
-              <Route path="Blog" element={<Blog />} />
+              <Route path="Blog/*" element={<Blog />} />
           </Routes>
         </ScrollToTop>
     </Router>
