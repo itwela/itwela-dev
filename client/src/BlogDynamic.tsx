@@ -4,7 +4,7 @@ import { blogposts as posts } from './BlogPosts';
 import ReactMarkdown from 'react-markdown'
 import ItFooter from './footer';
 import { IoMdArrowBack } from 'react-icons/io';
-
+ 
 const SingleBlogPost = () => {
   const { id } = useParams(); // Get the id parameter from the URL
   const post = posts.find(post => post.id === (id)); // Find the blog post with the matching id
