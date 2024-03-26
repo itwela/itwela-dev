@@ -6,7 +6,7 @@ import { useRef } from 'react';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import ItFooter from './footer';
-import { blogposts } from './BlogPosts';
+import { blogposts } from './🔵BlogPosts';
 import { IoWarning } from "react-icons/io5";
 
 
@@ -35,9 +35,11 @@ const Blog = () => {
     <>
       <section className='main-section px-5 py-3 w-[100vw] min-h-[100vh] flex flex-col  bg-[#fcf7f8] '>
         <div className="extra-space flex flex-col place-content-start w-full min-h-[100dvh] relative">
-          <h1 id='blog1' className='font-main text-5xl'>Blog</h1>
-          <br />
-          <h2 id='blog2' className='font-second'>Learn more about my projects, coding, and more. </h2>
+          <div className='flex  flex-col w-full h-max mb-6'>
+            <h1 id='blog1' className='font-main text-5xl'>Blog</h1>
+            <br />
+            <h2 id='blog2' className='font-second'>Learn more about my projects, coding journey, and more. </h2>
+          </div>
           {/* <h2 id='blog2' className='font-second fixed place-self-center top-2 bg-yellow-100 z-50 w-[80vw] flex place-content-center place-items-center gap-1 p-1'><IoWarning/> Currently under construction. :)</h2> */}
 
           {/* Loop through categories */}

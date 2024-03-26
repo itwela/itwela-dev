@@ -11,7 +11,7 @@ import Lenis from '@studio-freight/lenis'
 import ScrollToTop from './scrolltotop';
 import Slam from './slam';
 import { Toaster, toast } from 'sonner';
-import SingleBlogPost from './BlogDynamic';
+import SingleBlogPost from './🔵BlogDynamic';
 
 function App() {
 

@@ -1,5 +1,5 @@
-import projects from "./hp2ProjectData";
-import leetcodes from "./hp2CodingData";
+import projects from "./🔵hp2ProjectData";
+import leetcodes from "./🔵hp2CodingData";
 
 interface BlogPosts {
     id: string;

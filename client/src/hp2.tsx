@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useLayoutEffect } from 'react';
-import projects from './hp2ProjectData'
+import projects from './🔵hp2ProjectData'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
