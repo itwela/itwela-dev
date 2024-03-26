@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { blogposts as posts } from './BlogPosts';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown'
 import ItFooter from './footer';
 import { IoMdArrowBack } from 'react-icons/io';
 
