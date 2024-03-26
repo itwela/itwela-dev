@@ -35,8 +35,8 @@ const Contact = () => {
     <div className="extra-space flex flex-col place-content-start w-full h-[100dvh] relative">
             <h1 id='contact1' className='font-main text-5xl'>Contact</h1>
             <br />
-            <h2 id='contact2' className='font-second'><strong>Email:</strong> <a href="mailto:iibomu@wgu.edu">iibomu@wgu.edu</a></h2> 
-            <h2 id='contact3' className='font-second'><strong>Linkedin:</strong> <a href="linkedin.com/in/itwela/">linkedin.com/in/itwela/</a></h2>
+            <h2 id='contact2' className='font-second'><strong>Email:</strong> <a href="mailto:iibomu@wgu.edu" target="_blank">iibomu@wgu.edu</a></h2> 
+            <h2 id='contact3' className='font-second'><strong>Linkedin:</strong> <a href="https://www.linkedin.com/in/itwela/" target="_blank">linkedin.com/in/itwela/</a></h2>
         </div>
         <ItFooter />
     </section>

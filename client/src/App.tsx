@@ -4,7 +4,7 @@ import Homepage from './Homepage';
 import Projects from './Projects';
 import Resume from './Resume';
 import Contact from './Contact';
-import Blog from './blog';
+import Blog from './🔵blog';
 import Navbar from './Navbar';
 import DarkMode from './darkmode';
 import Lenis from '@studio-freight/lenis'
