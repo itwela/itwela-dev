@@ -33,7 +33,16 @@ const SingleBlogPost = () => {
                     <h2 className='font-second my-2'>{post.description}</h2>
                 </div>
                 <div style={{ backgroundImage: `url(${post.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className='w-full h-[300px]'></div>
-                <ReactMarkdown>{post.content}</ReactMarkdown>
+                {post.content && (                    
+                    <ReactMarkdown>{post.content}</ReactMarkdown>
+                )}
+
+                {post.content === '' && (
+                    <div className='w-full h-max p-5 flex place-content-center'>
+                        <p>Hey, Thanks for stopping by! Full breakdown coming soon...!</p>
+                    </div>
+                )}
+
                 {post.codesolution && (
                     <div className='w-full h-max p-5 bg-[#1e1f21] text-[#fcf7f8] rounded-lg'>
                         <ReactMarkdown>{post.codesolution}</ReactMarkdown>

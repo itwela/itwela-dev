@@ -20,6 +20,7 @@ const projects: Project[] = [
         name: "JobKompass",
         description: "A full-stack web application that helps users gain key insights into their job search journey.",
         imageUrl: img1,
+        content: '',
         projectLink: "https://www.myjobkompass.com/",
         status: 'New',
         toolsUsed: ['Next.js 14 ', 'PostgreSQL ', 'TailwindCSS ', 'Prisma ', 'Clerk Auth ', 'Stripe ']
@@ -30,6 +31,7 @@ const projects: Project[] = [
         name: "Zentask",
         description: "A full-stack web application that helps users keep track of big to small tasks & projects in their life. \n This project is being built because of a coding workshop I'm attending to showcase my skills and land an interview with Cathie Stoscup (a connection I made on LinkedIn). ",
         imageUrl: img3,
+        content: '',
         projectLink: "https://miro.com/app/board/uXjVNg5bmhE=/?share_link_id=246358243262",
         status: 'In Progress',
         toolsUsed: ['Next.js 14 ', 'PostgreSQL ', 'TailwindCSS ', 'Prisma ', 'Clerk Auth ', 'Material UI', 'Chakra UI' ],
@@ -40,6 +42,7 @@ const projects: Project[] = [
         name: "Perspective",
         description: "A Jp Morgan library I worked on to help traders easily analyze vast amounts of data.", 
         imageUrl: img2,
+        content: '',
         projectLink: "https://github.com/itwela/jpmorganchase.github.io",
         status: 'Completed',
         toolsUsed: ['Python ', 'React ', 'TypeScript ', 'Object-Oriented-Programming ']
