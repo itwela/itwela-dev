@@ -11,7 +11,7 @@ import Lenis from '@studio-freight/lenis'
 import ScrollToTop from './scrolltotop';
 import Slam from './slam';
 import { Toaster, toast } from 'sonner';
-
+import SingleBlogPost from './BlogDynamic';
 
 function App() {
 
@@ -29,7 +29,9 @@ function App() {
               <Route path="Resume" element={<Resume />} />
               <Route path="Contact" element={<Contact />} />
               <Route path="Slam" element={<Slam />} />
-              <Route path="Blog" element={<Blog />} />
+              <Route path="Blog/*" element={<Blog />} />
+              {/* Dynamic route for individual blog posts */}
+              <Route path="Blog/:id" element={<SingleBlogPost />} />
           </Routes>
         </ScrollToTop>
     </Router>
