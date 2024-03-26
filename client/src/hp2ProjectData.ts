@@ -2,8 +2,9 @@ import img1 from './assets/jkbg.png'
 import img2 from './assets/jpmorgan.png'
 import img3 from './assets/zantask1.png'
 interface Project {
-    id: number;
+    id: string;
     status: string;
+    content?: string;
     toolsUsed: Array<string>;
     name: string;
     description: any;
@@ -14,7 +15,7 @@ interface Project {
 
 const projects: Project[] = [
     {
-        id: 1,
+        id: "k39s5hd",
         date: '2024',
         name: "JobKompass",
         description: "A full-stack web application that helps users gain key insights into their job search journey.",
@@ -24,7 +25,7 @@ const projects: Project[] = [
         toolsUsed: ['Next.js 14 ', 'PostgreSQL ', 'TailwindCSS ', 'Prisma ', 'Clerk Auth ', 'Stripe ']
     },
     {
-        id: 2,
+        id: "2i9f3jd",
         date: '2024',
         name: "Zentask",
         description: "A full-stack web application that helps users keep track of big to small tasks & projects in their life. \n This project is being built because of a coding workshop I'm attending to showcase my skills and land an interview with Cathie Stoscup (a connection I made on LinkedIn). ",
@@ -34,7 +35,7 @@ const projects: Project[] = [
         toolsUsed: ['Next.js 14 ', 'PostgreSQL ', 'TailwindCSS ', 'Prisma ', 'Clerk Auth ', 'Material UI', 'Chakra UI' ],
     },
     {
-        id: 3,
+        id: "r4h72w9",
         date: '2023',
         name: "Perspective",
         description: "A Jp Morgan library I worked on to help traders easily analyze vast amounts of data.", 
