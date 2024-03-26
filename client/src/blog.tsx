@@ -54,21 +54,23 @@ const Blog = () => {
                     <div className='flex py-5 flex-col w-full gap-8 place-items-center overflow-x-scroll no-scroll'>
                       <div className='w-full flex'>
                         {blogposts.filter(post => post.category === category).map((blogpost) => (
-                          <div key={blogpost.id} className='py-5 backdrop-blur-sm bg-red  w-full h-max flex gap-2  '>
-                            <div className='w-[400px] h-[400px] place-items-center p-5 rounded-lg flex relative flex-col gap-2 justify-between place-content-center'>
+                          <div key={blogpost.id} className='py-5 backdrop-blur-sm  w-full h-max flex  '>
+                            <div className='w-[400px] h-[400px] place-items-center  p-5 rounded-lg flex relative flex-col gap-2 justify-between place-content-center'>
                             
                              <div className='w-full flex place-content-end'>
-                                {/* NavLink to dynamic page */}
-                                <NavLink to={`/blog/${blogpost.id}`} className='underline text-slate-500 select-none'>Read More</NavLink>
-                              </div>
-                              
+                              <p>{blogpost.date.toLocaleDateString()}</p>
+                            </div>
+
                               <div className='w-full flex place-items-center justify-between'>
                                 <h1 className='font-bold text-4xl'>{blogpost.title}</h1> 
                               </div>
                               <img src={blogpost.imageUrl} className='w-[300px] h-[60%] py-3' alt="" />
-                              <p className='flex place-self-end'>{blogpost.date.toLocaleDateString()}</p>
+                              <span className='flex w-full justify-between'>
+                                <p className='w-[70%] line-clamp-3' >{blogpost.description}</p>
+                                <p className='flex place-self-end'><NavLink to={`/blog/${blogpost.id}`} className='underline text-slate-500 select-none'>Read More</NavLink></p>
+                              </span>
                             </div>
-                            <div className='h-[400px] w-[1px] bg-slate-500'></div>
+                            <div className='h-[400px] w-[1px] bg-slate-500 mx-6'></div>
                           </div>
                         ))}
                       </div>

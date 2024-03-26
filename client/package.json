@@ -17,6 +17,7 @@
     "@react-three/fiber": "^8.15.16",
     "@studio-freight/lenis": "^1.0.34",
     "@studio-freight/react-lenis": "^0.0.45",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "@types/three": "^0.161.2",
     "classnames": "^2.5.1",
     "cors-anywhere": "^0.4.4",
