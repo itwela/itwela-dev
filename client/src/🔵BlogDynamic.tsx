@@ -50,7 +50,7 @@ const SingleBlogPost = () => {
                 )}
 
                 {post.codesolution && (
-                    <div className='w-full h-max p-5 bg-[#1e1f21] text-[#fcf7f8] rounded-lg'>
+                    <div className='w-full overflow-scroll h-max p-5 bg-[#1e1f21] text-[#fcf7f8] rounded-lg'>
                         <ReactMarkdown>{post.codesolution}</ReactMarkdown>
                     </div>
                 )}

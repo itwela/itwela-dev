@@ -16,6 +16,8 @@ interface Leetcode {
 const leetcode = "Leetcode & More"
 
 const leetcodes: Leetcode[] = [
+    
+    // cracking the coding interview
     {
         id: "v93jdf",
         title: "Why I'm reading Cracking the Coding Interview",
@@ -44,6 +46,8 @@ I would love to talk to people about their experiences with this book and with t
         imageUrl: img2,
 
     },
+    
+    // Leetcode Find All Duplicates In an Array 442
     {
         id: "7ghe58f",
         title: "Find All Duplicates in an Array",
@@ -84,20 +88,12 @@ class Solution:
         newset = set()
 
         for num in nums:
-            if num not in newset:
+            if num not in newset: 
                 newset.add(num)
             else:
                 ea.append(num)
         ans = ea
         return ea
-\`\`\`
-        id: "2i9f3jd",
-        title: "Zentask",
-        content: '',
-        imageUrl: img1,
-        category: leetcode,
-        date: new Date("2024-03-25")
-
         `,
         lcLink: "https://leetcode.com/problems/find-all-duplicates-in-an-array/solutions/4923106/python-solution-easy-to-me-at-least",
         imageUrl: img1,
