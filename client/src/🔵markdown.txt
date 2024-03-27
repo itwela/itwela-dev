@@ -1,46 +1,21 @@
-# SUMMARY
-JobKompass is a web and mobile-friendly application that helps users gain valuable insights into what's working for them in their job search. This project was born out of necessity because I needed something better than just a spreadsheet to keep up with all of my job applications. I needed a toolkit. A resource. Something to help me with cover letters, follow-up messages to people once I finished the job, etc. and that's what sparked the interest and development of this project.
+// Leetcode Problem Template
+{
+    **Here is my solution to the Problem in Python.**
 
+    **Author:** itwela  
+    **Language:** Python3  
+    **Tags:**   
 
-## WORKFLOW & TIMELINE
+    # Intuition: 
 
-**Headers**: You can create different levels of headers using `#`.
+    # Approach:  
 
-**Lists**: Ordered and unordered lists are easy to create.
+    # Complexity:
+    - Time complexity:  
 
-**Emphasis**: *Italic* and **bold** text can be applied easily.
+    - Space complexity: 
 
-**Links**: You can insert links like [Google](https://www.google.com).
+    # Code: 
+},
 
-**Images**: Insert images using the syntax `![Alt text](image URL)`.
-
-
-
-
-## MY GOAL
-GOALS.
-
-<div style="text-align:center">
-  <img src="https://t4.ftcdn.net/jpg/05/72/82/85/360_F_572828530_ofzCYowQVnlOwkcoBJnZqT36klbJzWdn.jpg" alt="Nature">
-</div>
-
-GOALS.
-
-## MY ROLE
-ROLE
-
-ROLE
-
-<div style="text-align:center">
-  <img src="https://t4.ftcdn.net/jpg/05/72/82/85/360_F_572828530_ofzCYowQVnlOwkcoBJnZqT36klbJzWdn.jpg" alt="Nature">
-</div>
-
-## THE SOLUTION
-SOLUTION
-
-
-## Example Image
-<div style="text-align:center">
-  <img src="https://t4.ftcdn.net/jpg/05/72/82/85/360_F_572828530_ofzCYowQVnlOwkcoBJnZqT36klbJzWdn.jpg" alt="Nature">
-</div>
-
+    

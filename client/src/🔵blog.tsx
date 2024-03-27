@@ -56,13 +56,17 @@ const Blog = () => {
                     </div>
 
                     {/* Filter blogposts by category and map them */}
-                    <div id='blog4' className='flex py-5 flex-col w-full gap-8 place-items-center overflow-x-scroll no-scroll'>
-                      <div className='w-full flex'>
+                    <div id='blog4' className='flex py-5 flex-col w-full gap-8 place-items-center  overflow-x-scroll no-scroll'>
+                      <div className='w-full flex place-items-center justify-between'>
                         {blogposts.filter(post => post.category === category).map((blogpost) => (
                           <div key={blogpost.id} className='py-5  w-max h-max flex  '>
                             <div className='w-[350px] sm:w-[550px] h-max flex place-items-center  p-5 rounded-lg  relative flex-col gap-7 justify-between place-content-center'>
                             
-                             <div className='w-full flex place-content-end'>
+                             <div className='w-full flex justify-between'>
+                              <p></p>
+                              {blogpost.lcNum && (
+                                <p className='flex place-items-end w-full'><NavLink to={`/blog/allLeetCodeProblems`} className='underline py-1'>All Leetcode Solutions Here</NavLink></p>   
+                              )}
                               <p>{blogpost.date.toLocaleDateString()}</p>
                             </div>
 

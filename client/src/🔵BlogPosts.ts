@@ -8,6 +8,7 @@ interface BlogPosts {
     description?: string;
     content?: string;
     lcLink?: string;
+    slamsummary?: string;
     codesolution?: string;
     imageUrl: string;
     category: string;
@@ -17,60 +18,84 @@ interface BlogPosts {
 const pj = "Projects"
 
 export const blogposts: BlogPosts[] = [
+// PROJECTS -----------------------------
+    
+// JobKompass
     {
         id: projects[0].id,
-        title: projects[0].name,
+        date: new Date("2024-03-25"),
         category: pj,
+        title: projects[0].name,
         description: projects[0].description,
         content: projects[0].content,
         imageUrl: projects[0].imageUrl,
-        date: new Date("2024-03-25")
     },
+    // Zentask
     {
         id: projects[1].id,
-        title: projects[1].name,
+        date: new Date("2024-03-25"),
         category: pj,
+        title: projects[1].name,
         description: projects[1].description,
         content: projects[1].content,
         imageUrl: projects[1].imageUrl,
-        date: new Date("2024-03-25")
     },
+    // Perspective
     {
         id: projects[2].id,
-        title: projects[2].name,
+        date: new Date("2024-03-25"),
         category: pj,
+        title: projects[2].name,
         description: projects[2].description,
         content: projects[2].content,
         imageUrl: projects[2].imageUrl,
-        date: new Date("2024-03-25")
     },
 
     
-    // CODING
+// CODING -----------------------------------
+
+    // 713 Subarray Product Less Than K
     {
         id: leetcodes[0].id,
+        date: new Date('2024-03-27'),
+        category: leetcodes[0].category,
         title: leetcodes[0].title,
-        lcNum: leetcodes[0].lcNum,
         description: leetcodes[0].description,
-        lcLink: leetcodes[0].lcLink,
+        slamsummary: leetcodes[0].slamsummary,
         content: leetcodes[0].content,
         codesolution: leetcodes[0].codesolution,
-        category: leetcodes[0].category,
         imageUrl: leetcodes[0].imageUrl,
-        date: new Date('2024-03-27')
+        lcNum: leetcodes[0].lcNum,
+        lcLink: leetcodes[0].lcLink,
     },
+    // Why I'm reading Crack the Coding Interview
     {
         id: leetcodes[1].id,
+        date: new Date("2024-03-26"),
+        category: leetcodes[1].category,
         title: leetcodes[1].title,
         description: leetcodes[1].description,
-        lcNum: leetcodes[1].lcNum,
-        lcLink: leetcodes[1].lcLink,
+        slamsummary: leetcodes[1].slamsummary,
         content: leetcodes[1].content,
         codesolution: leetcodes[1].codesolution,
-        category: leetcodes[1].category,
         imageUrl: leetcodes[1].imageUrl,
-        date: new Date("2024-03-26")
-    }   
+        lcNum: leetcodes[1].lcNum,
+        lcLink: leetcodes[1].lcLink,
+    },
+    // Find All Duplicates in an Array
+    {
+        id: leetcodes[2].id,
+        date: new Date("2024-03-25"),
+        category: leetcodes[2].category,
+        title: leetcodes[2].title,
+        description: leetcodes[2].description,
+        slamsummary: leetcodes[2].slamsummary,
+        content: leetcodes[2].content,
+        codesolution: leetcodes[2].codesolution,
+        imageUrl: leetcodes[2].imageUrl,
+        lcNum: leetcodes[2].lcNum,
+        lcLink: leetcodes[2].lcLink,
+    }     
 ]
 
 

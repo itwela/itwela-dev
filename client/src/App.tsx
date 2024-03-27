@@ -12,6 +12,7 @@ import ScrollToTop from './scrolltotop';
 import Slam from './slam';
 import { Toaster, toast } from 'sonner';
 import SingleBlogPost from './🔵BlogDynamic';
+import AllLeetCodeProblems from './🔵blogAllLeetcodeP';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
               <Route path="Blog/*" element={<Blog />} />
               {/* Dynamic route for individual blog posts */}
               <Route path="Blog/:id" element={<SingleBlogPost />} />
+              <Route path="Blog/allLeetCodeProblems" element={<AllLeetCodeProblems />} />
           </Routes>
         </ScrollToTop>
     </Router>
