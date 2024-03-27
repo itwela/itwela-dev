@@ -66,9 +66,9 @@ const AllLeetCodeProblems = () => {
 
                     {/* Map over the filtered blogposts to render them */}
                     {filteredPosts.map(post => (
-                        <div id='lcs4' key={post.id} className="blog-post font-bold py-3 underline flex w-full justify-between">
+                        <div id='lcs4' key={post.id} className="blog-post font-bold py-3 flex w-full justify-between">
                             {/* Render post content here */}
-                            <NavLink to={`/blog/${post.id}`}><h2>{post.title}</h2></NavLink> - <p>{post.lcNum}</p>
+                            <NavLink to={`/blog/${post.id}`}><h2 className='underline'>{post.title}</h2></NavLink> - <p className='underline'>{post.lcNum}</p>
                             {/* Add other content rendering as needed */}
                         </div>
                     ))}
