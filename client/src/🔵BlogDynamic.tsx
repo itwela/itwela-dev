@@ -9,7 +9,6 @@ import rehypeRaw from 'rehype-raw';
 const SingleBlogPost = () => {
   const { id } = useParams(); // Get the id parameter from the URL
   const post = posts.find(post => post.id === (id)); // Find the blog post with the matching id
-
   if (!post) {
     return <div>Post not found</div>;
   }
