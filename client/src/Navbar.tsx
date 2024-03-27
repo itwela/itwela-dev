@@ -130,8 +130,8 @@ listItems.forEach(item => {
         <li id=''><NavLink to="/" className='p-5 '>Home</NavLink></li>
         {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
         <li id=''><a href={resume} download className='p-5 '>Resume</a></li>
-        <li id=''><NavLink to="/slam" className='p-5 '>Slam</NavLink></li>
         <li id=''><NavLink to="/blog" className='p-5 '>Blog</NavLink></li>
+        <li id=''><NavLink to="/slam" className='p-5 '>Slam</NavLink></li>
         <li id=''><NavLink to="/Contact" className='p-5'>Contact</NavLink></li>
 
       </ul>
@@ -149,8 +149,8 @@ listItems.forEach(item => {
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/" className='py-7'>Home</NavLink></li>
           {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
           <li onClick={handleMobileMenuClick} id=''><a href={resume} download className='py-7'>Resume</a></li>
-          <li onClick={handleMobileMenuClick} id=''><NavLink to="/slam" className='py-7'>Slam</NavLink></li>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/blog" className='py-7'>Blog</NavLink></li>
+          <li onClick={handleMobileMenuClick} id=''><NavLink to="/slam" className='py-7'>Slam</NavLink></li>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/Contact" className='py-7'>Contact</NavLink></li>
         </ul>
       </span>

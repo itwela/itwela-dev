@@ -4,7 +4,8 @@ import { blogposts as posts } from './🔵BlogPosts';
 import ReactMarkdown from 'react-markdown'
 import ItFooter from './footer';
 import { IoMdArrowBack } from 'react-icons/io';
- 
+import rehypeRaw from 'rehype-raw';
+
 const SingleBlogPost = () => {
   const { id } = useParams(); // Get the id parameter from the URL
   const post = posts.find(post => post.id === (id)); // Find the blog post with the matching id
@@ -32,11 +33,17 @@ const SingleBlogPost = () => {
                     <h1 className='font-second text-5xl font-bold'>{post.title}</h1>
                     <h2 className='font-second my-2'>{post.description}</h2>
                 </div>
-                <div style={{ backgroundImage: `url(${post.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className='w-full h-[300px]'></div>
-                {post.content && (                    
-                    <ReactMarkdown>{post.content}</ReactMarkdown>
+                {post.category === 'Leetcode & More' && (                    
+                    <div style={{ backgroundImage: `url(${post.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'start' }} className='w-[80%] flex place-self-center h-[300px] sm:h-[40vh]'></div>
                 )}
-
+                {post.category === 'Projects' && (                    
+                    <div style={{ backgroundImage: `url(${post.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className='w-[80%] flex place-self-center h-[300px]'></div>
+                )}
+                {post.content && (  
+                    <>
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]} className="my-8 prose-lg">{post.content}</ReactMarkdown>
+                    </>                  
+                )}
                 {post.content === '' && (
                     <div className='w-full h-max p-5 flex place-content-center'>
                         <p>Hey, Thanks for stopping by! Full breakdown coming soon...!</p>

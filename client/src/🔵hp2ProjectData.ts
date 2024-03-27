@@ -20,7 +20,12 @@ const projects: Project[] = [
         name: "JobKompass",
         description: "A full-stack web application that helps users gain key insights into their job search journey.",
         imageUrl: img1,
-        content: '',
+        content: `
+# **SUMMARY**
+JobKompass is a web and mobile-friendly application that helps users gain valuable insights into what's working for them in their job search. This project was born out of necessity because I needed something better than just a spreadsheet to keep up with all of my job applications. I needed a toolkit. A resource. Something to help me with cover letters, follow-up messages to people once I finished the job, etc. and that's what sparked the interest and development of this project.
+
+Detailed breakdown coming soon.
+                `,
         projectLink: "https://www.myjobkompass.com/",
         status: 'New',
         toolsUsed: ['Next.js 14 ', 'PostgreSQL ', 'TailwindCSS ', 'Prisma ', 'Clerk Auth ', 'Stripe ']

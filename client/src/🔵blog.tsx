@@ -59,27 +59,27 @@ const Blog = () => {
                     <div id='blog4' className='flex py-5 flex-col w-full gap-8 place-items-center overflow-x-scroll no-scroll'>
                       <div className='w-full flex'>
                         {blogposts.filter(post => post.category === category).map((blogpost) => (
-                          <div key={blogpost.id} className='py-5 backdrop-blur-sm  w-full h-max flex  '>
-                            <div className='w-[400px] h-[400px] place-items-center  p-5 rounded-lg flex relative flex-col gap-2 justify-between place-content-center'>
+                          <div key={blogpost.id} className='py-5  w-max h-max flex  '>
+                            <div className='w-[350px] sm:w-[550px] h-max flex place-items-center  p-5 rounded-lg  relative flex-col gap-7 justify-between place-content-center'>
                             
                              <div className='w-full flex place-content-end'>
                               <p>{blogpost.date.toLocaleDateString()}</p>
                             </div>
 
                               <div className='w-full flex place-items-center justify-between'>
-                                <h1 className='font-bold text-4xl'>{blogpost.title}</h1> 
+                                <h1 className='font-bold text-4xl line-clamp-2'>{blogpost.title}</h1> 
                               </div>
-                              <img src={blogpost.imageUrl} className='w-[300px] h-[60%] py-3' alt="" />
+                              <div className='w-full h-[300px] rounded-lg' style={{ backgroundImage: `url(${blogpost.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                               <span className='flex w-full justify-between'>
                                 <p className='w-[70%] line-clamp-3' >{blogpost.description}</p>
-                                <p className='flex place-content-end place-items-end w-full'><NavLink to={`/blog/${blogpost.id}`} className='underline text-slate-500 select-none'>Read More</NavLink></p>
+                                <p className='flex place-content-end place-items-end w-full'><NavLink to={`/blog/${blogpost.id}`} className='text-[#F0C6F0] bg-[#1F1D2B] rounded-lg px-3 py-1'>Read More</NavLink></p>
                               </span>
                             </div>
-                            <div className='h-[400px] w-[1px] bg-slate-500 mx-6'></div>
+                            <div className='h-m mx-9 w-[1px] bg-slate-500'></div>
                           </div>
                         ))}
                       </div>
-              `     </div>
+                    </div>
             </div>
           ))}
 
