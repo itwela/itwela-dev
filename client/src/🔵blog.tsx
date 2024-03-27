@@ -72,7 +72,7 @@ const Blog = () => {
                               <div className='w-full h-[300px] rounded-lg' style={{ backgroundImage: `url(${blogpost.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }}></div>
                               <span className='flex w-full justify-between'>
                                 <p className='w-[70%] line-clamp-3' >{blogpost.description}</p>
-                                <p className='flex place-content-end place-items-end w-full'><NavLink to={`/blog/${blogpost.id}`} className='text-[#F0C6F0] bg-[#1F1D2B] rounded-lg px-3 py-1'>Read More</NavLink></p>
+                                <p className='flex place-content-end place-items-end w-full'><NavLink to={`/blog/${blogpost.id}`} className='text-[#fcf7f8] bg-[#1F1D2B] rounded-lg px-3 py-1'>Read More</NavLink></p>
                               </span>
                             </div>
                             <div className='h-m mx-9 w-[1px] bg-slate-500'></div>
