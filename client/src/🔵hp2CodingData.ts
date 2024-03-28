@@ -9,6 +9,7 @@ interface Leetcode {
     content?: string;
     lcNum?: number;
     lcLink?: string;
+    platform?: string;
     slamsummary?: string;
     codesolution?: string;
     imageUrl: string;
@@ -21,9 +22,10 @@ const leetcodes: Leetcode[] = [
     
     // Subarray Product Less Than K
     {
-        id: "839jvcvxm",
+        id: "713-subarray-product-less-than-k-8erhg9hergw",
         title: "Subarray Product Less Than K",
         lcNum: 713,
+        platform: "Leetcode",
         description: 'Number 713',
         slamsummary: `
 **S.L.A.M Summary I used to help me understand this problem:**
@@ -163,7 +165,7 @@ class Solution:
 
     // cracking the coding interview
     {
-        id: "v93jdf",
+        id: "cracking-the-coding-interview-9bnsdjbks",
         title: "Why I'm reading Cracking the Coding Interview",
         category: leetcode,
         description: "I have been seeing this book everywhere!",        
@@ -193,9 +195,10 @@ I would love to talk to people about their experiences with this book and with t
     
     // Leetcode Find All Duplicates In an Array 442
     {
-        id: "7ghe58f",
+        id: "442-Find-All-Duplicates-in-an-Array-247hbvkjsd",
         title: "Find All Duplicates in an Array",
         lcNum: 442,
+        platform: "Leetcode",
         description: 'Number 442',
         category: leetcode,
         slamsummary: ``,

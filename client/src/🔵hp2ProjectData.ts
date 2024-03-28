@@ -15,7 +15,7 @@ interface Project {
 
 const projects: Project[] = [
     {
-        id: "k39s5hd",
+        id: "jobkompass-k39s5hd",
         date: '2024',
         name: "JobKompass",
         description: "A full-stack web application that helps users gain key insights into their job search journey.",
@@ -31,7 +31,7 @@ Detailed breakdown coming soon.
         toolsUsed: ['Next.js 14 ', 'PostgreSQL ', 'TailwindCSS ', 'Prisma ', 'Clerk Auth ', 'Stripe ']
     },
     {
-        id: "2i9f3jd",
+        id: "zentask-2i9f3jd",
         date: '2024',
         name: "Zentask",
         description: "A full-stack web application that helps users keep track of big to small tasks & projects in their life. \n This project is being built because of a coding workshop I'm attending to showcase my skills and land an interview with Cathie Stoscup (a connection I made on LinkedIn). ",
@@ -42,7 +42,7 @@ Detailed breakdown coming soon.
         toolsUsed: ['Next.js 14 ', 'PostgreSQL ', 'TailwindCSS ', 'Prisma ', 'Clerk Auth ', 'Material UI', 'Chakra UI' ],
     },
     {
-        id: "r4h72w9",
+        id: "perspective-r4h72w9",
         date: '2023',
         name: "Perspective",
         description: "A Jp Morgan library I worked on to help traders easily analyze vast amounts of data.", 

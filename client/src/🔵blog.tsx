@@ -65,7 +65,7 @@ const Blog = () => {
                              <div className='w-full flex place-items-center justify-between'>
                               <p></p>
                               {blogpost.lcNum && (
-                                <p className='flex place-items-end w-full'><NavLink to={`/blog/allLeetCodeProblems`} className='underline py-1'>All Leetcode Solutions Here</NavLink></p>   
+                                <p className='flex place-items-end w-full'><NavLink to={`/blog/allLeetCodeProblems`} className='underline py-1'>All Solutions Here</NavLink></p>   
                               )}
                               <p>{blogpost.date.toLocaleDateString()}</p>
                             </div>

@@ -8,6 +8,7 @@ interface BlogPosts {
     description?: string;
     content?: string;
     lcLink?: string;
+    platform?: string;
     slamsummary?: string;
     codesolution?: string;
     imageUrl: string;
@@ -54,6 +55,7 @@ export const blogposts: BlogPosts[] = [
     
 // CODING -----------------------------------
 
+    // jlkjs HackerRank 
     // 713 Subarray Product Less Than K
     {
         id: leetcodes[0].id,
@@ -65,6 +67,7 @@ export const blogposts: BlogPosts[] = [
         content: leetcodes[0].content,
         codesolution: leetcodes[0].codesolution,
         imageUrl: leetcodes[0].imageUrl,
+        platform: leetcodes[0].platform,
         lcNum: leetcodes[0].lcNum,
         lcLink: leetcodes[0].lcLink,
     },
@@ -79,6 +82,7 @@ export const blogposts: BlogPosts[] = [
         content: leetcodes[1].content,
         codesolution: leetcodes[1].codesolution,
         imageUrl: leetcodes[1].imageUrl,
+        platform: leetcodes[1].platform,
         lcNum: leetcodes[1].lcNum,
         lcLink: leetcodes[1].lcLink,
     },
@@ -93,9 +97,10 @@ export const blogposts: BlogPosts[] = [
         content: leetcodes[2].content,
         codesolution: leetcodes[2].codesolution,
         imageUrl: leetcodes[2].imageUrl,
+        platform: leetcodes[2].platform,
         lcNum: leetcodes[2].lcNum,
         lcLink: leetcodes[2].lcLink,
-    }     
+    }
 ]
 
 
