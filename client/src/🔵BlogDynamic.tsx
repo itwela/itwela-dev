@@ -68,7 +68,7 @@ const SingleBlogPost = () => {
                     <div id='dj3.5' style={{ backgroundImage: `url(${post.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className='w-[80%] flex place-self-center h-[300px]'></div>
                 )}
 
-                {post.slamsummary && (
+                {post.slamsummary !== '' && (
 
                     <>
 

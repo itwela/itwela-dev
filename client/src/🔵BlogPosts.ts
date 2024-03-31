@@ -55,26 +55,40 @@ export const blogposts: BlogPosts[] = [
     
 // CODING -----------------------------------
 
-    // jlkjs HackerRank 
+    // 28 Find the Index of the First Occurrence in a String
+    {
+        id: leetcodes[3].id,
+        date: new Date("2024-03-25"),
+        category: leetcodes[3].category,
+        title: leetcodes[3].title,
+        description: leetcodes[3].description,
+        slamsummary: leetcodes[3].slamsummary,
+        content: leetcodes[3].content,
+        codesolution: leetcodes[3].codesolution,
+        imageUrl: leetcodes[3].imageUrl,
+        platform: leetcodes[3].platform,
+        lcNum: leetcodes[3].lcNum,
+        lcLink: leetcodes[3].lcLink,
+    },
     // 713 Subarray Product Less Than K
     {
-        id: leetcodes[0].id,
-        date: new Date('2024-03-27'),
-        category: leetcodes[0].category,
-        title: leetcodes[0].title,
-        description: leetcodes[0].description,
-        slamsummary: leetcodes[0].slamsummary,
-        content: leetcodes[0].content,
-        codesolution: leetcodes[0].codesolution,
-        imageUrl: leetcodes[0].imageUrl,
-        platform: leetcodes[0].platform,
-        lcNum: leetcodes[0].lcNum,
-        lcLink: leetcodes[0].lcLink,
+        id: leetcodes[2].id,
+        date: new Date("2024-03-26"),
+        category: leetcodes[2].category,
+        title: leetcodes[2].title,
+        description: leetcodes[2].description,
+        slamsummary: leetcodes[2].slamsummary,
+        content: leetcodes[2].content,
+        codesolution: leetcodes[2].codesolution,
+        imageUrl: leetcodes[2].imageUrl,
+        platform: leetcodes[2].platform,
+        lcNum: leetcodes[2].lcNum,
+        lcLink: leetcodes[2].lcLink,
     },
     // Why I'm reading Crack the Coding Interview
     {
         id: leetcodes[1].id,
-        date: new Date("2024-03-26"),
+        date: new Date('2024-03-27'),
         category: leetcodes[1].category,
         title: leetcodes[1].title,
         description: leetcodes[1].description,
@@ -88,19 +102,19 @@ export const blogposts: BlogPosts[] = [
     },
     // Find All Duplicates in an Array
     {
-        id: leetcodes[2].id,
-        date: new Date("2024-03-25"),
-        category: leetcodes[2].category,
-        title: leetcodes[2].title,
-        description: leetcodes[2].description,
-        slamsummary: leetcodes[2].slamsummary,
-        content: leetcodes[2].content,
-        codesolution: leetcodes[2].codesolution,
-        imageUrl: leetcodes[2].imageUrl,
-        platform: leetcodes[2].platform,
-        lcNum: leetcodes[2].lcNum,
-        lcLink: leetcodes[2].lcLink,
+        id: leetcodes[0].id,
+        date: new Date('2024-03-31'),
+        category: leetcodes[0].category,
+        title: leetcodes[0].title,
+        description: leetcodes[0].description,
+        slamsummary: leetcodes[0].slamsummary,
+        content: leetcodes[0].content,
+        codesolution: leetcodes[0].codesolution,
+        imageUrl: leetcodes[0].imageUrl,
+        platform: leetcodes[0].platform,
+        lcNum: leetcodes[0].lcNum,
+        lcLink: leetcodes[0].lcLink,
     }
-]
+].toSorted((a, b) => b.date.getTime() - a.date.getTime());
 
 

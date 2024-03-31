@@ -1,6 +1,7 @@
 import img1 from './assets/lcpics/🟠442-lc.png'
 import img2 from './assets/ctci.png'
 import img3 from './assets/lcpics/🟠713-lc.png'
+import img4 from './assets/lcpics/🟠28-lc.png'
 
 interface Leetcode {
     id: string;
@@ -20,6 +21,98 @@ const leetcode = "Leetcode & More"
 
 const leetcodes: Leetcode[] = [
     
+    // Find the Index of the First Occurrence in a String
+    {
+        id: "28-find-the-index-of-the-first-occurrence-in-a-string-nvcniwfw09w",
+        title: "Find the Index of the First Occurrence in a String",
+        lcNum: 28,
+        platform: "Leetcode",
+        description: 'Number 28',
+        slamsummary: "",
+        category: leetcode,
+        content: `
+Hello!
+
+**Here is my solution to the Find the Index of the First Occurrence in a String Problem in Python.**
+
+**Author:** itwela  
+**Language:** Python3  
+**Tags:** Python3  
+
+# Intuition:  
+I watched a video talking about two pointers so 
+that was my intuition but I quickly realized 
+that was wrong. Then I watched a neetcode video 
+and from writing out and taking notes i actually 
+understood the problem that way.
+
+# Approach:  
+my approach any any problem I do 
+is to first understand the goal, 
+the problem and to print log. by 
+print logging i was able to verify 
+that im looping through the range I 
+want and why.
+
+# Complexity
+- Time complexity:
+Big O (n * m)
+
+- Space complexity:
+O(1)
+
+# Code: 
+        `,
+        codesolution: `
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+
+        # my notes ---
+        def notes():    
+
+            # my range notes
+            ''' 
+            form what i understand we are subtrracting the length of needle so that we never go oout of bounds and also because all we need to do is return the first position of the match basically.
+            '''
+
+            # For loop notes
+            ''' if the haystck starting from i 
+            and ending at i plus the length of needle,
+            DOES eeuql needle:
+            '''
+
+            # my print logging process to figure this out:
+            '''
+            while i like neetcode. i dont like how he writes his syntax. when im trying to understand something I need things organized and once I'm more comfortable then i can put everything on 1 line. He's tring to go fast and while speed is important I know i dont start fast. here are my print loggs:
+
+            print("this is hastack:", haystack)
+            print("this is needle:", needle)
+            print("this is lenght of haystack plus 1:", n)
+            print("thi sis length of needle:", m)
+            print("thisis my range:", myrange)
+        
+            '''
+            pass
+
+        m = len(needle)
+        n = len(haystack) + 1
+
+        myrange = n - m
+
+        if needle == "":
+            return 0
+
+        for i in range(myrange):
+            if haystack[i: i + m] == needle:
+                return i
+
+        return -1
+        `,
+        lcLink: "https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string/solutions/4949320/my-python-solution",
+        imageUrl: img4,
+
+    },
+
     // Subarray Product Less Than K
     {
         id: "713-subarray-product-less-than-k-8erhg9hergw",

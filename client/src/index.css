@@ -21,6 +21,13 @@
   width: 0;
 }
 
+/* Custom scrollbar style */
+.custom-scrollbar {
+  scrollbar-width: thin; /* "auto" may be used instead of "thin" */
+}
+
+
+
 a {
   font-weight: 500;
 }
