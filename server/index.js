@@ -119,3 +119,11 @@ app.post('/api/openai/slam', async (req, res) => {
 app.listen(5000, () => {
   console.log('Server is running on port 5000');
 });
+
+`
+test prompt for explaining the problems solution:
+
+I have this solution to the ___ problem but I 
+truly don't understand it. Im having a hard time 
+understanding can you walk me through it?:
+`
