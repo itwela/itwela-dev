@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import resume from './assets/Itwela_4_2_24.pdf';
+import resume from './assets/Itwela_Codebase.pdf';
 
 
 export default function ItFooter() {
