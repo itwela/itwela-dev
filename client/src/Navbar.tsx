@@ -1,6 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import resume from './assets/Itwela_4_2_24.pdf';
+import resume from './assets/Itwela-Ibomu--Resume-2024-1.pdf';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { IoMdClose, IoMdMenu } from "react-icons/io";

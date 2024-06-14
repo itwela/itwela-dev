@@ -94,7 +94,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                         <div className='w-full h-[1px] bg-[#1e1f21]/80'></div>
                                         <p className="intro-story ">
                                         My name is Itwela Ibomu.
-                                        I am a <span className="font-black"> full-stack developer </span>deeply immersed in the world of code,
+                                        I am a <span className="font-black"> software engineer </span>deeply immersed in the world of code,
                                         with a focus in frontend tools like <a className="spec-link font-black" href="" target="blank">TypeScript, </a> <a href="https://reactjs.org/" target="blank" className="spec-link font-black">React</a>, and <a className="spec-link font-black" href="https://nextjs.org/" target="blank">Next.js</a>,
                                         backend frameworks like <a className="spec-link font-black" href="https://nodejs.org/en/" target="blank">Node</a>, <a className="spec-link font-black" href="https://www.postgresql.org/" target="blank">PostgreSQL</a>, and programming languages such as <a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>.
                                         <br />
