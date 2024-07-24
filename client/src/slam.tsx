@@ -139,13 +139,25 @@ const formatResponse = () => {
 {/* question */}
                 <div className='w-full h-max flex flex-col gap-3'>
                   <div className='flex w-full place-items-center justify-between'>
-                    <h1 className='font-bold'>Insert your question:</h1>
+                    
+                    {isLoading === false && problemText.length < 100 && answerData.length < 100 && (  
+                      <h1 className='font-bold'>Insert your question:</h1>
+                    )}
+                    {isLoading === false && problemText.length > 100 && answerData.length < 100 &&  (  
+                      <h1 className='font-bold text-yellow-500'>Your question has been entered, please press submit to get an answer.</h1>
+                    )}
+
+                    {isLoading === false && answerData.length > 100 && (  
+                      <h1 className='font-bold text-green-500'>Your question has been answered!</h1>
+                    )}
+
                     {isLoading === true && (
                         <button onClick={handleSubmit} className='animate-pulse font-bold text-[#fcf7f8] bg-[#1e1f21]/80 rounded-lg px-2 py-2'>Loading...</button>
                     )}
-                    {isLoading === false && (  
+                    {isLoading === false && problemText.length > 100 && (  
                         <button onClick={handleSubmit} className='font-bold text-[#fcf7f8] bg-black rounded-lg px-2 py-2'>Submit</button>
                     )}
+
                   </div>
                   <textarea onChange={handleInputChange} className='no-scroll outline-none w-full min-h-[200px] bg-white rounded-lg p-3'></textarea>
                 </div>

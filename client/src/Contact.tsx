@@ -32,12 +32,14 @@ const Contact = () => {
   return (
     <>
     <section className='main-section px-5 py-3 w-[100vw] min-h-[100vh] grid  bg-[#fcf7f8] '>
-    <div className="extra-space flex flex-col place-content-start w-full h-[100dvh] relative">
+    <div className="extra-space flex flex-col place-content-start w-full h-[10dvh] relative">
             <h1 id='contact1' className='font-main text-5xl'>Contact</h1>
             <br />
-            <h2 id='contact2' className='font-second'><strong>Email:</strong> <a href="mailto:iibomu@wgu.edu" target="_blank">iibomu@wgu.edu</a></h2> 
-            <h2 id='contact3' className='font-second'><strong>Linkedin:</strong> <a href="https://www.linkedin.com/in/itwela/" target="_blank">linkedin.com/in/itwela/</a></h2>
-            <h2 id='contact3' className='font-second'><strong>Twitter:</strong> <a href="https://twitter.com/itwelai" target="_blank">twitter.com/itwelai</a></h2>
+            {/* <h2 id='contact3' className='font-second'><strong>Twitter:</strong> <a href="https://twitter.com/itwelai" target="_blank">twitter.com/itwelai</a></h2> */}
+        </div>
+        <div className='h-[90dvh] w-full flex flex-col place-content-center place-items-center'>
+          <h2 id='contact2' className='font-second'><strong>Email:</strong> <a href="mailto:iibomu@wgu.edu" target="_blank">iibomu@wgu.edu</a></h2> 
+          <h2 id='contact3' className='font-second'><strong>Linkedin:</strong> <a href="https://www.linkedin.com/in/itwela/" target="_blank">linkedin.com/in/itwela/</a></h2>
         </div>
         <ItFooter />
     </section>

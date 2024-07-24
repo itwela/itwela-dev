@@ -67,6 +67,9 @@ const SingleBlogPost = () => {
                 {post.category === 'Projects' && (                    
                     <div id='dj3.5' style={{ backgroundImage: `url(${post.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' }} className='w-[80%] flex place-self-center h-[300px]'></div>
                 )}
+                {post.category === 'Life' && (                    
+                    <div id='dj3.5' style={{ backgroundImage: `url(${post.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'top' }} className='w-[80%] flex place-self-center h-[300px]'></div>
+                )}
 
                 {post.slamsummary !== '' && (
 

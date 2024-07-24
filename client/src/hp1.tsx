@@ -94,12 +94,14 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                         <div className='w-full h-[1px] bg-[#1e1f21]/80'></div>
                                         <p className="intro-story ">
                                         My name is Itwela Ibomu.
-                                        I am a <span className="font-black"> software engineer </span>deeply immersed in the world of code,
-                                        with a focus in frontend tools like <a className="spec-link font-black" href="" target="blank">TypeScript, </a> <a href="https://reactjs.org/" target="blank" className="spec-link font-black">React</a>, and <a className="spec-link font-black" href="https://nextjs.org/" target="blank">Next.js</a>,
+                                        I am proud to say I am currently a Software Engineering Fellow @ <a href="https://headstarter.co/" target='_blank' className="font-black"> Headstarter </a>. 
+                                        <br /> <br /> 
+                                        I am deeply immersed in the world of tech,
+                                        with experience using frontend tools like <a className="spec-link font-black" href="" target="blank">TypeScript, </a> <a href="https://reactjs.org/" target="blank" className="spec-link font-black">React</a>, and <a className="spec-link font-black" href="https://nextjs.org/" target="blank">Next.js</a>,
                                         backend frameworks like <a className="spec-link font-black" href="https://nodejs.org/en/" target="blank">Node</a>, <a className="spec-link font-black" href="https://www.postgresql.org/" target="blank">PostgreSQL</a>, and programming languages such as <a className="spec-link font-black" href="https://www.python.org/" target="blank">Python</a>, and <a className="spec-link font-black" href="https://www.java.com/en/" target="blank">Java</a>.
-                                        <br />
-                                        <br />
-                                        <p>Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a> and <a className="spec-link font-black" href="https://twitter.com/itwelai" target="blank">Twitter</a> where I post about my professional journey and growth as a developer. </p></p>
+                                        Majority of my work is open-source and available on <a className="spec-link font-black" href="https://github.com/itwela" target="blank">Github</a>. You can also connect with me on <a className="spec-link font-black" href="https://www.linkedin.com/in/itwela/" target="blank">Linkedin </a> and <a className="spec-link font-black" href="https://www.tiktok.com/@twezo?_t=8oGzCbss0q2&_r=1" target="blank">TikTok</a> where I post about my professional journey and growth as a developer. 
+                                        </p>
+                                        <p>Scroll further to see some of my projects I've been working on recently.</p>
                                       </div>
                                       <HompageSecTwo />
                                   </div>

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import resume from './assets/Itwela-Ibomu--Resume-2024-1.pdf';
+import resume from './assets/Itwela-Ibomu--Resume-2024-2.pdf';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { IoMdClose, IoMdMenu } from "react-icons/io";
@@ -129,7 +129,7 @@ listItems.forEach(item => {
       <ul id='navul' className='hidden sm:flex flex gap-2 p-3'>
         <li id=''><NavLink to="/" className='p-5 '>Home</NavLink></li>
         {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
-        <li id=''><a href={resume} download className='p-5 '>Resume</a></li>
+        <li id=''><a href='https://1drv.ms/b/c/4c37d5fbd54d5f4a/EWE2TzSbQy1Eu2YWdvnPuecBpdpJzz9avi6J-93t43BXAg?e=h2Jr6Y'target='_blank' className='p-5 '>Resume</a></li>
         <li id=''><NavLink to="/blog" className='p-5 '>Blog</NavLink></li>
         <li id=''><NavLink to="/slam" className='p-5 '>Slam</NavLink></li>
         <li id=''><NavLink to="/Contact" className='p-5'>Contact</NavLink></li>
@@ -148,7 +148,8 @@ listItems.forEach(item => {
           </span>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/" className='py-7'>Home</NavLink></li>
           {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
-          <li onClick={handleMobileMenuClick} id=''><a href={resume} download className='py-7'>Resume</a></li>
+          {/* <li onClick={handleMobileMenuClick} id=''><a href={resume} download className='py-7'>Resume</a></li> */}
+          <li onClick={handleMobileMenuClick} id=''><a href='https://1drv.ms/b/c/4c37d5fbd54d5f4a/EWE2TzSbQy1Eu2YWdvnPuecBpdpJzz9avi6J-93t43BXAg?e=h2Jr6Y' target='_blank' className='py-7'>Resume</a></li>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/blog" className='py-7'>Blog</NavLink></li>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/slam" className='py-7'>Slam</NavLink></li>
           <li onClick={handleMobileMenuClick} id=''><NavLink to="/Contact" className='py-7'>Contact</NavLink></li>

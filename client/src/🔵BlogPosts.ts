@@ -1,5 +1,6 @@
 import projects from "./🔵hp2ProjectData";
 import leetcodes from "./🔵hp2CodingData";
+import life from "./🔵h2LifeData";
 
 interface BlogPosts {
     id: string;
@@ -30,16 +31,18 @@ export const blogposts: BlogPosts[] = [
         description: projects[0].description,
         content: projects[0].content,
         imageUrl: projects[0].imageUrl,
+        slamsummary: projects[0].slamsummary
     },
     // Zentask
     {
         id: projects[1].id,
-        date: new Date("2024-03-25"),
+        date: new Date("2023-08-01"),
         category: pj,
         title: projects[1].name,
         description: projects[1].description,
         content: projects[1].content,
         imageUrl: projects[1].imageUrl,
+        slamsummary: projects[1].slamsummary
     },
     // Perspective
     {
@@ -50,6 +53,17 @@ export const blogposts: BlogPosts[] = [
         description: projects[2].description,
         content: projects[2].content,
         imageUrl: projects[2].imageUrl,
+        slamsummary: projects[2].slamsummary
+    },
+    // Bitez Of Love
+    {
+        id: projects[3].id,
+        date: new Date("2024-03-25"),
+        category: pj,
+        title: projects[3].name,
+        description: projects[3].description,
+        content: projects[3].content,
+        imageUrl: projects[3].imageUrl,
     },
 
     
@@ -114,7 +128,21 @@ export const blogposts: BlogPosts[] = [
         platform: leetcodes[0].platform,
         lcNum: leetcodes[0].lcNum,
         lcLink: leetcodes[0].lcLink,
-    }
+    },
+
+// Life -----------------------------------
+
+    {
+        id: life[0].id,
+        date: new Date("2024-06-24"),
+        category: life[0].category,
+        title: life[0].name,
+        description: life[0].description,
+        slamsummary: life[0].slamsummary,
+        content: life[0].content,
+        imageUrl: life[0].imageUrl,
+    },
+
 ].toSorted((a, b) => b.date.getTime() - a.date.getTime());
 
 
