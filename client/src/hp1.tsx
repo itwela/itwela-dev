@@ -51,8 +51,8 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
   
   return (
         <>
-        <div ref={triggerRef}>
-                  <section id='ccol' className="pt-[10vh] sm:pt-[0vh] h-max first-section flex flex-col justify-between w-[100vw] p-4 sm:p-8 bg-[#fcf7f8]">
+        <div className='bg-[#fcf7f8] flex flex-col place-items-center ' ref={triggerRef}>
+                  <section id='ccol' className="pt-[10vh] sm:pt-[0vh] h-max first-section flex flex-col justify-between w-[100vw] sm:w-[80vw] p-4 sm:p-8 bg-[#fcf7f8]">
                     <div ref={availwRef} id='new-vp' className=" extra-space  flex flex-col  place-content-center relative ">
                         <div className="title-wrapper  flex flex-col gap-8  ">
                             
