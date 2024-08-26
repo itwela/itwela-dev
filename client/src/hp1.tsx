@@ -8,6 +8,8 @@ import HomepageSecFour from './hp4';
 import ItFooter from './footer';
 import React from 'react';
 import TextTransition, { presets } from 'react-text-transition';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
 
 export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobileTriggerRef }: any) {
   
@@ -57,9 +59,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                         <div className="title-wrapper  flex flex-col gap-8  ">
                             
                             
-                            {/* itwela and swe container */}
                             <div id='hello' className="title-container  sm:h-[60vh] place-content-center  relative flex flex-col">
-                                {/* <h1 id='hi-im' className="hi"></h1> */}
                                 
                                 <div className='flex flex-col gap-5 '>
                                   
@@ -81,7 +81,6 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                 
                             </div>
 
-                            {/* desktop */}
                             <div id='aboutslide'  ref={triggReferSec} className='hidden sm:flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-full justify-between  font-second '>
                                 <div className='flex flex-col  gap-5 text-left sm:text-left place-content-start w-full h-max'>
                                   <div className='flex justify-between'>
@@ -108,7 +107,6 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                 </div>
                             </div>
 
-                            {/* mobile */}
                             <div   className='sm:hidden flex flex-col text-[#1e1f21]/80 relative  gap-5 w-full h-max justify-between   font-second '>
                                 <div className='flex flex-col  gap-5 text-left sm:text-left place-content-start w-full h-max'>
                                   <div className='flex justify-between'>
@@ -142,7 +140,6 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
 
 
 
-                      {/* <div className='w-full h-[1px] bg-[#1e1f21]/40 '></div> */}
                         
                         
 

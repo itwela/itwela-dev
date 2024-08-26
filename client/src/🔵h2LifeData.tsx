@@ -18,14 +18,14 @@ const life: LifeBlogPostInterface[] = [
     {
         id: "i-got-into-headstarter-hjk435h4",
         date: '2024',
-        name: "Interning at HeadStarter",
-        description: "I got my first Software Engineering Internship at Headstarter!!",
+        name: "Becoming a Software Engineering Fellow at HeadStarter",
+        description: "I got into a Software Engineering Fellowship!",
         imageUrl: img1,
         slamsummary: '',
         category: 'Life',
         content: `
 # **Software Engineering Fellow? Me?**
-As of today (7/24/2024), I am a Software Engineering Intern at HeadStarter. 
+As of today (7/24/2024), I am a Software Engineering Fellow at HeadStarter. 
 It's been a great experience so far, and I'm excited to see where I'll be in the future.
 
 I applied to Headstarter for a previous internship and did not make it, so I made sure to
