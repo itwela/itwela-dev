@@ -22,7 +22,7 @@ export default function ItFooter() {
                         <p>Pages</p>
                         <ul>
                             <li><NavLink to="/" className=''>Home</NavLink></li> 
-                            <li><a href={resume} download className=''>Resume</a></li>
+                            <li><a href="https://drive.google.com/file/d/1xYYdMP0V83De-odSxcc4IxeIcbKFbUO8/view" target='_blank' className=''>Resume</a></li>
                             <li><NavLink to="/blog" className=''>Blog</NavLink></li> 
                             <li><NavLink to="/slam" className=''>Slam</NavLink></li> 
                             <li><NavLink to="/Contact" className=''>Contact</NavLink></li>
