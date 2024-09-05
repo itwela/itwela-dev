@@ -35,7 +35,7 @@ export default function ItFooter() {
                         <ul>
                             <li><a className="spec-link " href="https://www.linkedin.com/in/itwela/" target="blank">LinkedIn</a></li>
                             <li><a className="spec-link" href="https://twitter.com/itwelai" target="blank">Twitter</a></li>
-                            <li><a className='' href="https://github.com/itwela-ibomu" target="_blank">Github</a></li>
+                            <li><a className='' href="https://github.com/itwela/" target="_blank">Github</a></li>
                         </ul>
                     </span>
                 
