@@ -5,6 +5,7 @@ import resume from './assets/Itwela_Codebase.pdf';
 export default function ItFooter() {
 
     const thisyear = new Date().getFullYear()
+    const resumeLink = 'https://drive.google.com/file/d/1271bEL8QqSJLK2hUw9ZQiGtTOudNTU_h/view?usp=sharing'
 
     return (
         <div id="footer p-4  sm:p-8 w-[100vw] h-max ">
@@ -22,7 +23,7 @@ export default function ItFooter() {
                         <p>Pages</p>
                         <ul>
                             <li><NavLink to="/" className=''>Home</NavLink></li> 
-                            <li><a href="https://drive.google.com/file/d/1xYYdMP0V83De-odSxcc4IxeIcbKFbUO8/view" target='_blank' className=''>Resume</a></li>
+                            <li><a href={resumeLink} target='_blank' className=''>Resume</a></li>
                             <li><NavLink to="/blog" className=''>Blog</NavLink></li> 
                             <li><NavLink to="/slam" className=''>Slam</NavLink></li> 
                             <li><NavLink to="/Contact" className=''>Contact</NavLink></li>

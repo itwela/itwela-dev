@@ -120,6 +120,7 @@ listItems.forEach(item => {
   });
 });
 
+const resumeLink = 'https://drive.google.com/file/d/1271bEL8QqSJLK2hUw9ZQiGtTOudNTU_h/view?usp=sharing'
 
   return (
     <>
@@ -129,7 +130,7 @@ listItems.forEach(item => {
       <ul id='navul' className='hidden sm:flex flex gap-2 p-3'>
         <li id=''><NavLink to="/" className='p-5 '>Home</NavLink></li>
         {/* <li id=''><NavLink to="/Projects" className='p-3'>Projects</NavLink></li> */}
-        <li id=''><a href='https://drive.google.com/file/d/1xYYdMP0V83De-odSxcc4IxeIcbKFbUO8/view'target='_blank' className='p-5 '>Resume</a></li>
+        <li id=''><a href={resumeLink} target='_blank' className='p-5 '>Resume</a></li>
         <li id=''><NavLink to="/blog" className='p-5 '>Blog</NavLink></li>
         <li id=''><NavLink to="/slam" className='p-5 '>Slam</NavLink></li>
         <li id=''><NavLink to="/Contact" className='p-5'>Contact</NavLink></li>
