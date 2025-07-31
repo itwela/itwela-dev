@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Homeicon from './home-icon';
 import { NavLink } from 'react-router-dom';
 import homeicon from './assets/home.png'
@@ -6,8 +6,7 @@ import { useRef } from 'react';
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 import ItFooter from './footer';
-
-
+import CodeReview from './CodeReview';
 
 // Define your functional component
 const Contact = () => {
@@ -27,15 +26,16 @@ const Contact = () => {
       })
   }, [])
 
-
-  
   return (
     <>
     <section className='main-section px-5 py-3 w-[100vw] min-h-[100vh] grid  bg-[#fcf7f8] '>
+
+{/* will log code prep stuff here */}
+<CodeReview />
+
     <div className="extra-space flex flex-col place-content-start w-full h-[10dvh] relative">
             <h1 id='contact1' className='font-main text-5xl'>Contact</h1>
             <br />
-            {/* <h2 id='contact3' className='font-second'><strong>Twitter:</strong> <a href="https://twitter.com/itwelai" target="_blank">twitter.com/itwelai</a></h2> */}
         </div>
         <div className='h-[90dvh] w-full flex flex-col place-content-center place-items-center'>
           <h2 id='contact2' className='font-second'><strong>Email:</strong> <a href="mailto:iibomu@wgu.edu" target="_blank">iibomu@wgu.edu</a></h2> 
@@ -47,6 +47,7 @@ const Contact = () => {
     
     
   );
+
 };
 
 // Export the component
