@@ -119,7 +119,7 @@ export default function HomepageSecOne({triggerRef, availwRef, circleRef, mobile
                                         <div className='w-full h-[1px] bg-[#1e1f21]/80'></div>
                                         <p className="intro-story ">
                                         My name is Itwela Ibomu.
-                                        I am proud to say I am currently a Software Engineering Fellow @ <a href="https://headstarter.co/" target='_blank' className="font-black"> Headstarter. </a>
+                                        I am proud to say I am currently a Software Engineer @ <a href="https://www.dopemarketing.com" target='_blank' className="font-black"> Dope Marketing. </a> 
                                         <br /> <br /> 
                                         I am deeply immersed in the world of tech,
                                         with experience using frontend tools like <a className="spec-link font-black" href="" target="blank">TypeScript, </a> <a href="https://reactjs.org/" target="blank" className="spec-link font-black">React</a>, and <a className="spec-link font-black" href="https://nextjs.org/" target="blank">Next.js</a>,
