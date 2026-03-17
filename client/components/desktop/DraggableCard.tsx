@@ -8,12 +8,21 @@ interface DraggableCardProps {
   card: DesktopCard
   index?: number
   isViewing?: boolean
+  reveal?: boolean
   onOpen: (card: DesktopCard) => void
   onFocus: (id: string) => void
   onDragEnd?: (cardId: string, x: number, y: number) => void
 }
 
-export function DraggableCard({ card, index = 0, isViewing = false, onOpen, onFocus, onDragEnd }: DraggableCardProps) {
+export function DraggableCard({
+  card,
+  index = 0,
+  isViewing = false,
+  reveal = true,
+  onOpen,
+  onFocus,
+  onDragEnd,
+}: DraggableCardProps) {
   const dragStartedRef = useRef(false)
   const hasImage = card.imageUrl && card.imageUrl.trim() !== ''
   const isPhone = card.orientation === 'phone'
@@ -28,9 +37,20 @@ export function DraggableCard({ card, index = 0, isViewing = false, onOpen, onFo
       drag
       dragMomentum={false}
       dragElastic={0}
-      initial={{ x: card.x + offsetX, y: card.y + offsetY, rotate: card.rotation, scale: 0.9, opacity: 0 }}
-      animate={{ x: card.x + offsetX, y: card.y + offsetY, rotate: card.rotation, scale: 1, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 360, damping: 38, delay: index * 0.06 }}
+      initial={{ x: card.x + offsetX, y: card.y + offsetY, rotate: card.rotation, scale: 0.96, opacity: 0 }}
+      animate={{
+        x: card.x + offsetX,
+        y: card.y + offsetY,
+        rotate: card.rotation,
+        scale: reveal ? 1 : 0.96,
+        opacity: reveal ? 1 : 0,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 360,
+        damping: 38,
+        delay: reveal ? index * 0.07 : 0,
+      }}
       whileDrag={{ scale: 1, cursor: 'grabbing', zIndex: 9998 }}
       onDragStart={() => { dragStartedRef.current = true }}
       onDragEnd={(_e, info) => {

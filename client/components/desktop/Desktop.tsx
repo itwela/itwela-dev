@@ -75,6 +75,86 @@ type MobileOpenView =
   | { kind: 'card'; cardId: string }
   | { kind: 'app'; appId: AppId }
 
+const STARTUP_STATIC_IMAGES = [
+  '/desktop-bg-light.jpg',
+  '/desktop-bg-dark.jpg',
+  '/finderimage.jpg',
+  '/mialicon.png',
+  '/photosicon.png',
+  '/applemusicicon.png',
+  '/resumeicon.svg',
+  '/blogicon.png',
+  '/aiiconmessage.png',
+  '/jobkompass_logo.svg',
+]
+
+function preloadImage(url: string) {
+  return new Promise<void>((resolve) => {
+    if (!url) return resolve()
+    const img = new Image()
+    img.onload = () => resolve()
+    img.onerror = () => resolve()
+    img.src = url
+  })
+}
+
+function StartupScreen({ progress }: { progress: number }) {
+  const pct = Math.max(0, Math.min(100, Math.round(progress * 100)))
+  const letters = 'itwela.dev'.split('')
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="fixed inset-0 z-[12000] bg-black flex items-center justify-center"
+    >
+      <div className="w-full px-8 text-center max-w-[640px]">
+        <div className="relative mx-auto h-[240px] min-[1025px]:h-[290px]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.35 }}
+            className="absolute left-1/2 top-0 -translate-x-1/2 font-semibold tracking-[-0.03em] text-white text-[32px] min-[1025px]:text-[40px]"
+          >
+            {letters.map((char, i) => (
+              <motion.span
+                key={`${char}-${i}`}
+                className="inline-block"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.45,
+                  delay: i * 0.02,
+                  ease: 'easeInOut',
+                }}
+              >
+                {char === ' ' ? '\u00A0' : char}
+              </motion.span>
+            ))}
+          </motion.div>
+
+          <div className="absolute left-1/2 bottom-8 -translate-x-1/2 w-[min(240px,72vw)] min-[1025px]:w-[min(260px,36vw)]">
+            <div className="h-[6px] w-full rounded-full bg-white/20 overflow-hidden shadow-[0_0_0_1px_rgba(255,255,255,0.08)]">
+              <motion.div
+                className="h-full rounded-full bg-white"
+                initial={{ width: '0%' }}
+                animate={{ width: `${Math.max(8, pct)}%` }}
+                transition={{ duration: 0.28, ease: 'easeOut' }}
+              />
+            </div>
+            <motion.div
+              initial={{ opacity: 0.35 }}
+              animate={{ opacity: [0.35, 0.7, 0.35] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="mx-auto mt-3 h-[1px] w-[min(180px,48vw)] bg-white/25"
+            />
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 function getCenteredPosition(size: { width: number; height: number }) {
   if (typeof window === 'undefined') return { x: 100, y: 80 }
   return {
@@ -223,16 +303,21 @@ function AttrAnimatedText({ text, className }: { text: string; className?: strin
   )
 }
 
-function AttributionBlock({ isDark }: { isDark: boolean }) {
+function AttributionBlock({ isDark, reveal }: { isDark: boolean; reveal: boolean }) {
   const baseClass = 'menubar-muted text-[10px] opacity-80 leading-tight text-right whitespace-nowrap [text-shadow:0_1px_2px_rgba(100,100,100,0.7)]'
   return (
-    <p className={`${baseClass} fixed bottom-4 right-4 z-[9998] cursor-pointer`}>
+    <motion.p
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: reveal ? 1 : 0, y: reveal ? 0 : 12 }}
+      transition={{ duration: 0.35, delay: 0.2, ease: 'easeOut' }}
+      className={`${baseClass} fixed bottom-4 right-4 z-[9998] cursor-pointer`}
+    >
       {isDark ? (
         <><AttrAnimatedText text="Photo by " /> <a href="https://unsplash.com/@bennyrotlevy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-90 cursor-pointer"><AttrAnimatedText text="Benny Rotlevy" /></a> <AttrAnimatedText text="on " /> <a href="https://unsplash.com/photos/city-skyline-during-night-time-Z9ondzqwkEo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-90 cursor-pointer"><AttrAnimatedText text="Unsplash" /></a></>
       ) : (
         <><AttrAnimatedText text="Photo by " /> <a href="https://unsplash.com/@frolicsomefairy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-90 cursor-pointer"><AttrAnimatedText text="Frolicsome Fairy" /></a> <AttrAnimatedText text="on " /> <a href="https://unsplash.com/photos/a-view-of-a-city-skyline-from-a-distance-k1z273IpUuY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline hover:opacity-90 cursor-pointer"><AttrAnimatedText text="Unsplash" /></a></>
       )}
-    </p>
+    </motion.p>
   )
 }
 
@@ -243,6 +328,9 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
   const [mobileHeaderIndex, setMobileHeaderIndex] = useState(0)
   const [mobileClock, setMobileClock] = useState('')
   const [showMobileMusicPanel, setShowMobileMusicPanel] = useState(false)
+  const [isStartupLoading, setIsStartupLoading] = useState(true)
+  const [startupProgress, setStartupProgress] = useState(0)
+  const [revealCards, setRevealCards] = useState(false)
   const player = useMusicPlayer()
   const cardsRef = useRef<DesktopCard[]>(INITIAL_CARDS)
   const [state, dispatch] = useReducer(windowsReducer, undefined, () => ({
@@ -253,10 +341,55 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
   const hasOpenedInitialBlogRef = useRef(false)
 
   const dbProjects = useQuery(api.projects.getAll)
+  const startupDoneRef = useRef(false)
 
   useEffect(() => {
     cardsRef.current = state.cards
   }, [state.cards])
+
+  useEffect(() => {
+    if (startupDoneRef.current) return
+    if (dbProjects === undefined) return
+
+    let cancelled = false
+    const run = async () => {
+      const cardImages = dbProjects
+        .map((p) => (p.imageUrl ?? '').trim())
+        .filter(Boolean)
+      const urls = Array.from(new Set([...STARTUP_STATIC_IMAGES, ...cardImages]))
+      const total = Math.max(1, urls.length)
+      let loaded = 0
+
+      setStartupProgress(0)
+      await Promise.all(
+        urls.map(async (url) => {
+          await preloadImage(url)
+          loaded += 1
+          if (!cancelled) {
+            setStartupProgress(loaded / total)
+          }
+        })
+      )
+
+      if (cancelled) return
+      startupDoneRef.current = true
+      setStartupProgress(1)
+      window.setTimeout(() => {
+        if (!cancelled) {
+          setIsStartupLoading(false)
+          // Trigger a visible stagger reveal only after the startup screen fades away.
+          window.setTimeout(() => {
+            if (!cancelled) setRevealCards(true)
+          }, 90)
+        }
+      }, 180)
+    }
+
+    run()
+    return () => {
+      cancelled = true
+    }
+  }, [dbProjects])
 
   // All cards come from Convex — rebuild layout whenever data arrives
   useEffect(() => {
@@ -418,6 +551,7 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
     mobileOpen?.kind === 'card'
       ? state.cards.find((c) => c.id === mobileOpen.cardId) ?? null
       : null
+  const revealUi = !isStartupLoading
 
   return (
     <div
@@ -435,9 +569,14 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
         {isMobileLayout ? (
           <div className="relative w-full h-screen overflow-y-auto pb-28 pt-4 px-4">
             {/* Mobile top bar */}
-            <div className="flex items-center justify-between mb-4 px-1 text-xs text-white/90">
+            <motion.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: revealUi ? 1 : 0, y: revealUi ? 0 : -8 }}
+              transition={{ duration: 0.32, delay: 0.04, ease: 'easeOut' }}
+              className="flex items-center justify-between mb-4 px-1 text-xs text-white/90"
+            >
               <span>{mobileClock}</span>
-              <span className="absolute left-1/2 -translate-x-1/2 text-[12px] font-semibold max-w-[68vw] truncate text-center">
+              <span className="absolute left-1/2 -translate-x-1/2 text-[12px] font-semibold max-w-[68vw] truncate text-center text-gray-900 dark:text-white/90">
                 {MOBILE_HEADER_TITLES[mobileHeaderIndex]}
               </span>
               <div className="flex items-center gap-1.5">
@@ -460,7 +599,7 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
                   )}
                 </button>
               </div>
-            </div>
+            </motion.div>
 
             <AnimatePresence>
               {showMobileMusicPanel && (
@@ -514,7 +653,12 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
             </AnimatePresence>
 
             {/* iOS-like widget cards */}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: revealUi ? 1 : 0, y: revealUi ? 0 : 18 }}
+              transition={{ duration: 0.38, delay: 0.12, ease: 'easeOut' }}
+              className="grid grid-cols-2 md:grid-cols-3 gap-3"
+            >
               {state.cards.map((card) => (
                 <button
                   key={card.id}
@@ -533,10 +677,15 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
                   </div>
                 </button>
               ))}
-            </div>
+            </motion.div>
 
             {/* Home-screen app grid */}
-            <div className="mt-5 grid grid-cols-4 gap-x-3 gap-y-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: revealUi ? 1 : 0, y: revealUi ? 0 : 20 }}
+              transition={{ duration: 0.4, delay: 0.18, ease: 'easeOut' }}
+              className="mt-5 grid grid-cols-4 gap-x-3 gap-y-4"
+            >
               {MOBILE_HOME_APPS.map((appId) => (
                 <button key={appId} onClick={() => setMobileOpen({ kind: 'app', appId })} className="flex flex-col items-center">
                   <div className={`w-14 h-14 rounded-xl overflow-hidden border shadow-md ${
@@ -560,9 +709,14 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
                   <span className="mt-1 text-[11px] text-white/90 text-center leading-tight">{APP_CONFIG[appId].title}</span>
                 </button>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="mt-5 pb-12 text-center text-[10px] text-white/70 leading-relaxed">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: revealUi ? 1 : 0, y: revealUi ? 0 : 12 }}
+              transition={{ duration: 0.35, delay: 0.24, ease: 'easeOut' }}
+              className="mt-5 pb-12 text-center text-[10px] text-white/70 leading-relaxed"
+            >
               {isDark ? (
                 <span>
                   Photo by <a href="https://unsplash.com/@bennyrotlevy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline">Benny Rotlevy</a> on <a href="https://unsplash.com/photos/city-skyline-during-night-time-Z9ondzqwkEo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline">Unsplash</a>
@@ -572,19 +726,26 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
                   Photo by <a href="https://unsplash.com/@frolicsomefairy?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline">Frolicsome Fairy</a> on <a href="https://unsplash.com/photos/a-view-of-a-city-skyline-from-a-distance-k1z273IpUuY?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText" target="_blank" rel="noopener noreferrer" className="underline">Unsplash</a>
                 </span>
               )}
-            </div>
+            </motion.div>
 
             {/* iPhone-like dock */}
-            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 w-[min(92vw,390px)] rounded-2xl px-3 py-2 bg-white/20 dark:bg-white/10 border border-white/20 backdrop-blur-xl flex items-center justify-around z-[9998]">
-              {MOBILE_DOCK_APPS.map((appId) => (
-                <button key={appId} onClick={() => setMobileOpen({ kind: 'app', appId })} className="w-12 h-12 rounded-xl overflow-hidden bg-white/20">
-                  {appId === 'terminal' ? (
-                    <div className="w-full h-full bg-[#1c1c1e] text-green-400 flex items-center justify-center text-[10px] font-mono">{'>_'}</div>
-                  ) : (
-                    <img src={MOBILE_APP_ICON[appId]} alt={APP_CONFIG[appId].title} className="w-full h-full object-cover" draggable={false} />
-                  )}
-                </button>
-              ))}
+            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[9998] w-[min(92vw,390px)]">
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: revealUi ? 1 : 0, y: revealUi ? 0 : 24 }}
+                transition={{ duration: 0.4, delay: 0.28, ease: 'easeOut' }}
+                className="rounded-2xl px-3 py-2 bg-white/20 dark:bg-white/10 border border-white/20 backdrop-blur-xl flex items-center justify-around"
+              >
+                {MOBILE_DOCK_APPS.map((appId) => (
+                  <button key={appId} onClick={() => setMobileOpen({ kind: 'app', appId })} className="w-12 h-12 rounded-xl overflow-hidden bg-white/20">
+                    {appId === 'terminal' ? (
+                      <div className="w-full h-full bg-[#1c1c1e] text-green-400 flex items-center justify-center text-[10px] font-mono">{'>_'}</div>
+                    ) : (
+                      <img src={MOBILE_APP_ICON[appId]} alt={APP_CONFIG[appId].title} className="w-full h-full object-cover" draggable={false} />
+                    )}
+                  </button>
+                ))}
+              </motion.div>
             </div>
 
             {/* Phone-style full screen window */}
@@ -622,7 +783,7 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
           </div>
         ) : (
           <>
-            <MenuBar onOpenApp={handleOpenApp} />
+            <MenuBar onOpenApp={handleOpenApp} reveal={revealUi} />
 
             {/* Desktop cards */}
             <div className="absolute inset-0" style={{ top: '28px' }}>
@@ -636,6 +797,7 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
                       key={card.id}
                       card={card}
                       index={i}
+                      reveal={revealCards}
                       isViewing={isViewing}
                       onOpen={handleOpenCard}
                       onFocus={(id) => dispatch({ type: 'FOCUS_CARD', cardId: id })}
@@ -663,7 +825,7 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
               ))}
             </AnimatePresence>
 
-            <Dock openApps={openApps} onOpenApp={handleOpenApp} />
+            <Dock openApps={openApps} onOpenApp={handleOpenApp} reveal={revealUi} />
           </>
         )}
 
@@ -671,12 +833,14 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
           <>
             {/* Theme toggle: bottom left */}
             <motion.button
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: revealUi ? 1 : 0, y: revealUi ? 0 : 14 }}
+              transition={{ duration: 0.35, delay: 0.2, ease: 'easeOut' }}
               onClick={() => setIsDark((d) => !d)}
               className="menubar-icon fixed bottom-4 left-4 z-[9998] p-2 rounded-lg cursor-pointer"
               title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
               whileHover={{ scale: 1.15, rotate: 8 }}
               whileTap={{ scale: 0.92 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
             >
               {isDark ? (
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -691,10 +855,15 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
             </motion.button>
 
             {/* Photo attribution: bottom right */}
-            <AttributionBlock isDark={isDark} />
+            <AttributionBlock isDark={isDark} reveal={revealUi} />
           </>
         )}
       </div>
+      <AnimatePresence>
+        {isStartupLoading && (
+          <StartupScreen progress={startupProgress} />
+        )}
+      </AnimatePresence>
     </div>
   )
 }

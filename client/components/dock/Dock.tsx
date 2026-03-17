@@ -199,13 +199,14 @@ interface DockProps {
   onOpenApp: (appId: AppId) => void
   /** Notification badge counts per app. Only show badge when count > 0. Omit or use 0 for no badge. */
   notificationCounts?: DockNotificationCounts
+  reveal?: boolean
 }
 
 const DEFAULT_NOTIFICATION_COUNTS: DockNotificationCounts = {
   agent: 1, // only Agent shows badge; others are 0 / no badge
 }
 
-export function Dock({ openApps, onOpenApp, notificationCounts = DEFAULT_NOTIFICATION_COUNTS }: DockProps) {
+export function Dock({ openApps, onOpenApp, notificationCounts = DEFAULT_NOTIFICATION_COUNTS, reveal = true }: DockProps) {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
@@ -213,37 +214,40 @@ export function Dock({ openApps, onOpenApp, notificationCounts = DEFAULT_NOTIFIC
     <div
       className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[9998] isolate"
       style={{
-        transform: 'translate3d(-50%,0,0)',
-        left: '50%',
-        willChange: 'transform',
-        backfaceVisibility: 'hidden',
+        willChange: 'opacity',
       }}
     >
-      <div className="dock-container">
-        {DOCK_APPS.flatMap((app) => {
-          const iconEl = (
-            <DockIcon
-              key={app.id}
-              app={app}
-              onClick={() => onOpenApp(app.id)}
-              isOpen={openApps.has(app.id)}
-              mounted={mounted}
-              notificationCount={notificationCounts[app.id] ?? 0}
-            />
-          )
+      <motion.div
+        initial={false}
+        animate={{ opacity: reveal ? 1 : 0, y: reveal ? 0 : 24 }}
+        transition={{ duration: 0.4, delay: 0.22, ease: 'easeOut' }}
+      >
+        <div className="dock-container">
+          {DOCK_APPS.flatMap((app) => {
+            const iconEl = (
+              <DockIcon
+                key={app.id}
+                app={app}
+                onClick={() => onOpenApp(app.id)}
+                isOpen={openApps.has(app.id)}
+                mounted={mounted}
+                notificationCount={notificationCounts[app.id] ?? 0}
+              />
+            )
 
-          if (app.id !== 'jobkompass') return [iconEl]
+            if (app.id !== 'jobkompass') return [iconEl]
 
-          return [
-            <div
-              key="dock-divider-terminal-jobkompass"
-              className="self-center h-10 w-px rounded-full bg-white/50 dark:bg-white/18"
-              aria-hidden
-            />,
-            iconEl,
-          ]
-        })}
-      </div>
+            return [
+              <div
+                key="dock-divider-terminal-jobkompass"
+                className="self-center h-10 w-px rounded-full bg-white/50 dark:bg-white/18"
+                aria-hidden
+              />,
+              iconEl,
+            ]
+          })}
+        </div>
+      </motion.div>
     </div>
   )
 }

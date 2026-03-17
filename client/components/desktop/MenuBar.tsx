@@ -53,9 +53,10 @@ function AnimatedText({
 
 interface MenuBarProps {
   onOpenApp: (appId: AppId) => void
+  reveal?: boolean
 }
 
-export function MenuBar({ onOpenApp: _onOpenApp }: MenuBarProps) {
+export function MenuBar({ onOpenApp: _onOpenApp, reveal = true }: MenuBarProps) {
   const [time, setTime] = useState('')
   const [date, setDate] = useState('')
   const [titleIndex, setTitleIndex] = useState(0)
@@ -95,7 +96,10 @@ export function MenuBar({ onOpenApp: _onOpenApp }: MenuBarProps) {
   }, [showMiniPlayer])
 
   return (
-    <div
+    <motion.div
+      initial={false}
+      animate={{ opacity: reveal ? 1 : 0, y: reveal ? 0 : -7 }}
+      transition={{ duration: 0.32, delay: 0.05, ease: 'easeOut' }}
       className="menubar fixed top-0 left-0 right-0 z-[9999] flex items-center justify-between px-4"
       style={{ height: '28px' }}
     >
@@ -211,6 +215,6 @@ export function MenuBar({ onOpenApp: _onOpenApp }: MenuBarProps) {
         <AnimatedText text={date} className="menubar-muted text-xs" />
         <AnimatedText text={time} className="menubar-muted text-xs" />
       </div>
-    </div>
+    </motion.div>
   )
 }
