@@ -44,15 +44,15 @@ type WindowsAction =
   | { type: 'MOVE_CARD'; cardId: string; x: number; y: number }
 
 const APP_CONFIG: Record<AppId, { title: string; size: { width: number; height: number } }> = {
-  finder:   { title: 'Finder',   size: { width: 860, height: 540 } },
-  mail:     { title: 'Mail',     size: { width: 780, height: 560 } },
-  photos:   { title: 'Photos',   size: { width: 800, height: 560 } },
-  music:    { title: 'Music',    size: { width: 760, height: 580 } },
-  resume:   { title: 'Résumé',   size: { width: 720, height: 560 } },
-  blog:     { title: 'Blog',     size: { width: 980, height: 620 } },
-  agent:    { title: 'Agent',    size: { width: 420, height: 580 } },
-  jobkompass: { title: 'JobKompass', size: { width: 1100, height: 700 } },
-  terminal: { title: 'Terminal', size: { width: 980, height: 560 } },
+  finder:   { title: 'Finder',   size: { width: 860, height: 594 } },
+  mail:     { title: 'Mail',     size: { width: 780, height: 616 } },
+  photos:   { title: 'Photos',   size: { width: 800, height: 616 } },
+  music:    { title: 'Music',    size: { width: 760, height: 638 } },
+  resume:   { title: 'Résumé',   size: { width: 720, height: 616 } },
+  blog:     { title: 'Blog',     size: { width: 980, height: 682 } },
+  agent:    { title: 'Agent',    size: { width: 420, height: 638 } },
+  jobkompass: { title: 'JobKompass', size: { width: 1100, height: 770 } },
+  terminal: { title: 'Terminal', size: { width: 980, height: 616 } },
 }
 
 const MOBILE_BREAKPOINT = 1024
@@ -214,7 +214,7 @@ function windowsReducer(state: WindowsState, action: WindowsAction): WindowsStat
           ),
         }
       }
-      const size = { width: 1100, height: 620 }
+      const size = { width: 1100, height: 682 }
       return {
         ...state, topZ: newZ,
         windows: [
@@ -555,8 +555,8 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
 
   return (
     <div
-      className="relative w-screen h-screen overflow-hidden no-select"
-      style={{ paddingTop: isMobileLayout ? '0px' : '28px' }}
+      className="relative w-screen overflow-hidden no-select"
+      style={{ paddingTop: isMobileLayout ? '0px' : '28px', height: '100dvh' }}
     >
       {/* Background layers: light always visible, dark crossfades on theme toggle */}
       <div className="absolute inset-0 desktop-bg-layer desktop-bg-layer-light" aria-hidden />
@@ -567,7 +567,7 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
       />
       <div className="relative z-10">
         {isMobileLayout ? (
-          <div className="relative w-full h-screen overflow-y-auto pb-28 pt-4 px-4">
+          <div className="relative w-full overflow-y-auto pb-28 pt-4 px-4" style={{ height: '100dvh' }}>
             {/* Mobile top bar */}
             <motion.div
               initial={{ opacity: 0, y: -8 }}

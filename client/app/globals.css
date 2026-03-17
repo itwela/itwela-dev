@@ -12,13 +12,23 @@ html,
 body {
   max-width: 100vw;
   overflow: hidden;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
+  overscroll-behavior: none;
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
+  background-color: #0b0b0f;
+  background-image: url('/desktop-bg-light.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.dark body {
+  background-image: url('/desktop-bg-dark.jpg');
 }
 
 /* ─── macOS-style notifications (Sonner) ─── */
@@ -308,6 +318,7 @@ body {
 .dark .dock-container::before {
   background: rgba(255, 255, 255, 0.1);
 }
+
 
 /* ─── Finder / app sidebar ───────────────────────────────────── */
 .finder-sidebar {
