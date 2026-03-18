@@ -150,10 +150,19 @@ export function MenuBar({ onOpenApp: _onOpenApp, reveal = true }: MenuBarProps) 
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => _onOpenApp('music')}
-                    className="w-16 h-16 rounded-xl bg-[rgba(255,255,255,0.2)] dark:bg-[rgba(255,255,255,0.08)] flex items-center justify-center text-pink-500 dark:text-pink-300"
+                    className="w-16 h-16 rounded-xl bg-[rgba(255,255,255,0.2)] dark:bg-[rgba(255,255,255,0.08)] flex items-center justify-center text-pink-500 dark:text-pink-300 overflow-hidden border border-white/10"
                     title="Open Music app"
                   >
-                    <span className="text-2xl leading-none">♫</span>
+                    {player.currentTrack?.coverUrl ? (
+                      <img
+                        src={player.currentTrack.coverUrl}
+                        alt={player.currentTrack.title}
+                        className="w-full h-full object-cover"
+                        draggable={false}
+                      />
+                    ) : (
+                      <span className="text-2xl leading-none">♫</span>
+                    )}
                   </button>
 
                   <div className="flex-1 min-w-0">

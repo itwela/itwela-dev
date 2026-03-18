@@ -133,9 +133,10 @@ export function MusicApp() {
   const sourceTracks = isCompactLayout ? allTracksNormalized : tracks
 
   useEffect(() => {
-    if (loadingTracks) return
-    musicPlayer.setTracks(sourceTracks)
-  }, [sourceTracks, loadingTracks])
+    if (dbTracks === undefined) return
+    // Keep one stable global queue so switching views/playlists never restarts playback.
+    musicPlayer.setTracks(allTracksNormalized)
+  }, [dbTracks, allTracksNormalized])
 
   useEffect(() => {
     const update = () => setIsCompactLayout(window.innerWidth <= 1024)
@@ -145,7 +146,8 @@ export function MusicApp() {
   }, [])
 
   const currentTrack = player.currentTrack
-  const currentIndex = currentTrack ? sourceTracks.findIndex((t) => t.id === currentTrack.id) : -1
+  const currentTrackId = currentTrack?.id ?? null
+  const isPlayingTrack = (trackId: string) => player.isPlaying && currentTrackId === trackId
 
   const handleSeek = (e: MouseEvent<HTMLDivElement>) => {
     const target = e.currentTarget
@@ -194,8 +196,8 @@ export function MusicApp() {
   }
 
   const handleNext = () => {
-    if (shuffle && sourceTracks.length > 1) {
-      const randomIndex = Math.floor(Math.random() * sourceTracks.length)
+    if (shuffle && player.tracks.length > 1) {
+      const randomIndex = Math.floor(Math.random() * player.tracks.length)
       player.playByIndex(randomIndex)
       return
     }
@@ -640,7 +642,7 @@ export function MusicApp() {
                   <div className="mb-6">
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {todayTracks.map((track) => {
-                        const idx = tracks.findIndex((t) => t.id === track.id)
+                        const idx = allTracksNormalized.findIndex((t) => t.id === track.id)
                         return (
                           <button
                             key={track.id}
@@ -658,7 +660,7 @@ export function MusicApp() {
                               <div className="flex-1 min-w-0">
                                 <div className="text-[12px] text-gray-800 dark:text-white/90 truncate">
                                   {track.title}
-                                  {currentIndex === idx && player.isPlaying ? '  ♪' : ''}
+                                  {isPlayingTrack(track.id) ? '  ♪' : ''}
                                 </div>
                                 <div className="text-[11px] text-gray-500 dark:text-white/50 truncate">{track.artist}</div>
                               </div>
@@ -675,7 +677,7 @@ export function MusicApp() {
                                   transition={{ duration: 0.25 }}
                                   className="flex items-center justify-center"
                                 >
-                                  {currentIndex === idx && player.isPlaying ? (
+                                  {isPlayingTrack(track.id) ? (
                                     likedTrackIds.has(track.id) ? (
                                       <HiHeart className="text-white" size={11} />
                                     ) : (
@@ -699,13 +701,13 @@ export function MusicApp() {
                     <div>
                       <div className="space-y-1.5">
                         {yesterdayTracks.map((track) => {
-                          const idx = tracks.findIndex((t) => t.id === track.id)
+                          const idx = allTracksNormalized.findIndex((t) => t.id === track.id)
                           return (
                             <button
                               key={track.id}
                               onClick={() => idx >= 0 && player.playByIndex(idx)}
                               className={`w-full text-left flex items-center gap-3 rounded-md px-2.5 py-2 border transition-colors ${
-                                currentIndex === idx && player.isPlaying
+                                isPlayingTrack(track.id)
                                   ? 'bg-[#ff2d55] border-[#ff2d55] text-white'
                                   : 'bg-black/[0.03] dark:bg-white/[0.03] border-black/10 dark:border-white/10 hover:bg-black/[0.07] dark:hover:bg-white/[0.08]'
                               }`}
@@ -720,8 +722,8 @@ export function MusicApp() {
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center justify-between gap-1">
                                   <div className="min-w-0">
-                                    <div className={`text-[13px] truncate ${currentIndex === idx && player.isPlaying ? 'text-white' : 'text-gray-800 dark:text-white/90'}`}>{track.title}</div>
-                                    <div className={`text-[11px] truncate ${currentIndex === idx && player.isPlaying ? 'text-white/85' : 'text-gray-500 dark:text-white/50'}`}>{track.artist}</div>
+                                    <div className={`text-[13px] truncate ${isPlayingTrack(track.id) ? 'text-white' : 'text-gray-800 dark:text-white/90'}`}>{track.title}</div>
+                                    <div className={`text-[11px] truncate ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/50'}`}>{track.artist}</div>
                                   </div>
                                   <motion.button
                                     whileTap={{ scale: 0.8 }}
@@ -736,7 +738,7 @@ export function MusicApp() {
                                       transition={{ duration: 0.25 }}
                                       className="flex items-center justify-center"
                                     >
-                                      {currentIndex === idx && player.isPlaying ? (
+                                      {isPlayingTrack(track.id) ? (
                                         likedTrackIds.has(track.id) ? (
                                           <HiHeart className="text-white" size={11} />
                                         ) : (
@@ -751,7 +753,7 @@ export function MusicApp() {
                                   </motion.button>
                                 </div>
                               </div>
-                              <div className={`text-[11px] ${currentIndex === idx && player.isPlaying ? 'text-white/85' : 'text-gray-500 dark:text-white/45'}`}>
+                              <div className={`text-[11px] ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/45'}`}>
                                 {track.duration ? formatTime(track.duration) : '--:--'}
                               </div>
                             </button>
@@ -794,13 +796,13 @@ export function MusicApp() {
               {desktopSection === 'songs' && (
                 <div className="space-y-1.5">
                   {songsViewTracks.map((track) => {
-                    const idx = tracks.findIndex((t) => t.id === track.id)
+                    const idx = allTracksNormalized.findIndex((t) => t.id === track.id)
                     return (
                       <button
                         key={track.id}
                         onClick={() => idx >= 0 && player.playByIndex(idx)}
                         className={`w-full text-left flex items-center gap-3 rounded-md px-2.5 py-2 border transition-colors ${
-                          currentIndex === idx && player.isPlaying
+                          isPlayingTrack(track.id)
                             ? 'bg-[#ff2d55] border-[#ff2d55] text-white'
                             : 'bg-black/[0.03] dark:bg-white/[0.03] border-black/10 dark:border-white/10 hover:bg-black/[0.07] dark:hover:bg-white/[0.08]'
                         }`}
@@ -813,10 +815,10 @@ export function MusicApp() {
                           )}
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className={`text-[13px] truncate ${currentIndex === idx && player.isPlaying ? 'text-white' : 'text-gray-800 dark:text-white/90'}`}>{track.title}</div>
-                          <div className={`text-[11px] truncate ${currentIndex === idx && player.isPlaying ? 'text-white/85' : 'text-gray-500 dark:text-white/50'}`}>{track.artist}</div>
+                          <div className={`text-[13px] truncate ${isPlayingTrack(track.id) ? 'text-white' : 'text-gray-800 dark:text-white/90'}`}>{track.title}</div>
+                          <div className={`text-[11px] truncate ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/50'}`}>{track.artist}</div>
                         </div>
-                        <div className={`text-[11px] ${currentIndex === idx && player.isPlaying ? 'text-white/85' : 'text-gray-500 dark:text-white/45'}`}>
+                        <div className={`text-[11px] ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/45'}`}>
                           {track.duration ? formatTime(track.duration) : '--:--'}
                         </div>
                       </button>

@@ -101,6 +101,13 @@ function preloadImage(url: string) {
 function StartupScreen({ progress }: { progress: number }) {
   const pct = Math.max(0, Math.min(100, Math.round(progress * 100)))
   const letters = 'itwela.dev'.split('')
+  const [showSlowHint, setShowSlowHint] = useState(false)
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setShowSlowHint(true), 2000)
+    return () => window.clearTimeout(timer)
+  }, [])
+
   return (
     <motion.div
       initial={{ opacity: 1 }}
@@ -148,6 +155,19 @@ function StartupScreen({ progress }: { progress: number }) {
               transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
               className="mx-auto mt-3 h-[1px] w-[min(180px,48vw)] bg-white/25"
             />
+            <AnimatePresence>
+              {showSlowHint && (
+                <motion.p
+                  initial={{ opacity: 0, y: 5 }}
+                  animate={{ opacity: 0.72, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.28, ease: 'easeOut' }}
+                  className="mt-3 text-[11px] text-white/75 tracking-[0.01em]"
+                >
+                  Loading the full experience...
+                </motion.p>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
