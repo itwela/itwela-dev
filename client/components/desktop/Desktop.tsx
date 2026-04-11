@@ -59,6 +59,7 @@ const MOBILE_BREAKPOINT = 1024
 const MOBILE_HEADER_TITLES = ['itwela.dev', 'tech solutions specialist', 'ai product engineer', 'full stack developer', 'iOS developer']
 const MOBILE_HOME_APPS: AppId[] = ['finder', 'mail', 'photos', 'music', 'resume', 'blog', 'agent', 'jobkompass', 'terminal']
 const MOBILE_DOCK_APPS: AppId[] = ['resume', 'mail', 'blog', 'agent']
+const SHAREABLE_APP_IDS: AppId[] = ['mail', 'photos', 'music', 'resume', 'blog', 'agent']
 const MOBILE_APP_ICON: Record<AppId, string> = {
   finder: '/finderimage.jpg',
   mail: '/mialicon.png',
@@ -341,7 +342,19 @@ function AttributionBlock({ isDark, reveal }: { isDark: boolean; reveal: boolean
   )
 }
 
-export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) {
+export function Desktop({
+  initialBlogSlug,
+  initialApp,
+  initialTrackId,
+  initialPhotoId,
+  initialCardId,
+}: {
+  initialBlogSlug?: string
+  initialApp?: string
+  initialTrackId?: string
+  initialPhotoId?: string
+  initialCardId?: string
+} = {}) {
   const [isDark, setIsDark] = useState(false)
   const [isMobileLayout, setIsMobileLayout] = useState(false)
   const [mobileOpen, setMobileOpen] = useState<MobileOpenView | null>(null)
@@ -359,6 +372,8 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
     cards: INITIAL_CARDS,
   }))
   const hasOpenedInitialBlogRef = useRef(false)
+  const hasOpenedInitialAppRef = useRef(false)
+  const hasOpenedInitialCardRef = useRef(false)
 
   const dbProjects = useQuery(api.projects.getAll)
   const startupDoneRef = useRef(false)
@@ -442,6 +457,30 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
 
     hasOpenedInitialBlogRef.current = true
   }, [initialBlogSlug, dispatch])
+
+  // If ?app=X is present in the URL on first load, auto-open that app.
+  useEffect(() => {
+    if (!initialApp || hasOpenedInitialAppRef.current) return
+    const validApps: AppId[] = ['finder', 'mail', 'photos', 'music', 'resume', 'blog', 'agent', 'jobkompass', 'terminal']
+    if (!validApps.includes(initialApp as AppId)) return
+
+    dispatch({ type: 'OPEN_APP', appId: initialApp as AppId })
+    setMobileOpen({ kind: 'app', appId: initialApp as AppId })
+
+    hasOpenedInitialAppRef.current = true
+  }, [initialApp, dispatch])
+
+  // If ?card={id} is present in the URL, auto-open that card once cards are loaded.
+  useEffect(() => {
+    if (!initialCardId || hasOpenedInitialCardRef.current) return
+    const card = state.cards.find((c) => c.id === initialCardId)
+    if (!card) return
+
+    dispatch({ type: 'OPEN_CARD', card })
+    setMobileOpen({ kind: 'card', cardId: card.id })
+
+    hasOpenedInitialCardRef.current = true
+  }, [initialCardId, state.cards, dispatch])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -528,6 +567,39 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
     dispatch({ type: 'OPEN_CARD', card })
   }, [])
 
+  const copyUrl = useCallback(async (url: string) => {
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url)
+      } else {
+        const ta = document.createElement('textarea')
+        ta.value = url
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+    } catch {
+      // ignore
+    }
+  }, [])
+
+  const copyCardLink = useCallback(async (cardId: string) => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://itwela.dev'
+    await copyUrl(`${origin}/?card=${encodeURIComponent(cardId)}`)
+  }, [copyUrl])
+
+  const copyAppLink = useCallback(async (appId: AppId) => {
+    if (!SHAREABLE_APP_IDS.includes(appId)) return
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://itwela.dev'
+    await copyUrl(`${origin}/?app=${encodeURIComponent(appId)}`)
+  }, [copyUrl])
+
+  const getAppCopyHandler = useCallback((appId: AppId) => {
+    if (!SHAREABLE_APP_IDS.includes(appId)) return undefined
+    return () => copyAppLink(appId)
+  }, [copyAppLink])
+
   const openApps = new Set(
     state.windows
       .filter((w) => w.isOpen && !w.isMinimized && w.id.startsWith('app-'))
@@ -543,8 +615,8 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
     switch (win.appId) {
       case 'finder': return <FinderApp />
       case 'mail':   return <MailApp />
-      case 'photos': return <PhotosApp />
-      case 'music':  return <MusicApp />
+      case 'photos': return <PhotosApp initialPhotoId={initialPhotoId} />
+      case 'music':  return <MusicApp initialTrackId={initialTrackId} />
       case 'resume': return <ResumeApp />
       case 'blog':     return <BlogApp initialSlug={initialBlogSlug} />
       case 'agent':    return <AgentApp />
@@ -557,8 +629,8 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
     switch (appId) {
       case 'finder': return <FinderApp />
       case 'mail':   return <MailApp />
-      case 'photos': return <PhotosApp />
-      case 'music':  return <MusicApp />
+      case 'photos': return <PhotosApp initialPhotoId={initialPhotoId} />
+      case 'music':  return <MusicApp initialTrackId={initialTrackId} />
       case 'resume': return <ResumeApp />
       case 'blog':   return <BlogApp initialSlug={initialBlogSlug} />
       case 'agent':  return <AgentApp />
@@ -571,6 +643,10 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
     mobileOpen?.kind === 'card'
       ? state.cards.find((c) => c.id === mobileOpen.cardId) ?? null
       : null
+  const mobileOpenAppCopyLink =
+    mobileOpen?.kind === 'app'
+      ? getAppCopyHandler(mobileOpen.appId)
+      : undefined
   const revealUi = !isStartupLoading
 
   return (
@@ -791,6 +867,24 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
                           ? APP_CONFIG[mobileOpen.appId].title
                           : mobileOpenCard?.label ?? 'Card'}
                       </div>
+                      {mobileOpen.kind === 'card' && mobileOpenCard && (
+                        <button
+                          onClick={() => copyCardLink(mobileOpenCard.id)}
+                          className="px-2 py-1 rounded-md text-[10px] bg-black/5 dark:bg-white/10 text-gray-500 dark:text-white/60 flex-shrink-0"
+                          title="Copy link"
+                        >
+                          ⎘ Copy
+                        </button>
+                      )}
+                      {mobileOpen.kind === 'app' && mobileOpenAppCopyLink && (
+                        <button
+                          onClick={mobileOpenAppCopyLink}
+                          className="px-2 py-1 rounded-md text-[10px] bg-black/5 dark:bg-white/10 text-gray-500 dark:text-white/60 flex-shrink-0"
+                          title="Copy link"
+                        >
+                          ⎘ Copy
+                        </button>
+                      )}
                     </div>
                     <div className="flex-1 overflow-y-auto">
                       {mobileOpen.kind === 'app' && renderAppById(mobileOpen.appId)}
@@ -830,19 +924,23 @@ export function Desktop({ initialBlogSlug }: { initialBlogSlug?: string } = {}) 
 
             {/* App windows */}
             <AnimatePresence>
-              {state.windows.map((win) => (
-                <MacWindow
-                  key={win.id}
-                  window={win}
-                  onClose={() => dispatch({ type: 'CLOSE_WINDOW', id: win.id })}
-                  onMinimize={() => dispatch({ type: 'MINIMIZE_WINDOW', id: win.id })}
-                  onMaximize={() => {}}
-                  onFocus={() => dispatch({ type: 'FOCUS_WINDOW', id: win.id })}
-                  showReadingUI={win.appId !== 'music'}
-                >
-                  {renderAppContent(win)}
-                </MacWindow>
-              ))}
+              {state.windows.map((win) => {
+                const cardId = win.id.startsWith('card-') ? win.id.replace('card-', '') : null
+                return (
+                  <MacWindow
+                    key={win.id}
+                    window={win}
+                    onClose={() => dispatch({ type: 'CLOSE_WINDOW', id: win.id })}
+                    onMinimize={() => dispatch({ type: 'MINIMIZE_WINDOW', id: win.id })}
+                    onMaximize={() => {}}
+                    onFocus={() => dispatch({ type: 'FOCUS_WINDOW', id: win.id })}
+                    showReadingUI={win.appId !== 'music'}
+                    onCopyLink={cardId ? () => copyCardLink(cardId) : getAppCopyHandler(win.appId)}
+                  >
+                    {renderAppContent(win)}
+                  </MacWindow>
+                )
+              })}
             </AnimatePresence>
 
             <Dock openApps={openApps} onOpenApp={handleOpenApp} reveal={revealUi} />

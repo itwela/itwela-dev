@@ -9,6 +9,7 @@ export function ResumeApp() {
   const resume = useQuery(api.resume.get)
   const seed   = useMutation(api.resume.seed)
   const [isCompactLayout, setIsCompactLayout] = useState(false)
+  const [copiedLink, setCopiedLink] = useState(false)
 
   const loading = resume === undefined
   const resumeLink = resume?.downloadUrl?.trim() || ''
@@ -19,6 +20,27 @@ export function ResumeApp() {
     window.addEventListener('resize', update)
     return () => window.removeEventListener('resize', update)
   }, [])
+
+  const copyLink = async () => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://itwela.dev'
+    const url = `${origin}/?app=resume`
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url)
+      } else {
+        const ta = document.createElement('textarea')
+        ta.value = url
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+      setCopiedLink(true)
+      setTimeout(() => setCopiedLink(false), 1800)
+    } catch {
+      // ignore
+    }
+  }
 
   if (isCompactLayout) {
     return (
@@ -126,6 +148,13 @@ export function ResumeApp() {
               + Seed Resume
             </button>
           )}
+          <button
+            onClick={copyLink}
+            className="flex items-center gap-1 px-2 py-1.5 rounded-lg text-xs font-medium text-gray-500 dark:text-white/50 hover:text-gray-800 dark:hover:text-white/80 transition-colors"
+            title="Copy link to Resume"
+          >
+            {copiedLink ? '✓ Copied' : '⎘ Copy Link'}
+          </button>
           <a
             href={resumeLink || '#'}
             onClick={(e) => { if (!resumeLink) e.preventDefault() }}

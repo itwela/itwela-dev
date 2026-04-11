@@ -38,6 +38,7 @@ export function MailApp() {
     subject: '',
     message: '',
   })
+  const [copiedLink, setCopiedLink] = useState(false)
   const [attachments, setAttachments] = useState<AttachmentItem[]>([])
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
@@ -93,6 +94,27 @@ export function MailApp() {
     setForm({ name: '', email: '', subject: '', message: '' })
     setAttachments([])
     if (messageRef.current) messageRef.current.innerHTML = ''
+  }
+
+  const copyLink = async () => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://itwela.dev'
+    const url = `${origin}/?app=mail`
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url)
+      } else {
+        const ta = document.createElement('textarea')
+        ta.value = url
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+      setCopiedLink(true)
+      setTimeout(() => setCopiedLink(false), 1800)
+    } catch {
+      // ignore
+    }
   }
 
   const handleSend = async () => {
@@ -261,6 +283,13 @@ export function MailApp() {
         <div className="flex items-center justify-between px-4 py-2 flex-shrink-0 border-b border-gray-200 dark:border-white/10" style={{ height: '40px' }}>
           <span className="text-gray-500 dark:text-white/50 text-xs">Contact me</span>
           <div className="flex items-center gap-2 text-gray-500 dark:text-white/40">
+            <button
+              onClick={copyLink}
+              className="hover:text-gray-700 dark:hover:text-white/70 transition-colors px-1.5 py-1 rounded text-[10px]"
+              title="Copy link to Mail"
+            >
+              {copiedLink ? '✓ Copied' : '⎘ Copy Link'}
+            </button>
             <button
               onClick={() => applyFormat('bold')}
               className="hover:text-gray-700 dark:hover:text-white/70 transition-colors p-1 rounded"

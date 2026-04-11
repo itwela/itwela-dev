@@ -12,6 +12,7 @@ export function AgentApp() {
   const [loading, setLoading] = useState(false)
   const [modelUsed, setModelUsed] = useState<string>(DEFAULT_MODEL_LABEL)
   const [isCompactLayout, setIsCompactLayout] = useState(false)
+  const [copiedLink, setCopiedLink] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
@@ -37,6 +38,27 @@ export function AgentApp() {
     const next = Math.min(140, Math.max(40, el.scrollHeight))
     el.style.height = `${next}px`
   }, [input])
+
+  const copyLink = async () => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://itwela.dev'
+    const url = `${origin}/?app=agent`
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url)
+      } else {
+        const ta = document.createElement('textarea')
+        ta.value = url
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+      setCopiedLink(true)
+      setTimeout(() => setCopiedLink(false), 1800)
+    } catch {
+      // ignore
+    }
+  }
 
   async function handleSend() {
     const text = input.trim()
@@ -102,6 +124,13 @@ export function AgentApp() {
         <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-sm font-medium text-gray-800 dark:text-white/90 whitespace-nowrap">
           Ask about Itwela
         </span>
+        <button
+          onClick={copyLink}
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-gray-400 dark:text-white/35 hover:text-gray-700 dark:hover:text-white/70 transition-colors px-1.5 py-0.5 rounded"
+          title="Copy link to Agent"
+        >
+          {copiedLink ? '✓' : '⎘'}
+        </button>
       </div>
 
       {/* Messages */}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useCallback } from 'react'
 import { useQuery, useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import { FiChevronLeft, FiChevronRight, FiSearch, FiHeart } from 'react-icons/fi'
@@ -54,7 +54,7 @@ function PhotoGrid({ photos, onSelect }: { photos: Photo[]; onSelect: (index: nu
   )
 }
 
-export function PhotosApp() {
+export function PhotosApp({ initialPhotoId }: { initialPhotoId?: string } = {}) {
   const [activeCategory, setActiveCategory] = useState<Category | 'all'>('all')
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
   const [search, setSearch] = useState('')
@@ -63,6 +63,8 @@ export function PhotosApp() {
   const [mobileSearch, setMobileSearch] = useState('')
   const [mobileSelectedIndex, setMobileSelectedIndex] = useState<number | null>(null)
   const [mobileLibraryFilter, setMobileLibraryFilter] = useState<'years' | 'months' | 'all'>('all')
+  const [copiedPhotoId, setCopiedPhotoId] = useState<string | null>(null)
+  const hasInitialPhotoRef = useRef(false)
 
   const dbPhotos = useQuery(api.photos.getAll) as Photo[] | undefined
   const likePhotoMutation = useMutation(api.photos.likePhoto)
@@ -97,6 +99,38 @@ export function PhotosApp() {
     update()
     window.addEventListener('resize', update)
     return () => window.removeEventListener('resize', update)
+  }, [])
+
+  // Auto-select the initial photo from URL on first load
+  useEffect(() => {
+    if (!initialPhotoId || hasInitialPhotoRef.current) return
+    if (allPhotos.length === 0) return
+    const idx = allPhotos.findIndex((p) => p.id === initialPhotoId)
+    if (idx >= 0) {
+      setSelectedIndex(idx)
+      hasInitialPhotoRef.current = true
+    }
+  }, [initialPhotoId, allPhotos])
+
+  const copyLinkForPhoto = useCallback(async (photoId: string) => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://itwela.dev'
+    const url = `${origin}/?app=photos&photo=${encodeURIComponent(photoId)}`
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url)
+      } else {
+        const ta = document.createElement('textarea')
+        ta.value = url
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+      setCopiedPhotoId(photoId)
+      setTimeout(() => setCopiedPhotoId((prev) => (prev === photoId ? null : prev)), 1800)
+    } catch {
+      // ignore copy errors
+    }
   }, [])
 
   const displayed = activeCategory === 'all' ? allPhotos : allPhotos.filter((p) => p.category === activeCategory)
@@ -474,6 +508,16 @@ export function PhotosApp() {
                     {selectedPhoto ? allPhotos.find((p) => p.id === selectedPhoto.id)?.viewCount ?? 0 : 0} views
                   </span>
                 </div>
+                {selectedPhoto && (
+                  <motion.button
+                    whileTap={{ scale: 0.85 }}
+                    onClick={() => copyLinkForPhoto(selectedPhoto.id)}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-black/5 dark:bg-white/8 hover:bg-black/10 dark:hover:bg-white/15 transition-colors"
+                    title="Copy link to this photo"
+                  >
+                    <span>{copiedPhotoId === selectedPhoto.id ? '✓ Copied' : '⎘ Copy Link'}</span>
+                  </motion.button>
+                )}
               </div>
             </div>
           </div>

@@ -67,7 +67,7 @@ function AlbumArt({ track, size = 'lg' }: { track: Track | null; size?: 'sm' | '
   )
 }
 
-export function MusicApp() {
+export function MusicApp({ initialTrackId }: { initialTrackId?: string } = {}) {
   const [shuffle, setShuffle] = useState(false)
   const [isCompactLayout, setIsCompactLayout] = useState(false)
   const [mobileFilter, setMobileFilter] = useState<'songs' | 'artists' | 'playlists'>('songs')
@@ -84,8 +84,11 @@ export function MusicApp() {
   const likeTrackMutation = useMutation(api.music.likeTrack)
   const unlikeTrackMutation = useMutation(api.music.unlikeTrack)
   const lastPlayedIdRef = useRef<string | null>(null)
+  const hasInitialTrackRef = useRef(false)
   const [likingTrackIds, setLikingTrackIds] = useState<Set<string>>(new Set())
   const [likedTrackIds, setLikedTrackIds] = useState<Set<string>>(new Set())
+  const [copiedTrackId, setCopiedTrackId] = useState<string | null>(null)
+  const [linkedTrackId, setLinkedTrackId] = useState<string | null>(null)
 
   useEffect(() => {
     try {
@@ -145,9 +148,56 @@ export function MusicApp() {
     return () => window.removeEventListener('resize', update)
   }, [])
 
+  // Shared song links should open Music in the Songs view and highlight the linked track.
+  useEffect(() => {
+    if (!initialTrackId || hasInitialTrackRef.current) return
+    if (allTracksNormalized.length === 0) return
+    const track = allTracksNormalized.find((t) => t.id === initialTrackId)
+    hasInitialTrackRef.current = true
+    if (!track) return
+
+    setLinkedTrackId(track.id)
+    setDesktopSection('songs')
+    setSelectedArtist(null)
+    setSelectedPlaylistId(null)
+    setMobileFilter('songs')
+    setMobileDrilldown(null)
+  }, [initialTrackId, allTracksNormalized])
+
+  const copyLinkForTrack = async (trackId: string) => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://itwela.dev'
+    const url = `${origin}/?app=music&track=${encodeURIComponent(trackId)}`
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url)
+      } else {
+        const ta = document.createElement('textarea')
+        ta.value = url
+        document.body.appendChild(ta)
+        ta.select()
+        document.execCommand('copy')
+        document.body.removeChild(ta)
+      }
+      setCopiedTrackId(trackId)
+      setTimeout(() => setCopiedTrackId((prev) => (prev === trackId ? null : prev)), 1800)
+    } catch {
+      // ignore copy errors
+    }
+  }
+
   const currentTrack = player.currentTrack
   const currentTrackId = currentTrack?.id ?? null
   const isPlayingTrack = (trackId: string) => player.isPlaying && currentTrackId === trackId
+  const linkedTrack = linkedTrackId
+    ? allTracksNormalized.find((t) => t.id === linkedTrackId) ?? null
+    : null
+
+  const playTrackById = (trackId: string) => {
+    const idx = allTracksNormalized.findIndex((t) => t.id === trackId)
+    if (idx < 0) return
+    setLinkedTrackId(null)
+    player.playByIndex(idx)
+  }
 
   const handleSeek = (e: MouseEvent<HTMLDivElement>) => {
     const target = e.currentTarget
@@ -219,7 +269,7 @@ export function MusicApp() {
         return title.includes(desktopQ) || artist.includes(desktopQ) || album.includes(desktopQ)
       })
     : tracks
-  const featuredTrack = currentTrack ?? filteredDesktopTracks[0] ?? tracks[0] ?? null
+  const featuredTrack = currentTrack ?? linkedTrack ?? filteredDesktopTracks[0] ?? tracks[0] ?? null
   const todayTracks = filteredDesktopTracks.slice(0, Math.min(4, filteredDesktopTracks.length))
   const yesterdayTracks = filteredDesktopTracks.slice(Math.min(4, filteredDesktopTracks.length))
   const artists = Array.from(
@@ -380,6 +430,7 @@ export function MusicApp() {
                 <button
                   key={item.id}
                   onClick={() => {
+                    setLinkedTrackId(null)
                     setMobileFilter(item.id)
                     setMobileDrilldown(null)
                   }}
@@ -402,6 +453,7 @@ export function MusicApp() {
                 onClick={() => {
                   const isDrillTrigger = !mobileDrilldown && (mobileFilter === 'artists' || mobileFilter === 'playlists')
                   if (isDrillTrigger) {
+                    setLinkedTrackId(null)
                     setMobileDrilldown({
                       title: sq.title,
                       trackIds: (sq as { trackIds?: string[] }).trackIds ?? [],
@@ -409,10 +461,13 @@ export function MusicApp() {
                     return
                   }
                   if (!sq.trackId) return
-                  const idx = allTracksNormalized.findIndex((t) => t.id === sq.trackId)
-                  if (idx >= 0) player.playByIndex(idx)
+                  playTrackById(sq.trackId)
                 }}
-                className="text-left"
+                className={`text-left rounded-2xl transition-all ${
+                  sq.trackId === linkedTrackId
+                    ? 'ring-2 ring-[#ff2d55] ring-offset-2 ring-offset-white dark:ring-offset-[#09090a]'
+                    : ''
+                }`}
               >
                 <div className="aspect-square rounded-xl overflow-hidden bg-gray-100 dark:bg-[#141416] border border-gray-200 dark:border-white/10">
                   {sq.coverUrl ? (
@@ -424,6 +479,9 @@ export function MusicApp() {
                 <div className="px-0.5 py-2">
                   <div className="text-[16px] text-gray-900 dark:text-white leading-tight truncate">{sq.title}</div>
                   <div className="text-[14px] text-gray-500 dark:text-white/60 truncate">{sq.subtitle}</div>
+              {sq.trackId === linkedTrackId && (
+                <div className="mt-1 text-[11px] font-medium text-[#ff2d55]">Shared song</div>
+              )}
                 </div>
               </button>
             ))}
@@ -449,6 +507,16 @@ export function MusicApp() {
               <div className="text-[16px] text-gray-900 dark:text-white font-medium truncate">{currentTrack?.title ?? 'Select a track'}</div>
               <div className="text-[13px] text-gray-500 dark:text-white/70 truncate">{currentTrack?.artist ?? '—'}</div>
             </div>
+            {currentTrack && (
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                onClick={() => copyLinkForTrack(currentTrack.id)}
+                className="px-2 py-1 rounded-full text-[10px] font-medium bg-black/5 dark:bg-white/10 text-gray-600 dark:text-white/75 hover:bg-black/10 dark:hover:bg-white/15 transition-colors"
+                title={`Copy link to ${currentTrack.title}`}
+              >
+                {copiedTrackId === currentTrack.id ? 'Copied' : 'Copy'}
+              </motion.button>
+            )}
             <motion.button
               whileTap={{ scale: 0.85 }}
               onClick={() => currentTrack && handleLikeTrack(currentTrack.id)}
@@ -492,6 +560,7 @@ export function MusicApp() {
         <div className="px-3 mt-4 mb-1 text-[10px] uppercase tracking-widest text-gray-500 dark:text-white/35">Library</div>
         <button
           onClick={() => {
+            setLinkedTrackId(null)
             setDesktopSection('recent')
             setSelectedArtist(null)
             setSelectedPlaylistId(null)
@@ -506,6 +575,7 @@ export function MusicApp() {
         </button>
         <button
           onClick={() => {
+            setLinkedTrackId(null)
             setDesktopSection('artists')
             setSelectedArtist(null)
           }}
@@ -519,6 +589,7 @@ export function MusicApp() {
         </button>
         <button
           onClick={() => {
+            setLinkedTrackId(null)
             setDesktopSection('songs')
             setSelectedArtist(null)
           }}
@@ -537,6 +608,7 @@ export function MusicApp() {
             <button
               key={playlist._id}
               onClick={() => {
+                setLinkedTrackId(null)
                 setDesktopSection('recent')
                 setSelectedArtist(null)
                 setSelectedPlaylistId(playlist._id)
@@ -570,15 +642,25 @@ export function MusicApp() {
             </button>
           </div>
 
-          <div className="min-w-0 max-w-[52%] flex items-center gap-2 px-2 py-1 rounded-md bg-black/5 dark:bg-white/6 border border-black/10 dark:border-white/10">
+          <div className="min-w-0 max-w-[58%] flex items-center gap-2 px-2 py-1 rounded-md bg-black/5 dark:bg-white/6 border border-black/10 dark:border-white/10">
             <div className="w-5 h-5 rounded overflow-hidden bg-black/10 dark:bg-white/10 flex-shrink-0">
               {featuredTrack?.coverUrl ? (
                 <img src={featuredTrack.coverUrl} alt="" className="w-full h-full object-cover" draggable={false} />
               ) : null}
             </div>
-            <div className="truncate text-[12px] text-gray-700 dark:text-white/85">
+            <div className="min-w-0 flex-1 truncate text-[12px] text-gray-700 dark:text-white/85">
               {featuredTrack ? `${featuredTrack.title} · ${featuredTrack.artist}` : 'Select a track'}
             </div>
+            {featuredTrack && (
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                onClick={() => copyLinkForTrack(featuredTrack.id)}
+                className="flex-shrink-0 px-1.5 py-0.5 rounded text-[10px] font-medium text-gray-500 dark:text-white/60 hover:text-gray-800 dark:hover:text-white/85 bg-black/5 dark:bg-white/8"
+                title={`Copy link to ${featuredTrack.title}`}
+              >
+                {copiedTrackId === featuredTrack.id ? 'Copied' : 'Copy song'}
+              </motion.button>
+            )}
           </div>
 
           <div className="flex items-center gap-2 w-36">
@@ -629,6 +711,12 @@ export function MusicApp() {
             </span>
           </div>
 
+          {linkedTrackId && desktopSection === 'songs' && (
+            <div className="mb-3 rounded-xl border border-[#ff2d55]/25 bg-[#ff2d55]/8 px-3 py-2 text-[12px] text-[#b01238] dark:text-[#ff7a97]">
+              Opened from a shared song link. Press the highlighted track to play it.
+            </div>
+          )}
+
           {loadingTracks ? (
             <div className="text-gray-500 dark:text-white/50 text-sm py-8">Loading tracks…</div>
           ) : filteredDesktopTracks.length === 0 ? (
@@ -646,7 +734,7 @@ export function MusicApp() {
                         return (
                           <button
                             key={track.id}
-                            onClick={() => idx >= 0 && player.playByIndex(idx)}
+                            onClick={() => playTrackById(track.id)}
                             className="text-left group"
                           >
                             <div className="aspect-square rounded-md bg-black/8 dark:bg-white/10 border border-black/10 dark:border-white/10 overflow-hidden">
@@ -725,32 +813,42 @@ export function MusicApp() {
                                     <div className={`text-[13px] truncate ${isPlayingTrack(track.id) ? 'text-white' : 'text-gray-800 dark:text-white/90'}`}>{track.title}</div>
                                     <div className={`text-[11px] truncate ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/50'}`}>{track.artist}</div>
                                   </div>
-                                  <motion.button
-                                    whileTap={{ scale: 0.8 }}
-                                    onClick={(e) => {
-                                      e.stopPropagation()
-                                      handleLikeTrack(track.id)
-                                    }}
-                                    className="ml-1 text-[11px] text-gray-500 dark:text-white/60 flex items-center gap-0.5"
-                                  >
-                                    <motion.span
-                                      animate={likingTrackIds.has(track.id) ? { scale: [1, 1.3, 1] } : { scale: 1 }}
-                                      transition={{ duration: 0.25 }}
-                                      className="flex items-center justify-center"
+                                  <div className="flex items-center gap-1.5">
+                                    <motion.button
+                                      whileTap={{ scale: 0.8 }}
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleLikeTrack(track.id)
+                                      }}
+                                      className="ml-1 text-[11px] text-gray-500 dark:text-white/60 flex items-center gap-0.5"
                                     >
-                                      {isPlayingTrack(track.id) ? (
-                                        likedTrackIds.has(track.id) ? (
-                                          <HiHeart className="text-white" size={11} />
+                                      <motion.span
+                                        animate={likingTrackIds.has(track.id) ? { scale: [1, 1.3, 1] } : { scale: 1 }}
+                                        transition={{ duration: 0.25 }}
+                                        className="flex items-center justify-center"
+                                      >
+                                        {isPlayingTrack(track.id) ? (
+                                          likedTrackIds.has(track.id) ? (
+                                            <HiHeart className="text-white" size={11} />
+                                          ) : (
+                                            <FiHeart className="text-white" size={11} />
+                                          )
+                                        ) : likedTrackIds.has(track.id) ? (
+                                          <HiHeart className="text-red-400" size={11} />
                                         ) : (
-                                          <FiHeart className="text-white" size={11} />
-                                        )
-                                      ) : likedTrackIds.has(track.id) ? (
-                                        <HiHeart className="text-red-400" size={11} />
-                                      ) : (
-                                        <FiHeart className="text-red-400" size={11} />
-                                      )}
-                                    </motion.span>
-                                  </motion.button>
+                                          <FiHeart className="text-red-400" size={11} />
+                                        )}
+                                      </motion.span>
+                                    </motion.button>
+                                    <motion.button
+                                      whileTap={{ scale: 0.8 }}
+                                      onClick={(e) => { e.stopPropagation(); copyLinkForTrack(track.id) }}
+                                      className={`text-[10px] px-1.5 py-0.5 rounded ${isPlayingTrack(track.id) ? 'text-white/80 hover:text-white' : 'text-gray-400 dark:text-white/40 hover:text-gray-700 dark:hover:text-white/70'}`}
+                                      title="Copy link"
+                                    >
+                                      {copiedTrackId === track.id ? '✓' : '⎘'}
+                                    </motion.button>
+                                  </div>
                                 </div>
                               </div>
                               <div className={`text-[11px] ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/45'}`}>
@@ -771,6 +869,7 @@ export function MusicApp() {
                     <button
                       key={artist.name}
                       onClick={() => {
+                        setLinkedTrackId(null)
                         setSelectedArtist(artist.name)
                         setDesktopSection('songs')
                       }}
@@ -796,14 +895,16 @@ export function MusicApp() {
               {desktopSection === 'songs' && (
                 <div className="space-y-1.5">
                   {songsViewTracks.map((track) => {
-                    const idx = allTracksNormalized.findIndex((t) => t.id === track.id)
+                    const isLinkedTrack = linkedTrackId === track.id
                     return (
                       <button
                         key={track.id}
-                        onClick={() => idx >= 0 && player.playByIndex(idx)}
+                        onClick={() => playTrackById(track.id)}
                         className={`w-full text-left flex items-center gap-3 rounded-md px-2.5 py-2 border transition-colors ${
                           isPlayingTrack(track.id)
                             ? 'bg-[#ff2d55] border-[#ff2d55] text-white'
+                            : isLinkedTrack
+                            ? 'bg-[#ff2d55]/8 dark:bg-[#ff2d55]/14 border-[#ff2d55]/40 text-gray-900 dark:text-white shadow-[0_0_0_1px_rgba(255,45,85,0.12)]'
                             : 'bg-black/[0.03] dark:bg-white/[0.03] border-black/10 dark:border-white/10 hover:bg-black/[0.07] dark:hover:bg-white/[0.08]'
                         }`}
                       >
@@ -816,10 +917,23 @@ export function MusicApp() {
                         </div>
                         <div className="min-w-0 flex-1">
                           <div className={`text-[13px] truncate ${isPlayingTrack(track.id) ? 'text-white' : 'text-gray-800 dark:text-white/90'}`}>{track.title}</div>
-                          <div className={`text-[11px] truncate ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/50'}`}>{track.artist}</div>
+                          <div className={`text-[11px] truncate ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/50'}`}>
+                            {track.artist}
+                            {isLinkedTrack ? '  ·  Shared song' : ''}
+                          </div>
                         </div>
-                        <div className={`text-[11px] ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/45'}`}>
-                          {track.duration ? formatTime(track.duration) : '--:--'}
+                        <div className="flex items-center gap-1.5">
+                          <div className={`text-[11px] ${isPlayingTrack(track.id) ? 'text-white/85' : 'text-gray-500 dark:text-white/45'}`}>
+                            {track.duration ? formatTime(track.duration) : '--:--'}
+                          </div>
+                          <motion.button
+                            whileTap={{ scale: 0.8 }}
+                            onClick={(e) => { e.stopPropagation(); copyLinkForTrack(track.id) }}
+                            className={`text-[10px] px-1.5 py-0.5 rounded ${isPlayingTrack(track.id) ? 'text-white/80 hover:text-white' : 'text-gray-400 dark:text-white/40 hover:text-gray-700 dark:hover:text-white/70'}`}
+                            title="Copy link"
+                          >
+                            {copiedTrackId === track.id ? '✓' : '⎘'}
+                          </motion.button>
                         </div>
                       </button>
                     )

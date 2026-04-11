@@ -12,6 +12,7 @@ interface MacWindowProps {
   onMaximize: () => void
   onFocus: () => void
   showReadingUI?: boolean
+  onCopyLink?: () => void
 }
 
 function findScrollable(container: HTMLElement): HTMLElement | null {
@@ -22,7 +23,15 @@ function findScrollable(container: HTMLElement): HTMLElement | null {
   return null
 }
 
-export function MacWindow({ window: win, children, onClose, onMinimize, onFocus, showReadingUI = true }: MacWindowProps) {
+export function MacWindow({ window: win, children, onClose, onMinimize, onFocus, showReadingUI = true, onCopyLink }: MacWindowProps) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopyLink = async () => {
+    if (!onCopyLink) return
+    onCopyLink()
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1800)
+  }
   const dragControls = useDragControls()
   const containerRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
@@ -132,6 +141,15 @@ export function MacWindow({ window: win, children, onClose, onMinimize, onFocus,
             >
               {win.title}
             </span>
+            {onCopyLink && (
+              <button
+                onClick={(e) => { e.stopPropagation(); handleCopyLink() }}
+                className="ml-auto text-[10px] px-2 py-0.5 rounded mac-titlebar-text opacity-50 hover:opacity-90 transition-opacity"
+                title="Copy link"
+              >
+                {copied ? '✓ Copied' : '⎘ Copy Link'}
+              </button>
+            )}
           </div>
 
           {showReadingUI && (
