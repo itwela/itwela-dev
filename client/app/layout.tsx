@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ConvexClientProvider } from '@/components/ConvexClientProvider'
 import { Toaster } from 'sonner'
+import { Analytics } from '@vercel/analytics/next'
 
 export const metadata: Metadata = {
   title: 'itwela.dev – AI product engineer & technical solutions specialist',
@@ -53,6 +54,7 @@ export default function RootLayout({
             },
           }}
         />
+        <Analytics />
       </body>
     </html>
   )
