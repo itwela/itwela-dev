@@ -138,7 +138,7 @@ export function ResumeApp() {
   }
 
   return (
-    <div className="h-full overflow-y-auto mac-content-bg" style={{ fontSize: '13px' }}>
+    <div className="h-full flex flex-col mac-content-bg" style={{ fontSize: '13px' }}>
       {/* Toolbar */}
       <div className="sticky top-0 z-10 flex items-center justify-between px-6 py-2 finder-sidebar border-b border-black/5 dark:border-white/10">
         <span className="sidebar-text text-xs font-medium">Resume — {resume?.name ?? 'Itwela Ibomu'}</span>
@@ -168,141 +168,27 @@ export function ResumeApp() {
         </div>
       </div>
 
-      <div className="px-8 py-6 max-w-2xl">
-        {/* Header */}
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{resume?.name ?? '—'}</h1>
-          {resume?.citizenship && <p className="text-xs mt-1 text-gray-500 dark:text-white/50">{resume.citizenship}</p>}
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-2 text-xs text-gray-400 dark:text-white/40">
-            {resume?.email && <span>{resume.email}</span>}
-            {resume?.email && <span>·</span>}
-            {resume?.linkedin && (
-              <a href={resume.linkedin} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1">
-                {resume.linkedin.replace('https://', '')} <FiExternalLink size={10} />
-              </a>
-            )}
-            {resume?.github && <span>·</span>}
-            {resume?.github && (
-              <a href={resume.github} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1">
-                {resume.github.replace('https://', '')} <FiExternalLink size={10} />
-              </a>
-            )}
+      {/* The compact layout embeds the PDF; desktop now does the same so both
+          views show the identical document instead of diverging into a
+          hand-rendered text copy that has to be kept in sync. */}
+      <div className="flex-1 min-h-0 bg-white dark:bg-[#17191d]">
+        {resumeLink ? (
+          <iframe
+            src={resumeLink}
+            title="Resume preview"
+            className="w-full h-full border-0"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-center px-6">
+            <div>
+              <div className="text-sm font-medium text-gray-700 dark:text-white/80">Preview unavailable</div>
+              <div className="text-xs mt-1 text-gray-500 dark:text-white/50">
+                Add your resume link in the content manager to show it here.
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* Education */}
-        <section className="mb-6">
-          <SectionHeader>Education</SectionHeader>
-          {loading ? <Skeleton /> : (resume?.education ?? []).map((edu, i) => (
-            <div key={i} className="flex items-start justify-between gap-4">
-              <div>
-                <div className="font-semibold text-sm text-gray-900 dark:text-white">{edu.school}</div>
-                <div className="text-xs mt-0.5 text-gray-500 dark:text-white/50">{edu.degree}</div>
-                {edu.coursework && <div className="text-xs mt-1 text-gray-500 dark:text-white/50">{edu.coursework}</div>}
-              </div>
-              <div className="text-xs flex-shrink-0 text-right text-gray-400 dark:text-white/40">
-                <div>{edu.location}</div>
-                <div>{edu.period}</div>
-              </div>
-            </div>
-          ))}
-        </section>
-
-        {/* Experience */}
-        <section className="mb-6">
-          <SectionHeader>Experience</SectionHeader>
-          {loading ? <Skeleton /> : (
-            <div className="space-y-5">
-              {(resume?.experience ?? []).map((exp, i) => (
-                <div key={i}>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <div className="font-semibold text-sm text-gray-900 dark:text-white">{exp.title}</div>
-                      <div className="text-xs mt-0.5 text-gray-500 dark:text-white/50">{exp.company}</div>
-                    </div>
-                    <div className="text-xs flex-shrink-0 text-right text-gray-400 dark:text-white/40">
-                      <div>{exp.period}</div>
-                      <div>{exp.location}</div>
-                    </div>
-                  </div>
-                  <ul className="mt-2 space-y-1">
-                    {exp.bullets.map((b, j) => (
-                      <li key={j} className="text-xs flex gap-2 text-gray-600 dark:text-white/60">
-                        <span className="text-gray-500 dark:text-white/50 flex-shrink-0">•</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* Projects */}
-        <section className="mb-6">
-          <SectionHeader>Projects</SectionHeader>
-          {loading ? <Skeleton /> : (
-            <div className="space-y-5">
-              {(resume?.projects ?? []).map((proj, i) => (
-                <div key={i}>
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="text-sm font-semibold text-gray-900 dark:text-white">
-                      {proj.title}
-                      {proj.tech && <span className="font-normal text-gray-500 dark:text-white/40"> | {proj.tech}</span>}
-                    </div>
-                    {proj.url && (
-                      <a href={proj.url} target="_blank" rel="noopener noreferrer"
-                        className="flex-shrink-0 text-xs text-blue-500 hover:underline flex items-center gap-1">
-                        <FiExternalLink size={10} />
-                      </a>
-                    )}
-                  </div>
-                  <ul className="mt-2 space-y-1">
-                    {proj.bullets.map((b, j) => (
-                      <li key={j} className="text-xs flex gap-2 text-gray-600 dark:text-white/60">
-                        <span className="text-gray-500 dark:text-white/50 flex-shrink-0">•</span>
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* Skills */}
-        <section>
-          <SectionHeader>Technical Skills</SectionHeader>
-          {loading ? <Skeleton /> : (
-            <div className="space-y-1.5">
-              {(resume?.skills ?? []).map((s, i) => (
-                <div key={i} className="flex gap-3 text-xs">
-                  <span className="w-32 flex-shrink-0 font-medium text-gray-500 dark:text-white/50">{s.group}</span>
-                  <span className="text-gray-700 dark:text-white/70">{s.items}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
+        )}
       </div>
-    </div>
-  )
-}
-
-function SectionHeader({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="text-[10px] font-bold uppercase tracking-widest mb-3 text-gray-400 dark:text-white/30">
-      {children}
-    </div>
-  )
-}
-
-function Skeleton() {
-  return (
-    <div className="space-y-2 animate-pulse">
-      {[1, 2].map(i => <div key={i} className="h-3 bg-black/5 dark:bg-white/5 rounded w-3/4" />)}
     </div>
   )
 }

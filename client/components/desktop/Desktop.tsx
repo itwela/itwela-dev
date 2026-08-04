@@ -48,7 +48,9 @@ const APP_CONFIG: Record<AppId, { title: string; size: { width: number; height: 
   mail:     { title: 'Mail',     size: { width: 780, height: 616 } },
   photos:   { title: 'Photos',   size: { width: 800, height: 616 } },
   music:    { title: 'Music',    size: { width: 760, height: 638 } },
-  resume:   { title: 'Résumé',   size: { width: 720, height: 616 } },
+  // Roomier than the other content apps because this one renders a full
+  // letter-size PDF rather than reflowable text.
+  resume:   { title: 'Résumé',   size: { width: 1040, height: 780 } },
   blog:     { title: 'Blog',     size: { width: 980, height: 682 } },
   agent:    { title: 'Agent',    size: { width: 420, height: 638 } },
   jobkompass: { title: 'JobKompass', size: { width: 1100, height: 770 } },
@@ -176,11 +178,31 @@ function StartupScreen({ progress }: { progress: number }) {
   )
 }
 
+const MENU_BAR_H = 28
+const DOCK_H = 100
+const SCREEN_PAD = 16
+
+/**
+ * Shrink a window's configured size to what the screen can actually show.
+ * Without this, a window taller than the viewport gets a negative `y` from
+ * `getCenteredPosition` and its titlebar sits above the menu bar, where it
+ * can't be grabbed or dragged back into view.
+ */
+function fitToViewport(size: { width: number; height: number }) {
+  if (typeof window === 'undefined') return size
+  const maxWidth = Math.max(320, window.innerWidth - SCREEN_PAD * 2)
+  const maxHeight = Math.max(320, window.innerHeight - MENU_BAR_H - DOCK_H)
+  return {
+    width: Math.min(size.width, maxWidth),
+    height: Math.min(size.height, maxHeight),
+  }
+}
+
 function getCenteredPosition(size: { width: number; height: number }) {
   if (typeof window === 'undefined') return { x: 100, y: 80 }
   return {
-    x: Math.round((window.innerWidth  - size.width)  / 2),
-    y: Math.round((window.innerHeight - size.height) / 2),
+    x: Math.max(SCREEN_PAD, Math.round((window.innerWidth - size.width) / 2)),
+    y: Math.max(MENU_BAR_H, Math.round((window.innerHeight - size.height) / 2)),
   }
 }
 
@@ -199,13 +221,14 @@ function windowsReducer(state: WindowsState, action: WindowsAction): WindowsStat
           ...state, topZ: newZ,
           windows: state.windows.map((w) =>
             w.id === existing.id
-              ? { ...w, title: config.title, size: config.size, isOpen: true, isMinimized: false, zIndex: newZ }
+              ? { ...w, title: config.title, size: fitToViewport(config.size), isOpen: true, isMinimized: false, zIndex: newZ }
               : w
           ),
         }
       }
       const config = APP_CONFIG[action.appId]
-      const position = getCenteredPosition(config.size)
+      const size = fitToViewport(config.size)
+      const position = getCenteredPosition(size)
       return {
         ...state, topZ: newZ,
         windows: [
@@ -217,7 +240,7 @@ function windowsReducer(state: WindowsState, action: WindowsAction): WindowsStat
             isOpen: true,
             isMinimized: false,
             position,
-            size: config.size,
+            size,
             zIndex: newZ,
           },
         ],
